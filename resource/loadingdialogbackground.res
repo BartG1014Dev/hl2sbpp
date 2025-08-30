@@ -1,0 +1,47 @@
+"resource/loadingdialogbackground.res"
+{
+	"LoadingImage"
+	{
+		"ControlName"		"ImagePanel"
+		"fieldName"			"LoadingImage"
+		"xpos"				"0"
+		"ypos"				"0"
+		"wide"				"f-1"
+		"tall"				"f-1"
+		"autoResize"		"0"
+		"pinCorner"			"0"
+		"visible"			"1"
+		"enabled"			"1"
+		"tabPosition"		"0"
+		"border"			"1"
+		"image"				"loading/default"
+		"scaleImage"		"1"
+	}
+	"ServerName"
+	{
+		"ControlName"		"Label"
+		"fieldName"			"ServerName"
+		"xpos"				"0"
+		"ypos"				"0"
+		"wide"				"400"
+		"tall"				"1"
+		"visible"			"1"
+		"enabled"			"1"
+		"fgcolor"       	"255 255 255 255"
+        "text" 				"Server Name Here"
+		"proportionalToParent" "1"
+	}
+	"MapIcon"
+	{
+		"ControlName"		"ImagePanel"
+		"fieldName"			"MapIcon"
+		"xpos"				"0"
+		"ypos"				"0"
+		"wide"				"0"
+		"tall"				"0"
+		"visible"			"1"
+		"enabled"			"1"
+		"border"			"0"
+		"image"				"loading/map-default"
+	}
+}

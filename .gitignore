@@ -1,0 +1,19 @@
+config.cfg
+demoheader.tmp
+download/
+downloadlists/
+glshaders.cfg
+modelsounds.cache
+sound.cache
+stats.txt
+videoconfig_linux.cfg
+voice_ban.dt
+serverconfig.vdf
+settings.scr
+*.ain
+graphs/
+gamestate.txt
+videoconfig_android.cfg
+# NO MOVIES!!!!
+addons/
+sig.py
