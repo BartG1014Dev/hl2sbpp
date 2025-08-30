@@ -15,5 +15,7 @@ graphs/
 gamestate.txt
 videoconfig_android.cfg
 # NO MOVIES!!!!
-addons/
+addons/*
+!addons/example_addon
+!addons/menu
 sig.py
