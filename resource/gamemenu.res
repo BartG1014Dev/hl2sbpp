@@ -53,8 +53,8 @@
 	}
 	"9"
 	{
-		"label" "#GameUI_GameMenu_CreateServer"
-		"command" "OpenCreateMultiplayerGameDialog"
+		"label" "#HL2SB_StartGame"
+		"command" "engine mpdialog 1"
 	}
 	"10"
 	{

@@ -54,12 +54,8 @@ WeaponData
 		}
 		"crosshair"
 		{
-			"file"		"sprites/crosshairs"
-			"x"			"24"
-			"y"			"48"
-			"width"		"24"
-			"height"	"24"
-
+				"font"		"Crosshairs"
+				"character"	"Q"
 		}
 	}
 }

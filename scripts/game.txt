@@ -1,2 +1,2 @@
 // Game specific definitions
-"$game"	"HL2SB"
+"$game"	"HL2SB++"

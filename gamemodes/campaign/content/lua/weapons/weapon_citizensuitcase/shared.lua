@@ -4,9 +4,7 @@
 --
 --===========================================================================--
 
-include( "acttable.lua" )
-
-SWEP.__base					= "weapon_citizenpackage"
+DEFINE_BASECLASS( "weapon_citizenpackage" )
 
 SWEP.printname				= "#HL2_SMG1"
 SWEP.viewmodel				= "models/weapons/w_suitcase_passenger.mdl"

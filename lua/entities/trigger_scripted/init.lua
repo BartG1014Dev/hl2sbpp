@@ -1,11 +1,11 @@
---======== Copyleft © 2010-2013, Team Sandbox, Some rights reserved. ========--
+--======== Copyleft ï¿½ 2010-2013, Team Sandbox, Some rights reserved. ========--
 --
 -- Purpose:
 --
 --===========================================================================--
 
-ENT.__base = "trigger_scripted"
-ENT.__factory = "CBaseTrigger"
+DEFINE_BASECLASS( "trigger_scripted" )
+DEFINE_FACTORY( "CBaseTrigger" )
 
 function ENT:Initialize()
 end
