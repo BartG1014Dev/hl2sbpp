@@ -4,7 +4,7 @@
 --
 --===========================================================================--
 
-include( "shared.lua" )
+includeC( "shared.lua" )
 
 function GM:CreateDefaultPanels()
 end

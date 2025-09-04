@@ -4,8 +4,6 @@
 --
 --===========================================================================--
 
-include( "acttable.lua" )
-
 SWEP.printname				= "#HL2_SMG1"
 SWEP.viewmodel				= "models/weapons/w_package.mdl"
 SWEP.playermodel			= "models/weapons/w_package.mdl"

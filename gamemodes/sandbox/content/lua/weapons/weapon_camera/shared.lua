@@ -4,8 +4,6 @@
 --
 --===========================================================================--
 
-include( "acttable.lua" )
-
 SWEP.printname				= "CAMERA"
 SWEP.viewmodel				= "models/weapons/c_arms_animations.mdl"
 SWEP.playermodel			= ""
@@ -44,14 +42,14 @@ SWEP.UseHands				= true
 
 SWEP.m_acttable            =
 {
-	{ ACT.HL2MP_IDLE,					ACT.HL2MP_IDLE_PISTOL,					false },
-	{ ACT.HL2MP_RUN,					ACT.HL2MP_RUN_PISTOL,					false },
-	{ ACT.HL2MP_IDLE_CROUCH,			ACT.HL2MP_IDLE_CROUCH_PISTOL,			false },
-	{ ACT.HL2MP_WALK_CROUCH,			ACT.HL2MP_WALK_CROUCH_PISTOL,			false },
-	{ ACT.HL2MP_GESTURE_RANGE_ATTACK,	ACT.HL2MP_GESTURE_RANGE_ATTACK_PISTOL,	false },
-	{ ACT.HL2MP_GESTURE_RELOAD,			ACT.HL2MP_GESTURE_RELOAD_PISTOL,		false },
-	{ ACT.HL2MP_JUMP,					ACT.HL2MP_JUMP_PISTOL,					false },
-	{ ACT.RANGE_ATTACK1,				ACT.RANGE_ATTACK_PISTOL,				false },
+	{ ACT.MP_STAND_IDLE,				ACT.HL2MP_IDLE_PISTOL,					false },
+	{ ACT.MP_CROUCH_IDLE,				ACT.HL2MP_IDLE_CROUCH_PISTOL,			false },
+	{ ACT.MP_RUN,						ACT.HL2MP_RUN_PISTOL,					false },
+	{ ACT.MP_CROUCHWALK,				ACT.HL2MP_WALK_CROUCH_PISTOL,			false },
+	{ ACT.MP_ATTACK_STAND_PRIMARYFIRE,	ACT.HL2MP_GESTURE_RANGE_ATTACK_PISTOL,	false },
+	{ ACT.MP_ATTACK_CROUCH_PRIMARYFIRE,	ACT.HL2MP_GESTURE_RANGE_ATTACK_PISTOL,	false },
+	{ ACT.MP_RELOAD_STAND,				ACT.HL2MP_GESTURE_RELOAD_PISTOL,		false },
+	{ ACT.MP_RELOAD_CROUCH,				ACT.HL2MP_GESTURE_RELOAD_PISTOL,		false },
 };
 
 function SWEP:Initialize()

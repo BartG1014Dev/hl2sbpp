@@ -5,8 +5,8 @@
 --===========================================================================--
 
 GM.Name			= "Sandbox"
-GM.Homepage		= "http://www.andrewmcwatters.com/hl2sb/"
-GM.Developer	= "Team Sandbox"
+GM.Homepage		= ""
+GM.Developer	= "Team HL2SB++"
 GM.Manual		= nil
 
 function GM:Initialize()

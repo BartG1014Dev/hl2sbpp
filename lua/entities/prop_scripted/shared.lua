@@ -1,11 +1,11 @@
---======== Copyleft © 2010-2011, Team Sandbox, Some rights reserved. ========--
+--======== Copyleft ï¿½ 2010-2011, Team Sandbox, Some rights reserved. ========--
 --
 -- Purpose:
 --
 --===========================================================================--
 
-ENT.__base = "prop_scripted"
-ENT.__factory = "CBaseAnimating"
+DEFINE_BASECLASS( "prop_scripted" )
+DEFINE_FACTORY( "CBaseAnimating" )
 
 function ENT:Initialize()
 end

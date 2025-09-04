@@ -19,3 +19,6 @@ addons/*
 !addons/example_addon
 !addons/menu
 sig.py
+materialsrc/
+mapsrc/
+screenshots/

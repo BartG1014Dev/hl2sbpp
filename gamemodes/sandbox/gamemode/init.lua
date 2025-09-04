@@ -4,7 +4,7 @@
 --
 --===========================================================================--
 
-include( "shared.lua" )
+includeC( "shared.lua" )
 
 local tSpawnPointClassnames = {
   "info_player_deathmatch",

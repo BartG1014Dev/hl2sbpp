@@ -11,6 +11,5 @@ exec autoexec.cfg
 //
 stuffcmds
 
-hostname "Half-Life 2 Sandbox"
-
-mp_forcerespawn 0
+// uhh
+exec skill_manifest.cfg

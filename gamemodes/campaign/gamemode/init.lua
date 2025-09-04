@@ -1,10 +1,10 @@
---========== Copyleft © 2010, Team Sandbox, Some rights reserved. ===========--
+--========== Copyleft ï¿½ 2010, Team Sandbox, Some rights reserved. ===========--
 --
 -- Purpose:
 --
 --===========================================================================--
 
-include( "shared.lua" )
+includeC( "shared.lua" )
 
 function GM:AddLevelDesignerPlacedObject( pEntity )
   return false
