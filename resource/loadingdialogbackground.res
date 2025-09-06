@@ -27,8 +27,9 @@
 		"tall"				"1"
 		"visible"			"1"
 		"enabled"			"1"
+		"zpos"          	"2"
 		"fgcolor"       	"255 255 255 255"
-        "text" 				"Server Name Here"
+        "text" 				"Server Name Goes Here"
 		"proportionalToParent" "1"
 	}
 	"MapIcon"

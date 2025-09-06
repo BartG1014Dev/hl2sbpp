@@ -95,6 +95,7 @@ function SWEP:PrimaryAttack()
 	local pBaseAnimating = pEntity:GetBaseAnimating()
 	if pBaseAnimating == NULL then
 		print("not an baseanimating")
+		return false -- @ThePixelMoon: oops
 	end
 
 	if self.ToolMode == 1 then
