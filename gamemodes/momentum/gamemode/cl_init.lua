@@ -6,5 +6,5 @@
 
 includeC( "shared.lua" )
 
-function ENT:Think()
+function GM:CreateDefaultPanels()
 end
