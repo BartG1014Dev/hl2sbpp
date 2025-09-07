@@ -28,12 +28,12 @@ WeaponData
 		"weapon"
 		{
 				"font"		"WeaponIcons"
-				"character"	"m"
+				"character"	"h"
 		}
 		"weapon_s"
 		{	
 				"font"		"WeaponIconsSelected"
-				"character"	"m"
+				"character"	"h"
 		}
 		"crosshair"
 		{

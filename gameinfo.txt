@@ -12,9 +12,7 @@
 		"test_speakers"		1
 		"test_hardware"		1
 	}
-	developer "Planimeter"
-	developer_url "https://github.com/Planimeter/hl2sb"
-	manual "https://github.com/Planimeter/hl2sb"
+	developer "Team HL2SB++"
 
 
     FileSystem
