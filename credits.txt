@@ -1,0 +1,15 @@
+CREDITS
+ThePixelMoon/YourLocalMoon - Lead programmer
+Waltenthethird - Helping fix thirdperson animations
+Ashforever - (TODO: add this one)
+Kokoleong - (TODO: add this one)
+MrDinnerMau5 - Supporter, advertising
+R_4d - (TODO: add this one)
+Graman/Carl - Suggestions
+ItzVladik - Contributor
+
+PLAYTESTERS
+Inflesi
+Gustavo/Nekto
+Randoms
+Yaymon

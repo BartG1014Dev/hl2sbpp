@@ -51,8 +51,7 @@ Scheme
 		Button.TextColor				"82 82 82 255"
 		Button.BgColor					"227 227 227 255"
 		Button.ArmedTextColor			"46 114 178 255"
-		Button.ArmedBgColor				"240 240 240 255"	[$WIN32]
-		Button.ArmedBgColor				"190 115 0 255"		[$X360]
+		Button.ArmedBgColor				"240 240 240 255"
 		Button.DepressedTextColor		"White"
 		Button.DepressedBgColor			"84 178 245 255"
 		Button.FocusBorderColor			"82 82 82 255"
@@ -77,13 +76,10 @@ Scheme
 		Frame.TitleTextInsetX			16
 		Frame.ClientInsetX				8
 		Frame.ClientInsetY				6
-		Frame.BgColor					"GMod_BG_Opaque"	[$WIN32]
-		Frame.BgColor					"80 80 80 192"		[$X360]
-		Frame.OutOfFocusBgColor			"97 100 102 240"	[$WIN32]
-		Frame.OutOfFocusBgColor			"80 80 80 192"		[$X360]
+		Frame.BgColor					"GMod_BG_Opaque"
+		Frame.OutOfFocusBgColor			"97 100 102 240"
 		Frame.FocusTransitionEffectTime	"0.3"							// time it takes for a window to fade in/out on focus/out of focus
-		Frame.TransitionEffectTime		"0.3"				[$WIN32]	// time it takes for a window to fade in/out on open/close
-		Frame.TransitionEffectTime		"0.2"				[$X360]		// time it takes for a window to fade in/out on open/close
+		Frame.TransitionEffectTime		"0.3"
 		Frame.AutoSnapRange				"0"
 		FrameGrip.Color1				"200 200 200 196"
 		FrameGrip.Color2				"0 0 0 196"
@@ -197,14 +193,10 @@ Scheme
 		WizardSubPanel.BgColor		"Blank"
 
 		// scheme-specific colors
-		MainMenu.TextColor			"White"				[$WIN32]
-		MainMenu.TextColor			"200 200 200 255"	[$X360]
-		MainMenu.ArmedTextColor		"200 200 200 255"	[$WIN32]
-		MainMenu.ArmedTextColor		"White"				[$X360]
+		MainMenu.TextColor			"White"
+		MainMenu.ArmedTextColor		"255 222 88 255"
 		MainMenu.DepressedTextColor	"192 186 80 255"
-		MainMenu.MenuItemHeight		"30"				[$WIN32]
-		MainMenu.MenuItemHeight			"22"				[$X360]
-		MainMenu.MenuItemHeight_hidef	"32"				[$X360]
+		MainMenu.MenuItemHeight		"30"
 		MainMenu.Inset				"32"
 		MainMenu.Backdrop			"0 0 0 156"
 
@@ -213,15 +205,8 @@ Scheme
 
 		NewGame.TextColor			"White"
 		NewGame.FillColor			"Black"
-		NewGame.SelectionColor		"Orange"	[$WIN32]
-		NewGame.SelectionColor		"Black"		[$X360]
+		NewGame.SelectionColor		"Orange"
 		NewGame.DisabledColor		"128 128 128 196"
-
-		MessageDialog.MatchmakingBG			"46 43 42 255"	[$X360]
-		MessageDialog.MatchmakingBGBlack			"22 22 22 255"	[$X360]
-
-		MatchmakingMenuItemTitleColor			"200 184 151 255"	[$X360]
-		MatchmakingMenuItemDescriptionColor		"200 184 151 255"	[$X360]
 
 		"QuickListBGDeselected"		"AchievementsDarkGrey"
 		"QuickListBGSelected"		"AchievementsLightGrey"
@@ -357,42 +342,12 @@ Scheme
 		}
 		"UiBold"
 		{
-			"1"	[$WIN32]
+			"1"
 			{
 				"name"		"Tahoma" [$WINDOWS]
 				"name"		"Verdana" [!$WINDOWS]
 				"tall"		"12"
 				"weight"	"1000"
-			}
-			"1"	[$X360]
-			{
-				"name"		"Tahoma"
-				"tall"		"24"
-				"weight"	"2000"
-				"outline"	"1"
-			}
-		}
-		"ChapterTitle"	[$X360]
-		{
-			"1"
-			{
-				"name"			"Tahoma"
-				"tall"			"20"
-				"tall_hidef"	"28"
-				"weight"		"2000"
-				"outline"		"1"
-			}
-		}
-		"ChapterTitleBlur"	[$X360]
-		{
-			"1"
-			{
-				"name"			"Tahoma"
-				"tall"			"20"
-				"tall_hidef"	"28"
-				"weight"		"2000"
-				"blur"			"3"
-				"blur_hidef"	"5"
 			}
 		}
 		"MenuLarge"
@@ -409,15 +364,6 @@ Scheme
 				"tall"		"16"
 				"weight"	"600"
 				"antialias" "1"
-			}
-			"1"	[$X360]
-			{
-				"name"		"Verdana"
-				"tall"			"14"
-				"tall_hidef"	"20"
-				"weight"	"1200"
-				"antialias" "1"
-				"outline" "1"
 			}
 		}
 		"AchievementTitleFont"
@@ -469,17 +415,6 @@ Scheme
 
 		GameUIButtons
 		{
-			"1"	[$X360]
-			{
-				"bitmap"	"1"
-				"name"		"Buttons"
-				"scalex"	"0.63"
-				"scaley"	"0.63"
-				"scalex_hidef"	"1.0"
-				"scaley_hidef"	"1.0"
-				"scalex_lodef"	"0.75"
-				"scaley_lodef"	"0.75"
-			}
 		}
 		"ConsoleText"
 		{
@@ -595,8 +530,7 @@ Scheme
 		{
 			"1"
 			{
-				"name"		 "Lucida Console" [$WINDOWS]
-				"name"		 "Lucida Console" [$X360]
+				"name"		 "Lucida Console"
 				"name"		 "Verdana" [$LINUX]
 				"tall"		"11" [$LINUX]
 				"tall"		"10"
@@ -615,7 +549,6 @@ Scheme
 			"1"
 			{
 				"name"		 "Lucida Console" [$WINDOWS]
-				"name"		 "Lucida Console" [$X360]
 				"name"		 "Lucida Console" [$OSX]
 				"name"		 "Courier" [$LINUX]
 				"tall"		"14" [$LINUX]
@@ -694,32 +627,6 @@ Scheme
 				"weight"	"400"
 				"antialias"	"1"
 				"custom"	"1"
-			}
-		}
-
-		AppchooserGameTitleFont	[$X360]
-		{
-			"1"
-			{
-				"name"			"Trebuchet MS"
-				"tall"			"16"
-				"tall_hidef"	"24"
-				"weight"		"900"
-				"antialias"		"1"
-			}
-		}
-
-		AppchooserGameTitleFontBlur	[$X360]
-		{
-			"1"
-			{
-				"name"			"Trebuchet MS"
-				"tall"			"16"
-				"tall_hidef"	"24"
-				"weight"		"900"
-				"blur"			"3"
-				"blur_hidef"	"5"
-				"antialias"		"1"
 			}
 		}
 
