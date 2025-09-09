@@ -5,7 +5,7 @@
 --===========================================================================--
 
 SWEP.printname				= "FLECHETTE GUN"
-SWEP.viewmodel				= "models/weapons/v_smg1.mdl"
+SWEP.viewmodel				= "models/weapons/c_smg1.mdl"
 SWEP.playermodel			= "models/weapons/w_smg1.mdl"
 SWEP.anim_prefix			= "smg2"
 SWEP.bucket					= 2
@@ -26,7 +26,7 @@ SWEP.damage					= 0
 SWEP.SoundData				=
 {
 	empty					= "",
-	single_shot				= ""
+	single_shot				= "NPC_Hunter.FlechetteShoot"
 }
 
 SWEP.ShowUsageHint			= false
@@ -71,9 +71,11 @@ function SWEP:PrimaryAttack()
 	self.m_flNextPrimaryAttack = gpGlobals.curtime() + 0.07;
 	self.m_flNextSecondaryAttack = gpGlobals.curtime() + 0.07;
 	
-	self:SendWeaponAnim( 180 );
-	pPlayer:SetAnimation( 5 );
-	ToHL2MPPlayer(pPlayer):DoAnimationEvent( 0 );
+	self:SendWeaponAnim( ACT.VM_PRIMARYATTACK );
+	
+	ToHL2MPPlayer(pPlayer):DoAnimationEvent( PlayerAnimEvent.ATTACK_PRIMARY );
+
+	self:EmitSound("NPC_Hunter.FlechetteShoot")
 
 	-- fire the pooting bullets
 	local eye = pPlayer:EyeAngles()
@@ -108,7 +110,7 @@ function SWEP:Deploy()
 end
 
 function SWEP:GetDrawActivity()
-	return 171;
+	return ACT.VM_DRAW;
 end
 
 function SWEP:Holster( pSwitchingTo )

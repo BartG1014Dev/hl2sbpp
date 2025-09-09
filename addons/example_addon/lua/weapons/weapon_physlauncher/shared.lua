@@ -1,5 +1,5 @@
 SWEP.PrintName				= "PhysLauncher"
-SWEP.ViewModel				= "models/weapons/v_pistol.mdl"
+SWEP.ViewModel				= "models/weapons/c_pistol.mdl"
 SWEP.WorldModel				= "models/weapons/w_pistol.mdl"
 SWEP.anim_prefix			= "python"
 SWEP.Slot					= 1
@@ -68,18 +68,18 @@ function SWEP:PrimaryAttack()
 		if ( not self.m_bFireOnEmpty ) then
 			self:Reload();
 		else
-			self:WeaponSound( 0 );
+			self:WeaponSound( WeaponSound.EMPTY );
 			self.m_flNextPrimaryAttack = 0.15;
 		end
 
 		return;
 	end
 
-	self:WeaponSound( 1 );
+	self:WeaponSound( WeaponSound.SINGLE );
 
-	--self:SendWeaponAnim( 180 );
-	pPlayer:SetAnimation( 5 );
-	ToHL2MPPlayer(pPlayer):DoAnimationEvent( 0 );
+	--self:SendWeaponAnim( ACT.VM_PRIMARYATTACK );
+	 
+	ToHL2MPPlayer(pPlayer):DoAnimationEvent( PlayerAnimEvent.ATTACK_PRIMARY );
 
 
 	self.m_flNextPrimaryAttack = gpGlobals.curtime() + 0.10;
@@ -153,7 +153,7 @@ function SWEP:Deploy()
 end
 
 function SWEP:GetDrawActivity()
-	return 171;
+	return ACT.VM_DRAW;
 end
 
 function SWEP:Holster( pSwitchingTo )

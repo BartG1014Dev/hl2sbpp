@@ -5065,9 +5065,6 @@ function CBaseAnimating:VPhysicsGetObjectList() end
 --- @param physicsObject IPhysicsObject The physics object to update with.
 function CBaseAnimating:VPhysicsUpdate(physicsObject) end
 
---- Dissolves the entity using a normal dissolve effect.
-function CBaseAnimating:Dissolve() end
-
 --- Custom index metamethod for accessing fields and methods.
 --- Supports fields: m_bClientSideAnimation, m_bLastClientSideFrameReset, m_nBody, m_nHitboxSet, m_nSkin.
 --- Falls back to CBaseEntity metatable if field not found.
@@ -5095,17 +5092,17 @@ function CBaseAnimating:__tostring() end
 --- @class ENT : CBaseAnimating
 ENT = {}
 
----@class Effects
+---@class effect
 ---Library for creating game effects like explosions and dissolves.
-Effects = {}
+effect = {}
 
 ---Dissolves an entity with a specific Effects.
 ---@param entity any The entity to dissolve.
 ---@param effectName string The name of the dissolve Effects.
----@param life number Duration of the dissolve in seconds.
+---@param curtime number The current time. Use gpGlobals.curtime() for that.
 ---@param flags integer Flags controlling dissolve behavior.
 ---@return any The created dissolve entity.
-function Effects.Dissolve(entity, effectName, life, flags) end
+function effect.Dissolve(entity, effectName, life, flags) end
 
 ---Creates an explosion at a given position.
 ---@param position table Vector `{x, y, z}` for the explosion location.
@@ -5117,7 +5114,7 @@ function Effects.Dissolve(entity, effectName, life, flags) end
 ---@param ignoreLOS? boolean Optional. If true, ignores line-of-sight checks. Default: false
 ---@param customEffect? boolean Optional. If true, uses a custom visual Effects. Default: false
 ---@param soundType? integer Optional. Type of explosion sound. Default: -1
-function Effects.ExplosionCreate(position, angle, owner, magnitude, radius, doDamage, ignoreLOS, customEffect, soundType) end
+function effect.ExplosionCreate(position, angle, owner, magnitude, radius, doDamage, ignoreLOS, customEffect, soundType) end
 
 ---@class IN
 ---Input actions, corresponding to engine key/button flags.

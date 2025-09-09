@@ -29,7 +29,7 @@ SWEP.autoswitchfrom			= true
 SWEP.BuiltRightHanded		= true
 SWEP.AllowFlipping			= true
 SWEP.MeleeWeapon			= false
-SWEP.UseHands				= true
+SWEP.UseHands				= false
 
 SWEP.DrawCrosshair = true
 SWEP.DrawAmmo = false
@@ -68,19 +68,19 @@ function SWEP:PrimaryAttack()
 		if ( not self.m_bFireOnEmpty ) then
 			self:Reload();
 		else
-			self:WeaponSound( 0 );
+			self:WeaponSound( WeaponSound.EMPTY );
 			self.m_flNextPrimaryAttack = 0.15;
 		end
 
 		return;
 	end
 
-	self:WeaponSound( 1 );
+	self:WeaponSound( WeaponSound.SINGLE );
 	pPlayer:DoMuzzleFlash();
 
-	self:SendWeaponAnim( 180 );
-	pPlayer:SetAnimation( 5 );
-	ToHL2MPPlayer(pPlayer):DoAnimationEvent( 0 );
+	self:SendWeaponAnim( ACT.VM_PRIMARYATTACK );
+	 
+	ToHL2MPPlayer(pPlayer):DoAnimationEvent( PlayerAnimEvent.ATTACK_PRIMARY );
 
 	self.m_flNextPrimaryAttack = gpGlobals.curtime() + 0.01;
 	self.m_flNextSecondaryAttack = gpGlobals.curtime() + 0.01;
@@ -88,13 +88,13 @@ function SWEP:PrimaryAttack()
 	self.m_iClip1 = self.m_iClip1 - 1;
 
 	local vecSrc		= pPlayer:Weapon_ShootPosition();
-	local vecAiming		= pPlayer:GetAutoaimVector( 0.08715574274766 );
+	local vecAiming		= pPlayer:GetAutoaimVector( AUTOAIM_5DEGREES );
 
 	local info = { m_iShots = 1, m_vecSrc = vecSrc, m_vecDirShooting = vecAiming, m_vecSpread = vec3_origin, m_flDistance = MAX_TRACE_LENGTH, m_iAmmoType = self.m_iPrimaryAmmoType };
 	info.m_pAttacker = pPlayer;
 
 	-- Fire the bullets, and force the first shot to be perfectly accuracy
-	pPlayer:FireBullets( info );
+	ToHL2MPPlayer( pPlayer ):FireBullets( info );
 
 	--Disorient the player
 	local angles = pPlayer:GetLocalAngles();
@@ -104,7 +104,7 @@ function SWEP:PrimaryAttack()
 	angles.z = 0;
 
 if not _CLIENT then
-	pPlayer:SnapEyeAngles( angles );
+--	pPlayer:SnapEyeAngles( angles );
 end
 
 	pPlayer:ViewPunch( QAngle( -0, random.RandomFloat( -0, 0 ), 0 ) );
@@ -162,7 +162,7 @@ function SWEP:Deploy()
 end
 
 function SWEP:GetDrawActivity()
-	return 171;
+	return ACT.VM_DRAW;
 end
 
 function SWEP:Holster( pSwitchingTo )
