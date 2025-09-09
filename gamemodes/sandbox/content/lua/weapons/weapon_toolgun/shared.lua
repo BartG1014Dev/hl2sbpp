@@ -196,7 +196,12 @@ function SWEP:LoadTools()
 		"tools/dissolver.lua",
 		"tools/remover.lua",
 		"tools/duplicator.lua",
-		"tools/color.lua"
+		"tools/color.lua",
+		--"tools/igniter.lua",
+		-- TODO: fix
+		"tools/explode.lua",
+		"tools/light.lua",
+		"tools/balloon.lua"
 		-- TODO: add more here
 	}
 

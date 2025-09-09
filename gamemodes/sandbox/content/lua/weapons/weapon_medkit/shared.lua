@@ -31,7 +31,7 @@ SWEP.SoundData				=
 
 SWEP.DrawCrosshair = true
 SWEP.DrawAmmo = true
-SWEP.UseHands				= true
+SWEP.UseHands = true
 
 SWEP.ShowUsageHint			= false
 SWEP.AutoSwitchTo			= true
@@ -63,12 +63,25 @@ end
 
 function SWEP:PrimaryAttack()
 	local pPlayer = self:GetOwner();
-
+	
 	if ( ToBaseEntity( pPlayer ) == NULL ) then
 		return;
 	end
 
-	if pPlayer:GetHealth() >= 100 then
+	local vForward 		= Vector()
+	local vRight 		= Vector()
+	local vUp  			= Vector()
+	local vecEye 		= pPlayer:EyePosition();
+	pPlayer:EyeVectors( vForward, vRight, vUp );
+	
+	local tr = trace_t()
+	MASK_SHOT = _E.MASK.SHOT
+	UTIL.TraceLine( vecEye, vecEye + vForward * 56755, MASK_SHOT, pPlayer, 0, tr );
+
+	local ent = tr.m_pEnt
+	if not ent:IsPlayer() then return false end
+
+	if ent:GetHealth() >= 100 then
 		print("100 hp")
 		return
 	end
@@ -91,6 +104,51 @@ function SWEP:PrimaryAttack()
 	ToHL2MPPlayer(pPlayer):DoAnimationEvent( PlayerAnimEvent.ATTACK_PRIMARY );
 
 	self.m_flNextPrimaryAttack = gpGlobals.curtime() + 0.25;
+
+	self.m_iClip1 = self.m_iClip1 - 1;
+
+	ent:SetHealth(ent:GetHealth() + 5)
+	
+	-- fallback
+	if ent:GetHealth() >= 100 then
+		ent:SetHealth(100)
+	end
+
+	if ( self.m_iClip1 == 0 and pPlayer:GetAmmoCount( self.m_iPrimaryAmmoType ) <= 0 ) then
+		-- HEV suit - indicate out of ammo condition
+		pPlayer:SetSuitUpdate( "!HEV_AMO0", 0, 0 );
+	end
+end
+
+function SWEP:SecondaryAttack()
+	local pPlayer = self:GetOwner();
+
+	if ( ToBaseEntity( pPlayer ) == NULL ) then
+		return;
+	end
+
+	if pPlayer:GetHealth() >= 100 then
+		print("100 hp")
+		return
+	end
+
+	if ( self.m_iClip1 <= 0 ) then
+		if ( not self.m_bFireOnEmpty ) then
+			self:Reload();
+		else
+			self:WeaponSound( WeaponSound.EMPTY );
+			self.m_flNextSecondaryAttack = 0.15;
+		end
+
+		return;
+	end
+
+	self:WeaponSound( WeaponSound.SINGLE );
+
+	self:SendWeaponAnim( ACT.VM_PRIMARYATTACK );
+	 
+	ToHL2MPPlayer(pPlayer):DoAnimationEvent( PlayerAnimEvent.ATTACK_PRIMARY );
+
 	self.m_flNextSecondaryAttack = gpGlobals.curtime() + 0.25;
 
 	self.m_iClip1 = self.m_iClip1 - 1;
@@ -106,9 +164,6 @@ function SWEP:PrimaryAttack()
 		-- HEV suit - indicate out of ammo condition
 		pPlayer:SetSuitUpdate( "!HEV_AMO0", 0, 0 );
 	end
-end
-
-function SWEP:SecondaryAttack()
 end
 
 function SWEP:Reload()

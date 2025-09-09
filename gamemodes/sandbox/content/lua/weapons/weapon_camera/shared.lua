@@ -56,6 +56,9 @@ SWEP.m_acttable            =
 function SWEP:Initialize()
 	self.m_bReloadsSingly	= false;
 	self.m_bFiresUnderwater	= true;
+
+	self.FOVSteps = {25, 50, 75, 100, 125}
+	self.CurrentFOVIndex = 1
 end
 
 function SWEP:Precache()
@@ -66,7 +69,19 @@ function SWEP:PrimaryAttack()
 end
 
 function SWEP:SecondaryAttack()
-	-- see ItemPostFrame
+    local ply = self:GetOwner()
+    if not ply then return false end
+
+    self.CurrentFOVIndex = self.CurrentFOVIndex + 1
+    if self.CurrentFOVIndex > #self.FOVSteps then
+        self.CurrentFOVIndex = 1
+    end
+
+    local newFOV = self.FOVSteps[self.CurrentFOVIndex]
+
+    ply:SetFOV(ply, newFOV, 0.15, 0)
+
+	self.m_flNextSecondaryAttack = gpGlobals.curtime() + 0.2;
 end
 
 function SWEP:Reload()
@@ -80,6 +95,12 @@ function SWEP:CanHolster()
 end
 
 function SWEP:Deploy()
+	if _CLIENT then
+		engine.ClientCmd_Unrestricted("cl_drawhud 0\n")
+	else
+		-- TODO: will this change other players too?
+		engine.ServerCommand("cl_drawhud 0\n")
+	end
 end
 
 function SWEP:GetDrawActivity()
@@ -87,20 +108,15 @@ function SWEP:GetDrawActivity()
 end
 
 function SWEP:Holster( pSwitchingTo )
+	if _CLIENT then
+		engine.ClientCmd_Unrestricted("cl_drawhud 1\n")
+	else
+		-- TODO: will this change other players too?
+		engine.ServerCommand("cl_drawhud 1\n")
+	end
 end
 
 function SWEP:ItemPostFrame()
-	if _CLIENT then
-		local pPlayer = _R.CBasePlayer:GetLocalPlayer()
-
-		if not input.IsKeyDown(_E["IN"].ATTACK2) then return end
-		local frametime = gpGlobals.frametime -- ease
-		local x,y = input.GetCursorPosition()
-		
-		local fov = mathlib.clamp( pPlayer:GetFOV() + y * frametime * 6.6, 0.1, 175)
-		
-		pPlayer:SetFOV(pPlayer, fov, 0, 0)
-	end
 end
 
 function SWEP:ItemBusyFrame()
