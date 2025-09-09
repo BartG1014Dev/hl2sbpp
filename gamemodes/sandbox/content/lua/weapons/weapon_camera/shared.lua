@@ -83,7 +83,7 @@ function SWEP:Deploy()
 end
 
 function SWEP:GetDrawActivity()
-	return 171;
+	return ACT.VM_DRAW;
 end
 
 function SWEP:Holster( pSwitchingTo )

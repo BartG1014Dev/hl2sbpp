@@ -5,7 +5,7 @@
 --===========================================================================--
 
 SWEP.printname				= "MEDKIT"
-SWEP.viewmodel				= "models/weapons/v_medkit.mdl"
+SWEP.viewmodel				= "models/weapons/c_medkit.mdl"
 SWEP.playermodel			= "models/weapons/w_medkit.mdl"
 SWEP.anim_prefix			= "anim"
 SWEP.bucket					= 5
@@ -77,18 +77,18 @@ function SWEP:PrimaryAttack()
 		if ( not self.m_bFireOnEmpty ) then
 			self:Reload();
 		else
-			self:WeaponSound( 0 );
+			self:WeaponSound( WeaponSound.EMPTY );
 			self.m_flNextPrimaryAttack = 0.15;
 		end
 
 		return;
 	end
 
-	self:WeaponSound( 1 );
+	self:WeaponSound( WeaponSound.SINGLE );
 
-	self:SendWeaponAnim( 180 );
-	pPlayer:SetAnimation( 5 );
-	ToHL2MPPlayer(pPlayer):DoAnimationEvent( 0 );
+	self:SendWeaponAnim( ACT.VM_PRIMARYATTACK );
+	 
+	ToHL2MPPlayer(pPlayer):DoAnimationEvent( PlayerAnimEvent.ATTACK_PRIMARY );
 
 	self.m_flNextPrimaryAttack = gpGlobals.curtime() + 0.25;
 	self.m_flNextSecondaryAttack = gpGlobals.curtime() + 0.25;
@@ -130,7 +130,7 @@ function SWEP:Deploy()
 end
 
 function SWEP:GetDrawActivity()
-	return 171;
+	return ACT.VM_DRAW;
 end
 
 function SWEP:Holster( pSwitchingTo )
