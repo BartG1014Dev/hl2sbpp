@@ -96,6 +96,12 @@ function SWEP:PrimaryAttack()
 	MASK_SHOT = _E.MASK.SHOT
 	UTIL.TraceLine( vecEye, vecEye + vForward * 56755, MASK_SHOT, pPlayer, 0, tr );
 
+	-- @ThePixelMoon: GOD FUCKING DAMN IT I HATE YOU SO MUCH LUA I WISH I FUCKING
+	-- NEVER DID THAT BUT THIS PIECE OF SHIT DIDNT WORK AND THE ONLY WAY FOR IT TO
+	-- WORK IS TO DO THIS FUCKING MONSTROSITY
+	if SERVER then engine.ServerCommand("ent_create env_spark; ent_fire env_spark SparkOnce; wait; wait; wait; wait; ent_fire env_spark kill\n")
+	else engine.ClientCmd_Unrestricted("ent_create env_spark; ent_fire env_spark SparkOnce; wait; wait; wait; wait; ent_fire env_spark kill\n") end
+
     local tool = self.Tools[self.CurrentTool]
     if not tool then return end
 
@@ -197,8 +203,7 @@ function SWEP:LoadTools()
 		"tools/remover.lua",
 		"tools/duplicator.lua",
 		"tools/color.lua",
-		--"tools/igniter.lua",
-		-- TODO: fix
+		"tools/igniter.lua",
 		"tools/explode.lua",
 		"tools/light.lua",
 		"tools/balloon.lua"

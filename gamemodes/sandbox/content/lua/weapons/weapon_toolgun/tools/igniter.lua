@@ -15,18 +15,11 @@ function TOOL:PrimaryAttack(swep, player, trace)
 		local baseanimating = ent:GetBaseAnimating()
 		if baseanimating == NULL then return false end
 
-		-- HACKHACK, don't know if this will work
-		local startTime = gpGlobals.curtime()
-		local fireEffect = CreateEntityByName("env_fire")
-		fireEffect:GetAbsOrigin(ent:GetAbsOrigin())
-		fireEffect:SetParent(ent, 0)
-		fireEffect:KeyValue("health", "5")
-		fireEffect:KeyValue("firesize", "20")
-		fireEffect:SetOwnerEntity(ent)
-		fireEffect:Spawn()
-		fireEffect:Activate()
+		-- i give up
 		if SERVER then
-			fireEffect:AcceptInput("StartFire", nil, nil, 0)
+			engine.ServerCommand("ent_fire !picker ignite\n")
+		else
+			engine.ClientCmd_Unrestricted("ent_fire !picker ignite\n")
 		end
     end
 end
