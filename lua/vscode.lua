@@ -3027,10 +3027,10 @@ function entity:SetPredictionEligible(eligible) end
 function entity.SetPredictionPlayer(player) end
 
 ---Set the render color (r,g,b,a) for this entity.
----@param r number
----@param g number
----@param b number
----@param a number
+---@param r integer
+---@param g integer
+---@param b integer
+---@param a integer
 function entity:SetRenderColor(r, g, b, a) end
 
 ---Set the render alpha (a) channel.
@@ -3040,6 +3040,16 @@ function entity:SetRenderColorA(a) end
 ---Set the B channel of the render color.
 ---@param b number
 function entity:SetRenderColorB(b) end
+
+--- Fires an input on this entity.
+---
+---@param inputName string The name of the input to fire (matches `DEFINE_INPUT` names)
+---@param value string|nil Optional string value to pass to the input (default `""`)
+---@param delay number|nil Optional delay in seconds before the input is processed (default `0`)
+---@param activator CBaseEntity|nil Optional entity that triggered this input (default `nil`)
+---@param caller CBaseEntity|nil Optional entity that is considered the caller of this input (default `nil`)
+---@return boolean True if the input was handled successfully, false otherwise
+function entity:Fire(inputName, value, delay, activator, caller) end
 
 ---Set the G channel of the render color.
 ---@param g number
