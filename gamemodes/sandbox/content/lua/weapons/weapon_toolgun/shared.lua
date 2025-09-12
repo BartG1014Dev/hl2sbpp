@@ -6,7 +6,7 @@
 
 SWEP.printname				= "TOOLGUN"
 SWEP.viewmodel				= "models/weapons/c_toolgun.mdl"
-SWEP.playermodel			= "models/weapons/w_pistol.mdl"
+SWEP.playermodel			= "models/weapons/w_toolgun.mdl"
 SWEP.anim_prefix			= "smg2"
 SWEP.bucket					= 2
 SWEP.bucket_position		= 2
