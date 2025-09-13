@@ -5,7 +5,7 @@
 --===========================================================================--
 
 SWEP.printname				= "#HL2_357Handgun"
-SWEP.viewmodel				= "models/weapons/v_357.mdl"
+SWEP.viewmodel				= "models/weapons/c_357.mdl"
 SWEP.playermodel			= "models/weapons/w_357.mdl"
 SWEP.anim_prefix			= "python"
 SWEP.bucket					= 1

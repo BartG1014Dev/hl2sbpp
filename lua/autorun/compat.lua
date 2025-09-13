@@ -121,6 +121,57 @@ AUTOAIM_8DEGREES  =  0.1391731009601
 AUTOAIM_10DEGREES =  0.1736481776669
 AUTOAIM_20DEGREES =  0.3490658503989
 
+MoveType = {
+    NONE = 0,
+    ISOMETRIC = 1,
+    WALK = 2,
+    STEP = 3,
+    FLY = 4,
+    FLYGRAVITY = 5,
+    VPHYSICS = 6,
+    PUSH = 7,
+    NOCLIP = 8,
+    LADDER = 9,
+    OBSERVER = 10,
+    CUSTOM = 11,
+    LAST = 11,
+    MAX_BITS = 4
+}
+
+MoveCollide = {
+    DEFAULT = 0,
+    FLY_BOUNCE = 1,
+    FLY_CUSTOM = 2,
+    FLY_SLIDE = 3,
+    COUNT = 4,
+    MAX_BITS = 3
+}
+
+SolidType = {
+    NONE = 0,
+    BSP = 1,
+    BBOX = 2,
+    OBB = 3,
+    OBB_YAW = 4,
+    CUSTOM = 5,
+    VPHYSICS = 6,
+    LAST = 7
+}
+
+SolidFlags = {
+    CUSTOMRAYTEST = 0x0001,
+    CUSTOMBOXTEST = 0x0002,
+    NOT_SOLID = 0x0004,
+    TRIGGER = 0x0008,
+    NOT_STANDABLE = 0x0010,
+    VOLUME_CONTENTS = 0x0020,
+    FORCE_WORLD_ALIGNED = 0x0040,
+    USE_TRIGGER_BOUNDS = 0x0080,
+    ROOT_PARENT_ALIGNED = 0x0100,
+    TRIGGER_TOUCH_DEBRIS = 0x0200,
+    MAX_BITS = 10
+}
+
 WeaponSound = {
     EMPTY = 0,
     SINGLE = 1,

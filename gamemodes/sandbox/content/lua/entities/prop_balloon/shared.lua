@@ -21,8 +21,8 @@ function ENT:Initialize()
 		self.SetAllowPrecache( allowPrecache );
 		physObj = self:VPhysicsInitNormal( 6, 0, false );
 		if ( not physObj ) then
-			self:SetSolid( 0 );
-			self:SetMoveType( 0 );
+			self:SetSolid( SolidType.NONE );
+			self:SetMoveType( MoveType.NONE );
 			Warning("ERROR!: Can't create physics object for " .. self:GetModelName() .. "\n" );
 		end
 		

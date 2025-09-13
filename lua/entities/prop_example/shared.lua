@@ -17,8 +17,8 @@ function ENT:Initialize()
 		local pPhysicsObject = self:VPhysicsInitNormal( 6, 0, false );
 
 		if ( not pPhysicsObject ) then
-			self:SetSolid( 0 );
-			self:SetMoveType( 0 );
+			self:SetSolid( SolidType.NONE );
+			self:SetMoveType( MoveType.NONE );
 			Warning("ERROR!: Can't create physics object for " .. self:GetModelName() .. "\n" );
 		end
 	end
