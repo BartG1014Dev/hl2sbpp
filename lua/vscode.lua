@@ -2349,6 +2349,39 @@ function entity:EntityToWorldSpace(inVec, outVec) end
 ---@return QAngle
 function entity:EyeAngles() end
 
+---@class spawnmenu
+spawnmenu = {}
+
+---Adds a button to the spawnmenu.
+---@param tab string
+---@param name string
+---@param command string
+function spawnmenu.CreateButton(tab, name, command) end
+
+---Check if the weapon has ironsights capability
+---@return boolean
+function CBaseCombatWeapon:HasIronsights() end
+
+---Check if the weapon is currently ironsighted
+---@return boolean
+function CBaseCombatWeapon:IsIronsighted() end
+
+---Toggle ironsights on/off
+function CBaseCombatWeapon:ToggleIronsights() end
+
+---Enable ironsights
+function CBaseCombatWeapon:EnableIronsights() end
+
+---Disable ironsights
+function CBaseCombatWeapon:DisableIronsights() end
+
+---Set the ironsight transition time (usually from hip to ADS)
+function CBaseCombatWeapon:SetIronsightTime() end
+
+---Check if ironsights can currently be used
+---@return boolean
+function CBaseCombatWeapon:CanUseIronsight() end
+
 ---Get the entity's eye position (if applicable).
 ---@return Vector
 function entity:EyePosition() end

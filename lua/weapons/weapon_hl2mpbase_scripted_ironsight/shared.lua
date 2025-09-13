@@ -40,6 +40,15 @@ SWEP.AllowFlipping			= true
 SWEP.MeleeWeapon			= false
 SWEP.UseHands				= true
 
+SWEP.IronsightPosOffset = Vector(
+	-10, 		-- forward
+	-4.65, 		-- right
+	0.75 		-- up
+)
+SWEP.IronsightAngOffset = QAngle( 0, 0, 0 )
+SWEP.IronsightFOVOffset = -12
+SWEP.CanUseIronsight = true
+
 SWEP.m_acttable            =
 {
 	{ ACT.MP_STAND_IDLE,				ACT.HL2MP_IDLE_PISTOL,					false },
@@ -120,10 +129,22 @@ end
 	end
 end
 
+function SWEP:HasIronsights()
+	return self.CanUseIronsight;
+end
+
 function SWEP:SecondaryAttack()
+	self:ToggleIronsights();
+
+	self.m_flNextSecondaryAttack = gpGlobals.curtime() + 0.6;
 end
 
 function SWEP:Reload()
+	if ( self:IsIronsighted() ) then
+		-- quite a hacky hack but it should work
+		self:ToggleIronsights();
+	end
+
 	local fRet = self:DefaultReload( self:GetMaxClip1(), self:GetMaxClip2(), 182 );
 	if ( fRet ) then
 --		self:WeaponSound( 6 );
