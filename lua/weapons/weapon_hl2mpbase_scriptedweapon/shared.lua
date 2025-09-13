@@ -127,7 +127,7 @@ function SWEP:Reload()
 	local fRet = self:DefaultReload( self:GetMaxClip1(), self:GetMaxClip2(), 182 );
 	if ( fRet ) then
 --		self:WeaponSound( 6 );
-		ToHL2MPPlayer(self:GetOwner()):DoAnimationEvent( 3 );
+		ToHL2MPPlayer(self:GetOwner()):DoAnimationEvent( PlayerAnimEvent.RELOAD );
 	end
 	return fRet;
 end

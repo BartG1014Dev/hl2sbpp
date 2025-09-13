@@ -1514,7 +1514,7 @@ function player:GetUserID() end
 
 ---Return the player's viewmodel instance (client-side object).
 ---@param index? integer
----@return any
+---@return CBaseAnimating
 function player:GetViewModel(index) end
 
 ---Return the player's water-jump timer value.
@@ -3040,6 +3040,209 @@ function entity:SetRenderColorA(a) end
 ---Set the B channel of the render color.
 ---@param b number
 function entity:SetRenderColorB(b) end
+
+
+
+---@class engine
+engine = {}
+
+
+---Activates or deactivates an occluder.
+---@param occluderID integer
+---@param active boolean
+function engine.ActivateOccluder(occluderID, active) end
+
+
+---Changes the player's team.
+---@param team string
+function engine.ChangeTeam(team) end
+
+
+---Checks if key trapping has finished.
+---@param keyCode integer
+---@return boolean
+function engine.CheckDoneKeyTrapping(keyCode) end
+
+
+---Triggers a checkpoint with a name.
+---@param name string
+function engine.CheckPoint(name) end
+
+
+---Sends a client console command.
+---@param cmd string
+function engine.ClientCmd(cmd) end
+
+---Sends a server console command.
+---@param cmd string
+function engine.ServerCommand(cmd) end
+
+---Sends an unrestricted client command.
+---@param cmd string
+function engine.ClientCmd_Unrestricted(cmd) end
+
+
+---Returns whether the console is visible.
+---@return boolean
+function engine.Con_IsVisible() end
+
+
+---Copies framebuffer to a material.
+---@param materialName string
+---@return boolean
+function engine.CopyFrameBufferToMaterial(materialName) end
+
+
+---Culls a box defined by mins and maxs.
+---@param mins Vector
+---@param maxs Vector
+---@return boolean
+function engine.CullBox(mins, maxs) end
+
+
+---Checks if a box touches an area frustum.
+---@param mins Vector
+---@param maxs Vector
+---@param area integer
+---@return boolean
+function engine.DoesBoxTouchAreaFrustum(mins, maxs, area) end
+
+
+---Draws engine portals.
+function engine.DrawPortals() end
+
+
+---Begins engine stats frame.
+function engine.EngineStats_BeginFrame() end
+
+
+---Ends engine stats frame.
+function engine.EngineStats_EndFrame() end
+
+
+---Gets the size of a game lump.
+---@param lumpID integer
+---@return integer
+function engine.GameLumpSize(lumpID) end
+
+
+---Gets the version of a game lump.
+---@param lumpID integer
+---@return integer
+function engine.GameLumpVersion(lumpID) end
+
+
+---Gets the application ID (Steam AppID).
+---@return integer
+function engine.GetAppID() end
+
+
+---Gets the server time.
+---@return integer
+function engine.Time() end
+
+---@class ConVar
+
+
+--- Returns whether the ConVar is registered.
+---@return boolean
+function ConVar:IsRegistered() end
+
+
+--- Reverts the ConVar to its default value.
+function ConVar:Revert() end
+
+
+--- Sets the ConVar to a new value.
+---@param value string|number
+function ConVar:SetValue(value) end
+
+
+--- Returns string representation of the ConVar.
+---@return string
+function ConVar:__tostring() end
+
+
+--- Creates a new ConVar.
+---@param name string
+---@param default string
+---@param flags? integer
+---@param helpText? string
+---@param hasMin? boolean
+---@param min? number
+---@param hasMax? boolean
+---@param max? number
+---@return ConVar
+function ConVar.new(name, default, flags, helpText, hasMin, min, hasMax, max) end
+
+
+---@class ConCommand
+local ConCommand = {}
+
+
+--- Returns whether this ConCommand can autocomplete.
+---@return boolean
+function ConCommand:CanAutoComplete() end
+
+
+--- Returns whether this is a valid command.
+---@return boolean
+function ConCommand:IsCommand() end
+
+
+--- Returns string representation of the ConCommand.
+---@return string
+function ConCommand:__tostring() end
+
+
+--- Creates a new ConCommand.
+---@param name string
+---@param helpText? string
+---@param flags? integer
+---@return ConCommand
+function ConCommand.new(name, helpText, flags) end
+
+
+---@class cvarlib
+cvar = {}
+
+
+--- Allocates a DLL identifier.
+---@return integer
+function cvar.AllocateDLLIdentifier() end
+
+
+--- Prints colored text to console.
+---@param color table -- Color(r,g,b,a)
+---@param text string
+function cvar.ConsoleColorPrintf(color, text) end
+
+
+--- Prints debug text to console.
+---@param text string
+function cvar.ConsoleDPrintf(text) end
+
+
+--- Prints plain text to console.
+---@param text string
+function cvar.ConsolePrintf(text) end
+
+
+--- Finds a ConVar by name.
+---@param name string
+---@return ConVar
+function cvar.FindVar(name) end
+
+
+--- Gets a command line value.
+---@param name string
+---@return string
+function cvar.GetCommandLineValue(name) end
+
+
+--- Reverts all flagged ConVars.
+---@param flag integer
+function cvar.RevertFlaggedConVars(flag) end
 
 --- Fires an input on this entity.
 ---

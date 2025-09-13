@@ -210,22 +210,32 @@ function surface.IsFontAdditive( font )
   end
 end
 
-function surface.SetFontGlyphSet( font, windowsFontName, tall, weight, blur, scanlines, flags, nRangeMin, nRangeMax )
-  local type = type( font )
-  if ( type ~= "font" and type ~= "fontcontainer" ) then
-    error( "bad argument #1 to 'SetFontGlyphSet' (font or fontcontainer expected, got " .. type .. ")", 2 )
+function surface.SetFontGlyphSet(font, windowsFontName, tall, weight, blur, scanlines, flags, nRangeMin, nRangeMax)
+  local typ = type(font)
+  if typ ~= "font" and typ ~= "fontcontainer" then
+    error("bad argument #1 to 'SetFontGlyphSet' (font or fontcontainer expected, got " .. typ .. ")", 2)
   end
-  if ( type == "font" ) then
-    return SetFontGlyphSet( font, windowsFontName, tall, weight, blur, scanlines, flags, nRangeMin, nRangeMax )
-  elseif ( type == "fontcontainer" ) then
+
+  windowsFontName = windowsFontName or ""
+  tall            = tall or 0
+  weight          = weight or 0
+  blur            = blur or 0
+  scanlines       = scanlines or 0
+  flags           = flags or 0
+  nRangeMin       = nRangeMin or 0
+  nRangeMax       = nRangeMax or 0
+
+  if typ == "font" then
+    return SetFontGlyphSet(font, windowsFontName, tall, weight, blur, scanlines, flags, nRangeMin, nRangeMax)
+  elseif typ == "fontcontainer" then
     font.windowsFontName = windowsFontName
-    font.tall = tall
-    font.weight = weight
-    font.blur = blur
-    font.scanlines = scanlines
-    font.flags = flags
-    font.nRangeMin = nRangeMin
-    font.nRangeMax = nRangeMax
-    return SetFontGlyphSet( font.font, windowsFontName, tall, weight, blur, scanlines, flags, nRangeMin, nRangeMax )
+    font.tall            = tall
+    font.weight          = weight
+    font.blur            = blur
+    font.scanlines       = scanlines
+    font.flags           = flags
+    font.nRangeMin       = nRangeMin
+    font.nRangeMax       = nRangeMax
+    return SetFontGlyphSet(font.font, windowsFontName, tall, weight, blur, scanlines, flags, nRangeMin, nRangeMax)
   end
 end
