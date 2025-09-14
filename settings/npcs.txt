@@ -1,0 +1,397 @@
+"SpawnMenu"
+{
+	"width"		"934"
+	"height"	"670"
+
+	"NPCs"
+	{
+		"Kleiner"
+		{
+			"#"	"npc_create npc_kleiner"
+		}
+		"Gman"
+		{
+			"#"	"npc_create npc_gman"
+		}
+		"Breen"
+		{
+			"#"	"npc_create npc_breen"
+		}
+		"Barney"
+		{
+			"#"	"npc_create npc_barney"
+		}
+		"Eli"
+		{
+			"#"	"npc_create npc_eli"
+		}
+		"Grigori"
+		{
+			"#"	"npc_create npc_monk"
+		}
+		"Alyx"
+		{
+			"#"	"npc_create npc_alyx"
+		}
+		"Mossman"
+		{
+			"#"	"npc_create npc_mossman"
+		}
+		"Magnusson (EP2)"
+		{
+			"#"	"npc_create npc_magnusson"
+		}
+		"Odessa"
+		{
+			"#"	"ent_create npc_citizen citizentype 4 model models/odessa.mdl"
+		}
+		"DOG"
+		{
+			"#"	"npc_create npc_dog"
+		}
+		"Citizen"
+		{
+			"#"	"npc_create npc_citizen"
+		}
+		"Refugee(Unarmed)"
+		{
+			"#"	"ent_create npc_citizen citizentype 2"
+		}
+		"Rebel(Ar2)"
+		{
+			"#"	"ent_create npc_citizen citizentype 3 additionalequipment weapon_ar2"
+		}
+		"Rebel(Smg1)"
+		{
+			"#"	"ent_create npc_citizen citizentype 3 additionalequipment weapon_smg1"
+		}
+		"Rebel(Shotgun)"
+		{
+			"#"	"ent_create npc_citizen citizentype 3 additionalequipment weapon_shotgun"
+		}
+		"Medic(Smg1)"
+		{
+			"#"	"ent_create npc_citizen citizentype 3 spawnflags 131072 additionalequipment weapon_smg1"
+		}
+		"Metropolice"
+		{
+			"#"	"npc_create npc_metropolice"
+		}
+		"Combine Soldier"
+		{
+			"#"	"npc_create npc_combine_s"
+		}
+		"Elite Soldier(AR2)"
+		{
+			"#"	"ent_create npc_combine_s model models/Combine_Super_Soldier.mdl additionalequipment weapon_ar2 tacticalvariant 2 NumGrenades 2"
+		}
+		"Prison Guard(SMG1)"
+		{
+			"#"	"ent_create npc_combine_s model models/Combine_Soldier_PrisonGuard.mdl additionalequipment weapon_smg1 NumGrenades 2"
+		}
+		"Zombie"
+		{
+			"#"	"npc_create npc_zombie"
+		}
+		"Zombine (EP2)"
+		{
+			"#"	"npc_create npc_zombine"
+		}
+		"Fast Zombie"
+		{
+			"#"	"npc_create npc_fastzombie"
+		}
+		"Poison Zombie"
+		{
+			"#"	"npc_create npc_poisonzombie"
+		}
+		"Zombie torso"
+		{
+			"#"	"npc_create npc_zombie_torso"
+		}
+		"Headcrab"
+		{
+			"#"	"npc_create npc_headcrab"
+		}
+		"Fast Headcrab"
+		{
+			"#"	"npc_create npc_headcrab_fast"
+		}
+		"Poison Headcrab"
+		{
+			"#"	"npc_create npc_headcrab_poison"
+		}
+		"Vortigaunt"
+		{
+			"#"	"npc_create npc_vortigaunt"
+		}
+		"Antlion"
+		{
+			"#"	"npc_create npc_antlion"
+		}
+		"Antlion Worker (EP2)"
+		{
+			"#"	"ent_create npc_antlion spawnflags 262144"
+		}
+		"Antlion Guard"
+		{
+			"#"	"npc_create npc_antlionguard"
+		}
+		"Antlion Guardian (EP2)"
+		{
+			"#"	"ent_create npc_antlionguard cavernbreed 1 incavern 1"
+		}
+		"Antlion Grub (EP2)"
+		{
+			"#"	"exec spawngrub"
+		}
+		"Manhack"
+		{
+			"#"	"npc_create npc_manhack"
+		}
+		"City Scanner"
+		{
+			"#"	"npc_create npc_cscanner"
+		}
+		"Claw Scanner"
+		{
+			"#"	"npc_create npc_clawscanner"
+		}
+		"Rollermine"
+		{
+			"#"	"npc_create npc_rollermine"
+		}
+		"Turret"
+		{
+			"#"	"npc_create npc_turret_floor"
+		}
+		"Hunter (EP2)"
+		{
+			"#"	"npc_create npc_hunter"
+		}
+		"Helicopter(CenterSpawn)"
+		{
+			"#"	"give npc_helicopter"
+		}
+		"Strider(CenterSpawn)"
+		{
+			"#"	"give npc_strider"
+		}
+		"Gunship(CenterSpawn)"
+		{
+			"#"	"give npc_combinegunship"
+		}
+		"Advisor"
+		{
+			"#"	"ent_create npc_advisor model models\advisor.mdl"
+		}
+		"Fisherman(Lost Coast)"
+		{
+			"#"	"npc_create npc_fisherman"
+		}
+		"Ichthyosaur"
+		{
+			"#"	"npc_create npc_ichthyosaur"
+		}
+		"Barnacle"
+		{
+			"#"	"ent_create npc_barnacle"
+		}
+		"Combine Mine"
+		{
+			"#"	"ent_create combine_mine"
+		}
+		"Crow"
+		{
+			"#"	"npc_create npc_crow"
+		}
+		"Pigeon"
+		{
+			"#"	"npc_create npc_pigeon"
+		}
+		"Seagull"
+		{
+			"#"	"npc_create npc_seagull"
+		}
+		"NPC Weapon:None"
+		{
+			"#"	"npc_create_equipment weapon_none"
+		}
+		"NPC Weapon:Crowbar"
+		{
+			"#"	"npc_create_equipment weapon_crowbar"
+		}
+		"NPC Weapon:Stunstick"
+		{
+			"#"	"npc_create_equipment weapon_stunstick"
+		}
+		"NPC Weapon:Pistol"
+		{
+			"#"	"npc_create_equipment weapon_pistol"
+		}
+		"NPC Weapon:Smg1"
+		{
+			"#"	"npc_create_equipment weapon_smg1"
+		}
+		"NPC Weapon:Ar2"
+		{
+			"#"	"npc_create_equipment weapon_ar2"
+		}
+		"NPC Weapon:Shotgun"
+		{
+			"#"	"npc_create_equipment weapon_shotgun"
+		}
+		"NPC Weapon:RPG"
+		{
+			"#"	"npc_create_equipment weapon_rpg"
+		}
+		"NPC Weapon:SuitCase"
+		{
+			"#"	"npc_create_equipment weapon_citizensuitcase"
+		}
+		"NPC Weapon:Package"
+		{
+			"#"	"npc_create_equipment weapon_citizenpackage"
+		}
+		"Alien Grunt (HL1)"
+		{
+			"#"    "npc_create monster_alien_grunt"
+		}
+		"Alien Slave (HL1)"
+		{
+			"#"    "npc_create monster_alien_slave"
+		}
+		"Apache (HL1)"
+		{
+			"#"    "npc_create monster_apache"
+		}
+		"Babycrab (HL1)"
+		{
+			"#"    "npc_create monster_babycrab"
+		}
+		"Barnacle (HL1)"
+		{
+			"#"    "npc_create monster_barnacle"
+		}
+		"Barney (HL1)"
+		{
+			"#"    "npc_create monster_barney"
+		}
+		"Big Momma (HL1)"
+		{
+			"#"    "npc_create monster_bigmomma"
+		}
+		"Bloater (HL1)"
+		{
+			"#"    "npc_create monster_bloater"
+		}
+		"Bullchicken (HL1)"
+		{
+			"#"    "npc_create monster_bullchicken"
+		}
+		"Cockroach (HL1)"
+		{
+			"#"    "npc_create monster_cockroach"
+		}
+		"Flyer (HL1)"
+		{
+			"#"    "npc_create monster_flyer"
+		}
+		"Flyer Flock (HL1)"
+		{
+			"#"    "npc_create monster_flyer_flock"
+		}
+		"Furniture (HL1)"
+		{
+			"#"    "npc_create monster_furniture"
+		}
+		"Gargantua (HL1)"
+		{
+			"#"    "npc_create monster_gargantua"
+		}
+		"Generic (HL1)"
+		{
+			"#"    "npc_create monster_generic"
+		}
+		"G-Man (HL1)"
+		{
+			"#"    "npc_create monster_gman"
+		}
+		"Grunt Repel (HL1)"
+		{
+			"#"    "npc_create monster_grunt_repel"
+		}
+		"Headcrab (HL1)"
+		{
+			"#"    "npc_create monster_headcrab"
+		}
+		"Houndeye (HL1)"
+		{
+			"#"    "npc_create monster_houndeye"
+		}
+		"Human Assassin (HL1)"
+		{
+			"#"    "npc_create monster_human_assassin"
+		}
+		"Human Grunt (HL1)"
+		{
+			"#"    "npc_create monster_human_grunt"
+		}
+		"Ichthyosaur (HL1)"
+		{
+			"#"    "npc_create monster_ichthyosaur"
+		}
+		"Leech (HL1)"
+		{
+			"#"    "npc_create monster_leech"
+		}
+		"Miniturret (HL1)"
+		{
+			"#"    "npc_create monster_miniturret"
+		}
+		"Mortar (HL1)"
+		{
+			"#"    "npc_create monster_mortar"
+		}
+		"Nihilanth (HL1)"
+		{
+			"#"    "npc_create monster_nihilanth"
+		}
+		"Ospery (HL1)"
+		{
+			"#"    "npc_create monster_osprey"
+		}
+		"Satchel (HL1)"
+		{
+			"#"    "npc_create monster_satchel"
+		}
+		"Scientist (HL1)"
+		{
+			"#"    "npc_create monster_scientist"
+		}
+		"Sentry (HL1)"
+		{
+			"#"    "npc_create monster_sentry"
+		}
+		"Snark (HL1)"
+		{
+			"#"    "npc_create monster_snark"
+		}
+		"Tentacle (HL1)"
+		{
+			"#"    "npc_create monster_tentacle"
+		}
+		"Tripmine (HL1)"
+		{
+			"#"    "npc_create monster_tripmine"
+		}
+		"Turret (HL1)"
+		{
+			"#"    "npc_create monster_turret"
+		}
+		"Zombie (HL1)"
+		{
+			"#"    "npc_create monster_zombie"
+		}
+	}
+}

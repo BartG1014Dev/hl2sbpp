@@ -1,0 +1,209 @@
+"SpawnMenu"
+{
+	"width"		"934"
+	"height"	"670"
+
+	"Entities"
+	{
+		"Crowbar"
+		{
+			"#"	"ent_create weapon_crowbar"
+		}
+		"Pistol"
+		{
+			"#"	"ent_create weapon_pistol"
+		}
+		"Sub Machine Gun"
+		{
+			"#"	"ent_create weapon_smg1"
+		}
+		"Shotgun"
+		{
+			"#"	"ent_create weapon_shotgun"
+		}
+		"Pulse Rifle"
+		{
+			"#"	"ent_create weapon_ar2"
+		}
+		"357 Magnum"
+		{
+			"#"	"ent_create weapon_357"
+		}
+		"Crossbow"
+		{
+			"#"	"ent_create weapon_crossbow"
+		}
+		"Frag Grenade"
+		{
+			"#"	"ent_create weapon_frag"
+		}
+		"Rocket Launcher"
+		{
+			"#"	"ent_create weapon_rpg"
+		}
+		"Bugbait"
+		{
+			"#"	"ent_create weapon_bugbait"
+		}
+		"Gravity Gun"
+		{
+			"#"	"ent_create weapon_physcannon"
+		}
+		"Alyx Gun"
+		{
+			"#"	"ent_create weapon_alyxgun"
+		}
+		"Annabelle"
+		{
+			"#"	"ent_create weapon_annabelle"
+		}
+		"Suitcase"
+		{
+			"#"	"ent_create weapon_citizensuitcase"
+		}
+		"Package"
+		{
+			"#"	"ent_create weapon_citizenpackage"
+		}
+		"Pistol Ammo"
+		{
+			"#"	"ent_create item_ammo_pistol"
+		}
+		"Smg1 Ammo"
+		{
+			"#"	"ent_create item_ammo_smg1"
+		}
+		"Shotgun Ammo"
+		{
+			"#"	"ent_create item_box_buckshot"
+		}
+		"Pulse Ammo"
+		{
+			"#"	"ent_create item_ammo_ar2"
+		}
+		"357 Ammo"
+		{
+			"#"	"ent_create item_ammo_357"
+		}
+		"Crossbow Bolts"
+		{
+			"#"	"ent_create item_ammo_crossbow"
+		}
+		"RPG Round"
+		{
+			"#"	"ent_create item_rpg_round"
+		}
+		"Smg1 Grenade"
+		{
+			"#"	"ent_create item_ammo_smg1_grenade"
+		}
+		"Combine Ball Ammo"
+		{
+			"#"	"ent_create item_ammo_ar2_altfire"
+		}
+		"Strider Buster (EP2)"
+		{
+			"#"	"ent_create weapon_striderbuster"
+		}
+		"Health Kit"
+		{
+			"#"	"ent_create item_healthkit"
+		}
+		"Health Vial"
+		{
+			"#"	"ent_create item_healthvial"
+		}
+		"Suit Battery"
+		{
+			"#"	"ent_create item_battery"
+		}
+		"Health Charger"
+		{
+			"#"	"ent_create item_healthcharger"
+		}
+		"Suit Charger"
+		{
+			"#"	"ent_create item_suitcharger"
+		}
+		"Suit"
+		{
+			"#"	"ent_create item_suit"
+		}
+		"Soda Can"
+		{
+			"#"	"ent_create item_sodacan model models/props_junk/PopCan01a.mdl"
+		}
+		"Crate"
+		{
+			"#"	"ent_create item_item_crate ItemClass npc_manhack ItemCount 10"
+		}
+		"Ammo Crate(Pistol)"
+		{
+			"#"	"ent_create item_ammo_crate AmmoType 0"
+		}
+		"Ammo Crate(Smg1)"
+		{
+			"#"	"ent_create item_ammo_crate AmmoType 1"
+		}
+		"Ammo Crate(Ar2)"
+		{
+			"#"	"ent_create item_ammo_crate AmmoType 2"
+		}
+		"Ammo Crate(RPG)"
+		{
+			"#"	"ent_create item_ammo_crate AmmoType 3"
+		}
+		"Ammo Crate(Shotgun)"
+		{
+			"#"	"ent_create item_ammo_crate AmmoType 4"
+		}
+		"Ammo Crate(Grenade)"
+		{
+			"#"	"ent_create item_ammo_crate AmmoType 5"
+		}
+		"Ammo Crate(Combine Ball)"
+		{
+			"#"	"ent_create item_ammo_crate AmmoType 8"
+		}
+		"Ammo Crate(Smg1 Grenade)"
+		{
+			"#"	"ent_create item_ammo_crate AmmoType 9"
+		}
+		"Spawn Jeep"
+		{
+			"#"	"ch_createjeep"
+		}
+		"Spawn Jalopy (EP2)"
+		{
+			"#"	"ent_create prop_vehicle_jeep actionScale 1 model models/vehicle.mdl vehiclescript scripts/vehicles/jalopy.txt enablegun 0"
+		}
+		"Spawn Airboat"
+		{
+			"#"	"ch_createairboat"
+		}
+		"Spawn Airboat w/Gun"
+		{
+			"#"	"ch_createairboat;ent_setname airboatwithgun;ent_fire airboatwithgun enablegun 1"
+		}
+		"Explosion"
+		{
+			"#"	"ent_create grenade_ar2"
+		}
+		"Helocopter Bomb"
+		{
+			"#"	"ent_create grenade_helicopter"
+		}
+		"Rocket"
+		{
+			"#"	"ent_create rpg_missile"
+		}
+		"Impact Smoke"
+		{
+			"#"	"ent_create ar2explosion"
+		}
+		"Combine Autogun (EP2)"
+		{
+			"#"	"exec autogun"
+		}
+	}
+}
