@@ -3324,6 +3324,10 @@ function entity:SetTextureFrameIndex(idx) end
 ---@param offset Vector
 function entity:SetViewOffset(offset) end
 
+---Set the view entity
+---@param entity CBaseEntity
+function entity:SetViewEntity(entity) end
+
 ---Set the water immersion level for the entity.
 ---@param level integer
 function entity:SetWaterLevel(level) end

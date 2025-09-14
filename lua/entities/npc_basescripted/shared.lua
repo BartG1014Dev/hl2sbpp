@@ -10,6 +10,10 @@ DEFINE_FACTORY( "CBaseAnimating" )
 ENT.isEnemy = true
 ENT.Weapon = nil
 
+ENT.FootstepIntervalBase = 0.45
+ENT.NextFootstepTime = 0
+ENT.FootstepLeft = true
+
 function ENT:Initialize()
 	if ( not _CLIENT ) then
 		local allowPrecache = self.IsPrecacheAllowed();
@@ -41,6 +45,11 @@ function ENT:Initialize()
 
 	self:ClearFlags()
 	self:AddFlag( 768 ) -- FL_CLIENT | FL_FAKECLIENT
+
+	self.IsFiring = false
+	self.FollowPlayer = true -- DoMove must be true for this!
+	self.DebugAnim = true
+	self.DoMove = true
 
 	self:GiveWeapon("weapon_smg1")
 end
