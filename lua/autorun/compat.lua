@@ -280,7 +280,46 @@ function DEFINE_FACTORY( name )
 	end
 end
 
+function IsValid( object )
+    if object == nil then
+        return false
+    end
 
+    if object == NULL then
+        return false
+    end
+
+    return true
+end
+
+-- hack
+util = {}
+
+function util.PrecacheModel(model)
+	_R.CBaseEntity.PrecacheModel(model)
+end
+
+function CurTime()
+	return gpGlobals.curtime()
+end
+
+game = {}
+
+function LocalPlayer()
+	if SERVER then
+		return UTIL.GetLocalPlayer()
+	else
+		return _R.CBasePlayer.GetLocalPlayer()
+	end
+end
+
+function game.SinglePlayer()
+	return true
+end
+
+function game.MultiPlayer()
+	return true
+end
 
 file = {}
 
