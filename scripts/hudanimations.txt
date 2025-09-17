@@ -24,7 +24,7 @@
 //		starts another even running at the specified time
 //
 //	StopEvent <event name> <start time>
-//		stops another event that is current running at the specified time
+//		stops another event that is currently running at the specified time
 //
 //	StopAnimation <panel name> <variable> <start time>
 //		stops all animations refering to the specified variable in the specified panel
@@ -41,18 +41,6 @@
 
 event LevelInit
 {
-}
-
-event FadeOutTeamLine
-{
-	// make the display visible
-	Animate TeamDisplay Alpha 		"0"		Linear 0.0 0.25
-}
-
-event FadeInTeamLine
-{
-	// make the display visible
-	Animate TeamDisplay Alpha 		"255"		Linear 0.0 0.5
 }
 
 event OpenWeaponSelectionMenu
@@ -81,10 +69,14 @@ event CloseWeaponSelectionMenu
 event FadeOutWeaponSelectionMenu
 {
 	// slowly hide the whole thing
-	Animate HudWeaponSelection FgColor		"0 0 0 0"	Linear 0.0 1.5
-	Animate HudWeaponSelection TextColor		"0 0 0 0"	Linear 0.0 1.5
-	Animate HudWeaponSelection Alpha		"0" 		Linear 0.0 1.5
-	Animate HudWeaponSelection SelectionAlpha 	"0" 		Linear 0.0 1.5
+	Animate HudWeaponSelection FgColor		"0 0 0 0"	Linear 0.5 1.0
+	Animate HudWeaponSelection TextColor		"0 0 0 0"	Linear 0.5 1.0
+	Animate HudWeaponSelection Alpha		"0" 		Linear 0.5 1.0
+	Animate HudWeaponSelection SelectionAlpha 	"0" 		Linear 0.5 1.0
+
+	Animate HudWeaponSelection WeaponBoxDist1Alpha	"0 0 0 0"	Linear 0.0 0.5
+	Animate HudWeaponSelection WeaponBoxDist2Alpha	"0 0 0 0"	Linear 0.0 0.5
+	Animate HudWeaponSelection WeaponBoxDist3Alpha	"0 0 0 0"	Linear 0.0 0.5
 }
 
 event SuitAuxPowerMax
@@ -97,50 +89,50 @@ event SuitAuxPowerMax
 event SuitAuxPowerNotMax
 {
 	// show suit power
-	Animate HudSuitPower BgColor		"BgColor"		Linear 0.0 0.4
-	Animate HudSuitPower AuxPowerColor	"255 220 0 220"		Linear 0.0 0.4
+	Animate HudSuitPower BgColor		"0 0 0 0"		Linear 0.0 0.4
+	Animate HudSuitPower AuxPowerColor	"0 0 0 0"		Linear 0.0 0.4
 }
 
 event SuitAuxPowerDecreasedBelow25
 {
 	// make color red
-	Animate HudSuitPower AuxPowerColor	"255 0 0 220"		Linear 0.0 0.4
+	Animate HudSuitPower BgColor		"0 0 0 0"		Linear 0.0 0.4
+	Animate HudSuitPower AuxPowerColor	"0 0 0 0"		Linear 0.0 0.4
 }
 
 event SuitAuxPowerIncreasedAbove25
 {
 	// make colr bright
-	Animate HudSuitPower AuxPowerColor	"255 220 0 220"		Linear 0.0 0.4
+	Animate HudSuitPower BgColor		"0 0 0 0"		Linear 0.0 0.4
+	Animate HudSuitPower AuxPowerColor	"0 0 0 0"		Linear 0.0 0.4
 }
 
 event SuitAuxPowerNoItemsActive
 {
 	// resize the aux power to be the smallest size
-	Animate HudSuitPower Size			"102 26"			Linear 0.0 0.4
-	Animate HudSuitPower Position		"16 400"			Linear 0.0 0.4
-//	Animate HudSuitPower text_xpos		"8"					Linear 0.0 0.4
-//	Animate HudSuitPower text_ypos		"15"				Linear 0.0 0.4
+	Animate HudSuitPower BgColor		"0 0 0 0"		Linear 0.0 0.4
+	Animate HudSuitPower AuxPowerColor	"0 0 0 0"		Linear 0.0 0.4
 }
 
 event SuitAuxPowerOneItemActive
 {
 	// resize the aux power to fit one item
-	Animate HudSuitPower Size			"102 36"			Linear 0.0 0.4
-	Animate HudSuitPower Position		"16 390"			Linear 0.0 0.4
+	Animate HudSuitPower BgColor		"0 0 0 0"		Linear 0.0 0.4
+	Animate HudSuitPower AuxPowerColor	"0 0 0 0"		Linear 0.0 0.4
 }
 
 event SuitAuxPowerTwoItemsActive
 {
 	// resize the aux power to fit two items
-	Animate HudSuitPower Size			"102 46"			Linear 0.0 0.4
-	Animate HudSuitPower Position		"16 380"			Linear 0.0 0.4
+	Animate HudSuitPower BgColor		"0 0 0 0"		Linear 0.0 0.4
+	Animate HudSuitPower AuxPowerColor	"0 0 0 0"		Linear 0.0 0.4
 }
 
 event SuitAuxPowerThreeItemsActive
 {
 	// resize the aux power to fit three items
-	Animate HudSuitPower Size			"102 56"			Linear 0.0 0.4
-	Animate HudSuitPower Position		"16 370"			Linear 0.0 0.4
+	Animate HudSuitPower BgColor		"0 0 0 0"		Linear 0.0 0.4
+	Animate HudSuitPower AuxPowerColor	"0 0 0 0"		Linear 0.0 0.4
 }
 
 event SuitFlashlightOn
@@ -231,8 +223,8 @@ event HudPlayerDeath
 	StopEvent	HealthLoop  0.0
 	StopEvent	HealthPulse 0.0
 
-	Animate HudDamageIndicator DmgFullscreenColor	"255 0 0 8"		Deaccel 0.1 0.2
-	Animate HudDamageIndicator DmgFullscreenColor	"255 0 0 48"		Deaccel 0.3 4.0
+	Animate HudDamageIndicator DmgFullscreenColor	"255 0 0 96"		Deaccel 0.1 0.2
+	Animate HudDamageIndicator DmgFullscreenColor	"255 0 0 255"		Deaccel 0.3 4.0
 }
 
 event HealthIncreasedAbove20
@@ -567,6 +559,16 @@ event HintMessageHide
 	Animate HudHintDisplay Alpha	0 Linear 0.0 0.5
 }
 
+event HintMessageLower
+{
+	Animate HudHintDisplay YOffset	"60"		Deaccel	0.0		0.01
+}
+
+event HintMessageRaise
+{
+	Animate HudHintDisplay YOffset	"0"		Deaccel	0.0		0.4
+}
+
 event SquadMemberAdded
 {
 	StopEvent	SquadMemberDied		0.0
@@ -638,3 +640,17 @@ event PoisonLoop
 {
 	RunEvent PoisonPulse 0.0
 }
+
+// Commentary hud element
+event ShowCommentary
+{
+	StopEvent	HideCommentary 0.0
+	Animate 	HudCommentary 	Alpha	255 Linear 0.0 0.5
+}
+
+event HideCommentary
+{
+	StopEvent	ShowCommentary 0.0
+	Animate 	HudCommentary 	Alpha	0 Linear 0.0 0.5
+}
+

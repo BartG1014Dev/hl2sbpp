@@ -1,8 +1,5 @@
 "SpawnMenu"
 {
-	"width"		"934"
-	"height"	"670"
-
 	"NPCs"
 	{
 		"Kleiner"

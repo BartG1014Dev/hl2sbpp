@@ -20,9 +20,10 @@ function ENT:Initialize()
 		self.SetAllowPrecache( true );
 
 		local randInt = random.RandomInt(1, 9)
+		local randInt2 = random.RandomInt(1, 3)
 
-		self.PrecacheModel( "models/player/humans/group03/male_0"  .. tostring(randInt) .. ".mdl" );
-		self:SetModel( "models/player/humans/group03/male_0" .. tostring(randInt) .. ".mdl" );
+		self.PrecacheModel( "models/player/group0" .. tostring(randInt2) .. "/male_0"  .. tostring(randInt) .. ".mdl" );
+		self:SetModel( "models/player/group0" .. tostring(randInt2) .. "/male_0" .. tostring(randInt) .. ".mdl" );
 
 		self.SetAllowPrecache( allowPrecache );
 

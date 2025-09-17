@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture" "vgui/hl2sbpp"
+	"$alphatest" "1"
+}

@@ -15,7 +15,7 @@ SWEP.clip_size				= -1
 SWEP.clip2_size				= -1
 SWEP.default_clip			= -1
 SWEP.default_clip2			= -1
-SWEP.primary_ammo			= "ar2"
+SWEP.primary_ammo			= "None"
 SWEP.secondary_ammo			= "None"
 
 SWEP.weight					= 7
@@ -34,7 +34,7 @@ SWEP.AutoSwitchTo			= true
 SWEP.AutoSwitchFrom			= true
 SWEP.BuiltRightHanded		= true
 SWEP.AllowFlipping			= true
-SWEP.MeleeWeapon			= false
+SWEP.MeleeWeapon			= true
 SWEP.UseHands				= true
 
 SWEP.DrawCrosshair = true

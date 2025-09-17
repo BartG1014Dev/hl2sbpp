@@ -2356,7 +2356,7 @@ spawnmenu = {}
 ---@param tab string
 ---@param name string
 ---@param command string
-function spawnmenu.CreateButton(tab, name, command) end
+function addButton(tab, name, command) end
 
 ---Check if the weapon has ironsights capability
 ---@return boolean

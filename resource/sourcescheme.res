@@ -194,7 +194,7 @@ Scheme
 
 		// scheme-specific colors
 		MainMenu.TextColor			"White"
-		MainMenu.ArmedTextColor		"255 222 88 255"
+		MainMenu.ArmedTextColor		"249 249 181 255"
 		MainMenu.DepressedTextColor	"192 186 80 255"
 		MainMenu.MenuItemHeight		"30"
 		MainMenu.Inset				"32"
@@ -364,6 +364,18 @@ Scheme
 				"tall"		"16"
 				"weight"	"600"
 				"antialias" "1"
+			}
+		}
+		"MainMenuFont"
+		{
+			"1"
+			{
+				"name"		"Roboto"
+				"tall"		"20"
+				"weight"	"900"
+				"antialias" "1"
+				"outline" 	"0"
+				"dropshadow" "1"
 			}
 		}
 		"AchievementTitleFont"
@@ -1228,5 +1240,6 @@ Scheme
 		"1"		"resource/HALFLIFE2.ttf"
 		"2"		"resource/HL2EP2.ttf"
 		"3"		"resource/marlett.ttf"
+		"1"		"resource/Roboto-Black.ttf"
 	}
 }

@@ -1,15 +1,12 @@
 "SpawnMenu"
 {
-	"width"		"934"
-	"height"	"670"
-
 	"Ragdolls"
 	{
 		"Kleiner"
 		{
 			"#"	"prop_physics_create props_junk/wood_crate001a.mdl;ent_setname fixpos;wait;ent_remove fixpos;ent_create prop_ragdoll model models/kleiner.mdl"
 		}
-		"Gman"
+		"G-Man"
 		{
 			"#"	"prop_physics_create props_junk/wood_crate001a.mdl;ent_setname fixpos;wait;ent_remove fixpos;ent_create prop_ragdoll model models/gman.mdl"
 		}

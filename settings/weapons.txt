@@ -1,8 +1,5 @@
 "SpawnMenu"
 {
-	"width"		"934"
-	"height"	"670"
-
 	"Weapons"
 	{
 		"Physics Gun"
@@ -64,6 +61,10 @@
 		"Medkit"
 		{
 			"#" "give weapon_medkit; use weapon_medkit"
+		}
+		"Fists"
+		{
+			"#" "give weapon_fists; use weapon_fists"
 		}
 		"Flechette Gun (EP2)"
 		{
