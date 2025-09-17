@@ -2,11 +2,6 @@
 {
 	TextureData
 	{
-		"d_skull"
-		{
-				"font"		"CSTypeDeath"
-				"character"	"C"
-		}
 		"death_357"
 		{
 				"font"		"HL2MPTypeDeath"
@@ -77,6 +72,14 @@
 				"font"		"HL2MPTypeDeath"
 				"character"	"6"
 		}
+		"d_skull"
+		{
+				"file"      "hud/killicons/default_small"
+				"x"         "0"
+				"y"         "0"
+				"width"     "32"
+				"height"    "32"
+		}
 		"voice_player"
 		{
 				"file"		"voice/icntlk_sv"
@@ -93,5 +96,13 @@
 				"width"		"32"
 				"height"	"32"
 		}
-	}	
+		"whiteAdditive"
+		{
+				"file"		"vgui/white_additive"
+				"x"			"0"
+				"y"			"0"
+				"width"		"1"
+				"height"	"1"
+		}
+	}
 }

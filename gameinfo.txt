@@ -2,7 +2,7 @@
 {
 	game	"Half-Life 2: Sandbox++"
 	icon	"icon_hl2"
-	title	"HALF-LIFE 2: SANDBOX++"
+	title	""
 	title2	""
 	nomodels 0
 	nohimodel 1
@@ -13,7 +13,7 @@
 		"test_hardware"		1
 	}
 	developer "Team HL2SB++"
-
+	gamelogo "1"
 
     FileSystem
 	{
