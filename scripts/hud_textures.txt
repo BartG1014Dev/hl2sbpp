@@ -68,11 +68,11 @@
 		}
 		"crosshair_default"
 		{
-				"file"		"sprites/crosshairs"
+				"file"		"gui/crosshair"
 				"x"			"0"
-				"y"			"48"
-				"width"		"24"
-				"height"	"24"
+				"y"			"0"
+				"width"		"64"
+				"height"	"64"
 		}
 		"crosshair_xbox"
 		{

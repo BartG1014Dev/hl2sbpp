@@ -131,10 +131,6 @@ end
 	end
 end
 
-function SWEP:HasIronsights()
-	return self.CanUseIronsight;
-end
-
 function SWEP:SecondaryAttack()
 	self:ToggleIronsights();
 

@@ -63,8 +63,8 @@ Scheme
 		"Caution"			"255 48 0 255"
 
 		// Top-left corner of the "Half-Life 2" on the main screen
-		"Main.Title1.X"		"60"
-		"Main.Title1.Y"		"70"
+		"Main.Title1.X"		"76"
+		"Main.Title1.Y"		"184"
 		"Main.Title1.Color"	"255 255 255 255"
 
 		// Top-left corner of secondary title e.g. "DEMO" on the main screen
@@ -73,8 +73,8 @@ Scheme
 		"Main.Title2.Color"	"255 255 255 200"
 
 		// Top-left corner of the menu on the main screen
-		"Main.Menu.X"		"60"
-		"Main.Menu.Y"		"175"
+		"Main.Menu.X"		"76"
+		"Main.Menu.Y"		"240"
 
 		Menu.TextColor					"3 3 3 255"
 		Menu.BgColor					"248 248 248 255"
@@ -126,6 +126,17 @@ Scheme
 	{
 		// fonts are used in order that they are listed
 		// fonts are used in order that they are listed
+		"Roboto"
+		{
+			"1"
+			{
+				"name"		"Vertana"
+				"tall"		"14"
+				"weight"	"700"
+				"dropshadow" "1"
+				"antialias" "1"
+			}
+		}
 		"DebugFixed"
 		{
 			"1"
@@ -763,6 +774,7 @@ Scheme
 		"1"		"resource/HALFLIFE2.ttf"
 		"1"		"resource/HL2MP.ttf"
 		"2"		"resource/HL2crosshairs.ttf"
+		"1"		"resource/Roboto-Black.ttf"
 	}
 
 	Borders

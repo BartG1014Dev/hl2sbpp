@@ -244,7 +244,7 @@
 		"visible" "1"
 		"enabled" "1"
 		"xpos"	 "r700"
-		"ypos"	 "30"
+		"ypos"	 "20"
 		"wide"	 "640"
 		"tall"	 "480"
 
@@ -252,7 +252,7 @@
 		"LineHeight"	  "26"
 		"RightJustify"	  "1"	// If 1, draw notices from the right
 
-		"TextFont"				"default"
+		"TextFont"				"Roboto"
 	}
 
 	HudVehicle

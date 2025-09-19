@@ -42,16 +42,19 @@ WeaponData
 			"width"		"170"
 			"height"	"45"
 		}
-		"crosshair"
-		{
-				"font"		"Crosshairs"
-				"character"	"Q"
-		}
 		"ammo"
 		{
 			"file"		"sprites/640hud7"
 			"x"			"120"
 			"y"			"96"
+			"width"		"24"
+			"height"	"24"
+		}
+		"crosshair"
+		{
+			"file"		"sprites/crosshairs"
+			"x"			"72"
+			"y"			"48"
 			"width"		"24"
 			"height"	"24"
 		}

@@ -39,16 +39,21 @@
 	}
 	"7"
 	{
+		"label" "#HL2SB_AdvOptions"
+		"command" "engine OpenAdvancedOptions"
+	}
+	"8"
+	{
 		"label" ""
 		"command" ""
 	}
-	"8"
+	"9"
 	{
 		"label" "#GameUI_GameMenu_Disconnect"
 		"command" "Disconnect"
 		"OnlyInGame" "1"
 	}
-	"9"
+	"10"
 	{
 		"label" "#GameUI_GameMenu_Quit"
 		"command" "Quit"

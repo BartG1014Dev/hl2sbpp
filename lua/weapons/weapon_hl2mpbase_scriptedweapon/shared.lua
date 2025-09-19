@@ -45,6 +45,55 @@ SWEP.DrawAmmo = true
 
 SWEP.ViewModelFOV 			= 54
 
+-- TODO; get normal icons instead of this shit
+SWEP.TextureData =
+{
+	weapon =
+	{
+		file   = "",
+		x      = 0,
+		y      = 0,
+		width  = 0,
+		height = 0
+	},
+
+	weapon_s =
+	{
+		file   = "weapons/swep_small",
+		x      = 0,
+		y      = 0,
+		width  = 128,
+		height = 64
+	},
+
+	weapon_small =
+	{
+		file   = "",
+		x      = 0,
+		y      = 0,
+		width  = 0,
+		height = 0
+	},
+
+	crosshair =
+	{
+		file   = "gui/crosshair",
+		x      = 0,
+		y      = 0,
+		width  = 64,
+		height = 64
+	},
+
+	ammo =
+	{
+		file   = "weapons/swep_small",
+		x      = 0,
+		y      = 0,
+		width  = 128,
+		height = 64
+	},
+}
+
 SWEP.m_acttable            =
 {
 	{ ACT.MP_STAND_IDLE,				ACT.HL2MP_IDLE,					false },

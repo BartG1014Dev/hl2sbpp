@@ -13,7 +13,9 @@ function GM:Initialize()
 if ( not _CLIENT ) then
   engine.ServerCommand( "mp_falldamage 0\n" )
   engine.ServerCommand( "mp_flashlight 1\n" )
-  engine.ServerCommand( "sv_infinite_aux_power 1\n" ) -- @ThePixelMoon: why isn't this on by default?
+  engine.ServerCommand( "sv_friction 8\n" )
+  engine.ServerCommand( "sv_stopspeed 10\n" )
+  engine.ServerCommand( "sv_infinite_aux_power 1\n" ) -- @ThePixelMoon: why aren't these on by default?
 else
   -- Andrew; not the right place to put this, but oh well.
   self:CreateDefaultPanels()

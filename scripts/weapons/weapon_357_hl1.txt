@@ -8,7 +8,7 @@ WeaponData
 	"playermodel"		"models/weapons/w_357_hls.mdl"
 	"anim_prefix"		"python"
 	"bucket"		"1"
-	"bucket_position"	"4"
+	"bucket_position"	"12"
 
 	"clip_size"		"6"
 	"default_clip"		"6"
@@ -55,8 +55,11 @@ WeaponData
 		}
 		"crosshair"
 		{
-				"font"		"Crosshairs"
-				"character"	"Q"
+			"file"		"sprites/crosshairs"
+			"x"			"48"
+			"y"			"0"
+			"width"		"24"
+			"height"	"24"
 		}
 		"autoaim"
 		{

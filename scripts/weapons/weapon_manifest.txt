@@ -18,4 +18,24 @@ weapon_manifest
 	"file"		"scripts/weapons/weapon_shotgun.txt"
 	"file"		"scripts/weapons/weapon_smg1.txt"
 	"file"		"scripts/weapons/weapon_stunstick.txt"
+
+	// Other
+	"file"		"scripts/weapons/weapon_oldmanharpoon.txt"
+	"file"		"scripts/weapons/weapon_physgun.txt"
+
+	// HL1
+	"file"		"scripts/weapons/weapon_357_hl1.txt"
+	"file"		"scripts/weapons/weapon_crossbow_hl1.txt"
+	"file"		"scripts/weapons/weapon_crowbar_hl1.txt"
+	"file"		"scripts/weapons/weapon_egon_hl1.txt"
+	"file"		"scripts/weapons/weapon_gauss_hl1.txt"
+	"file"		"scripts/weapons/weapon_glock_hl1.txt"
+	"file"		"scripts/weapons/weapon_handgrenade_hl1.txt"
+	"file"		"scripts/weapons/weapon_hornetgun_hl1.txt"
+	"file"		"scripts/weapons/weapon_mp5_hl1.txt"
+	"file"		"scripts/weapons/weapon_rpg_hl1.txt"
+	"file"		"scripts/weapons/weapon_satchel.txt"
+	"file"		"scripts/weapons/weapon_shotgun_hl1.txt"
+	"file"		"scripts/weapons/weapon_snark_hl1.txt"
+	"file"		"scripts/weapons/weapon_tripmine_hl1.txt"
 }
