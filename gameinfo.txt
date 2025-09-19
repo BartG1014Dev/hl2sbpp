@@ -4,7 +4,7 @@
 	icon	"icon_hl2"
 	title	""
 	title2	""
-	nomodels 0
+	nomodels 1
 	nohimodel 1
 	nocrosshair 1
 	hidden_maps

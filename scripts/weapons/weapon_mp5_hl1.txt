@@ -8,7 +8,7 @@ WeaponData
 	"playermodel"		"models/weapons/w_9mmar.mdl"
 	"anim_prefix"		"mp5"
 	"bucket"		"2"
-	"bucket_position"	"2"
+	"bucket_position"	"10"
 
 	"clip_size"		"50"
 	"clip2_size"		"-1"
@@ -65,8 +65,11 @@ WeaponData
 		}
 		"crosshair"
 		{
-				"font"		"Crosshairs"
-				"character"	"Q"
+			"file"		"sprites/crosshairs"
+			"x"			"0"
+			"y"			"48"
+			"width"		"24"
+			"height"	"24"
 		}
 		"autoaim"
 		{

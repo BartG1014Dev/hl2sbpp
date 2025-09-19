@@ -21,7 +21,7 @@ WeaponData
 
 	"weight"				"3"
 	"item_flags"			"0"
-	"damage"			"5"
+	"damage"			"12"
 
 	// Sounds for the weapon. There is a max of 16 sounds per category (i.e. max 16 "single_shot" sounds)
 	SoundData
@@ -50,20 +50,28 @@ WeaponData
 				"font"		"WeaponIconsSelected"
 				"character"	"a"
 		}
+		"weapon_small"
+		{
+				"font"		"WeaponIconsSmall"
+				"character"	"a"
+		}
 		"ammo"
 		{
-				"font"		"WeaponIcons"
+				"font"		"WeaponIconsSmall"
 				"character"	"r"
 		}
 		"ammo2"
 		{
-				"font"		"WeaponIcons"
+				"font"		"WeaponIconsSmall"
 				"character"	"t"
 		}
 		"crosshair"
 		{
-				"font"		"Crosshairs"
-				"character"	"Q"
+				"file"		"gui/crosshair"
+				"x"			"0"
+				"y"			"0"
+				"width"		"64"
+				"height"	"64"
 		}
 		"autoaim"
 		{

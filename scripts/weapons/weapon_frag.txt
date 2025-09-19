@@ -2,7 +2,7 @@ WeaponData
 {
 	// Weapon data is loaded by both the Game and Client DLLs.
 	"printname"	"#HL2_Grenade"
-	"viewmodel"				"models/weapons/v_grenade.mdl"
+	"viewmodel"				"models/weapons/c_grenade.mdl"
 	"playermodel"			"models/weapons/w_grenade.mdl"
 	"anim_prefix"			"Grenade"
 	"bucket"				"4"
@@ -24,8 +24,8 @@ WeaponData
 	SoundData
 	{
 		"special1"		"WeaponFrag.Roll"
-		"double_shot"	"common/null.wav"
-		"single_shot"	"common/null.wav"
+		"double_shot"	""
+		"single_shot"	""
 	}
 
 	// Weapon Sprite data is loaded by the Client DLL.
@@ -41,15 +41,23 @@ WeaponData
 				"font"		"WeaponIconsSelected"
 				"character"	"k"
 		}
+		"weapon_small"
+		{
+				"font"		"WeaponIconsSmall"
+				"character"	"k"
+		}
 		"ammo"
 		{
-				"font"		"WeaponIcons"
+				"font"		"WeaponIconsSmall"
 				"character"	"v"
 		}
 		"crosshair"
 		{
-				"font"		"Crosshairs"
-				"character"	"Q"
+				"file"		"gui/crosshair"
+				"x"			"0"
+				"y"			"0"
+				"width"		"64"
+				"height"	"64"
 		}
 		"autoaim"
 		{

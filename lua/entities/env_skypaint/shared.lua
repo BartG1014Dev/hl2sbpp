@@ -12,7 +12,7 @@ function ENT:Initialize()
 		self.SetAllowPrecache( allowPrecache );
 		
 		local skyname = cvar.FindVar("sv_skyname")
-		skyname:SetValue("sky_day02_01") -- haha
+		skyname:SetValue("painted") -- haha
 	end
 end
 

@@ -28,35 +28,61 @@ function GM:DebugEntityNames()
   end
 end
 
-function GM:ResetChangeLevel()
-  local pEntity = gEntList.FindEntityByClassname( NULL, "trigger_changelevel" )
-  local tTriggers = {}
-  while ( pEntity ~= NULL ) do
-    local pTrigger = CreateEntityByName( "trigger_changelevel_scripted" );
-    if ( pTrigger ~= NULL ) then
-      local vecMins = pEntity:WorldAlignMins()
-      local vecMaxs = pEntity:WorldAlignMaxs()
-      local vecOrigin = vecMaxs - ((vecMaxs - vecMins) / 2)
-      pTrigger:SetAbsOrigin( vecOrigin )
-      pTrigger.m_vecMins = vecMins
-      pTrigger.m_vecMaxs = vecMaxs
-      pTrigger.m_szMapName = pEntity.m_szMapName
-      pTrigger.m_szLandmarkName = pEntity.m_szLandmarkName
+local HL2toHL1 = {
+    models = {
+        ["models/barney.mdl"] = "models/barney_hl1.mdl",
+        ["models/barnacle.mdl"] = "models/barnacle_hl1.mdl",
+		["models/headcrab.mdl"] = "models/headcrab_hl1.mdl",
+		["models/gman.mdl"] = "models/gman_hl1.mdl",
+    },
+    weapons = {
+        ["weapon_crowbar"] = "weapon_crowbar_hl1",
+        ["weapon_glock"] = "weapon_glock_hl1",
+        ["weapon_357"] = "weapon_357_hl1",
+        ["weapon_egon"] = "weapon_egon_hl1",
+		["weapon_gauss"] = "weapon_gauss_hl1",
+		["weapon_mp5"] = "weapon_mp5_hl1",
+		["weapon_crossbow"] = "weapon_crossbow_hl1",
+		["weapon_rpg"] = "weapon_rpg_hl1",
+		["weapon_satchel"] = "weapon_satchel_hl1",
+		["weapon_shotgun"] = "weapon_shotgun_hl1",
+		["weapon_snark"] = "weapon_snark_hl1",
+		["weapon_tripmine"] = "weapon_tripmine_hl1",
+		["weapon_handgrenade"] = "weapon_handgrenade_hl1",
+		["weapon_hornetgun"] = "weapon_hornetgun_hl1",
+    }
+}
 
-      pTrigger:Spawn()
+function GM:FixHL1()
+    local mapName = string.lower(gpGlobals.mapname)
 
-      -- Huh?
-      if ( pTrigger.m_szMapName == gpGlobals.mapname ) then
-        pTrigger:Remove()
-      end
-    end
-    table.insert( tTriggers, pEntity )
-    pEntity = gEntList.FindEntityByClassname( pEntity, "trigger_changelevel" )
-  end
+    if string.sub(mapName, 1, 1) == "t" or string.sub(mapName, 1, 1) == "c" then
+		if SERVER then engine.ServerCommand("mov_2004 1\n") end
 
-  for i, pTrigger in ipairs( tTriggers ) do
-    pTrigger:Remove()
-  end
+        local pEntity = gEntList.FirstEnt()
+        while pEntity ~= NULL do
+            local mdl = pEntity:GetModelName()
+            if mdl and HL2toHL1.models[mdl] then
+				pEntity.PrecacheModel(HL2toHL1.models[mdl])
+                pEntity:SetModel(HL2toHL1.models[mdl])
+            end
+
+            local class = pEntity:GetClassname()
+            if class and HL2toHL1.weapons[class] then
+                local hl1Weapon = CreateEntityByName(HL2toHL1.weapons[class])
+                if IsValid(hl1Weapon) then
+                    hl1Weapon:SetAbsOrigin(pEntity:GetAbsOrigin())
+                    hl1Weapon:SetAbsAngles(pEntity:GetAbsAngles())
+                    hl1Weapon:Spawn()
+                    pEntity:Remove()
+                end
+            end
+			
+            pEntity = gEntList.NextEnt(pEntity)
+        end
+    else
+		if SERVER then engine.ServerCommand("mov_2004 0\n") end
+	end
 end
 
 function GM:RemoveFallTriggers()
@@ -76,7 +102,7 @@ function GM:LevelInit( strMapName, strMapEntities, strOldLevel, strLandmarkName,
   gpGlobals.mapname = strMapName
 
   -- self:DebugEntityNames()
-  self:ResetChangeLevel()
+  self:FixHL1()
   self:RemoveFallTriggers()
 
   -- Sometimes an ent will Remove() itself during its precache, so RemoveImmediate won't happen.

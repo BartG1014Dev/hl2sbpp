@@ -8,7 +8,7 @@ WeaponData
 	"playermodel"		"models/weapons/w_shotgun_hls.mdl"
 	"anim_prefix"		"shotgun"
 	"bucket"		"2"
-	"bucket_position"	"3"
+	"bucket_position"	"12"
 
 	"clip_size"			"8"
 	"default_clip"		"12"
@@ -58,8 +58,11 @@ WeaponData
 		}
 		"crosshair"
 		{
-				"font"		"Crosshairs"
-				"character"	"Q"
+			"file"		"sprites/crosshairs"
+			"x"			"48"
+			"y"			"24"
+			"width"		"24"
+			"height"	"24"
 		}
 		"autoaim"
 		{

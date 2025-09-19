@@ -7,8 +7,8 @@ WeaponData
 	"viewmodel"		"models/v_rpg.mdl"
 	"playermodel"		"models/weapons/w_rpg_hls.mdl"
 	"anim_prefix"		"rpg"
-	"bucket"		"4"
-	"bucket_position"	"3"
+	"bucket"		"3"
+	"bucket_position"	"12"
 
 	"clip_size"		"1"
 	"default_clip"		"5"
@@ -54,8 +54,12 @@ WeaponData
 		}
 		"crosshair"
 		{
-				"font"		"Crosshairs"
-				"character"	"Q"
+			"file"		"sprites/crosshairs"
+			"x"			"24"
+			"y"			"48"
+			"width"		"24"
+			"height"	"24"
+
 		}
 	}
 }

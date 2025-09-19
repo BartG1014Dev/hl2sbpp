@@ -35,4 +35,15 @@
 		"weapon"	"string" 	// weapon name killed used 
 		"weaponname"	"string" 	// weapon class name killed used 
 	}
+
+	"npc_killed"
+	{
+		"victim_name"     	"string"
+		"attacker_name"   	"string"
+		"attacker_isplayer" "bool"
+		"weapon"         	"string"
+		"weaponname"		"string"
+		"npc_victim_friendly" "bool"
+		"npc_killer_friendly" "bool"
+	}
 }
