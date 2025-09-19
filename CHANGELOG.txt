@@ -1,4 +1,7 @@
 CHANGELOG
+Beta 2.1
+Fixed c_arms issue when dying
+
 Beta 2
 Added a convenient menu to switch playermodels and colors
 Fixed most crashes when spawning NPC's
