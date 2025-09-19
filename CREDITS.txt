@@ -1,7 +1,7 @@
 CREDITS
 ThePixelMoon/YourLocalMoon - Lead programmer
 Waltenthethird - Helping fix thirdperson animations
-Ashforever - (TODO: add this one)
+Ashforever - Provider of fixed GMod models
 Kokoleong - (TODO: add this one)
 MrDinnerMau5 - Supporter, advertising
 R_4d - (TODO: add this one)

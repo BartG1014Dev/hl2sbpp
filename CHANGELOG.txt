@@ -1,0 +1,22 @@
+CHANGELOG
+Beta 2
+Added a convenient menu to switch playermodels and colors
+Fixed most crashes when spawning NPC's
+c_handmodel convar now instantly switches the viewmodel arms model instead of having to respawn
+Fixed a bug where (HL1),(EP2) and etc. were showing even when the corresponding games weren't mounted
+Edited the target HUD to NOT show Enemy:
+Added a way to add icons to SWEPS in Lua
+Added the act concommand (WIP)
+Added the NPC deathnotice (toggleable via npc_deathnotice convar)
+Fixed the Lua ironsights
+Added the -noaddons console parameter
+Fixed huge maps crashing
+Added more temporary bot names
+Fixed the game description to be Half-Life 2: Sandbox++ instead of Half-Life 2 Sandbox
+Added convars: mov_2004, mov_afh, mov_jumpforwardscale, mov_jumpforwardsprintscale, mov_scale (by ItzVladik)
+Updated the neofetch concommand
+thirdperson concommand is no longer a cheat
+Added vtf_screenshot concommand (please do not use this, it's very unstable)
+
+Beta 1
+Initial release
