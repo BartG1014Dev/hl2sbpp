@@ -92,17 +92,4 @@
         "text" 				"GameMode Goes Here"
 		"proportionalToParent" "1"
 	}
-	"MapIcon"
-	{
-		"ControlName"		"ImagePanel"
-		"fieldName"			"MapIcon"
-		"xpos"				"10"
-		"ypos"				"10"
-		"wide"				"64"
-		"tall"				"64"
-		"visible"			"1"
-		"enabled"			"1"
-		"border"			"0"
-		"image"				"img/noicon"
-	}
 }
