@@ -1,4 +1,9 @@
 CHANGELOG
+Beta 3
+Updated the Advanced Options menu to save the chosen playermodel
+Fixed the Default c_arms setting always being Combine instead of depending on the playermodel
+Fixed the crash if you pick up a helicopter or any other non-physics NPC with a physics gun
+
 Beta 2.1
 Fixed c_arms issue when dying
 

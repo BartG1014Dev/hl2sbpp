@@ -45,5 +45,6 @@
 		"weaponname"		"string"
 		"npc_victim_friendly" "bool"
 		"npc_killer_friendly" "bool"
+		"victim_isplayer"		"bool"
 	}
 }
