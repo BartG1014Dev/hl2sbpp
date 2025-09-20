@@ -3,6 +3,9 @@ Beta 3
 Updated the Advanced Options menu to save the chosen playermodel
 Fixed the Default c_arms setting always being Combine instead of depending on the playermodel
 Fixed the crash if you pick up a helicopter or any other non-physics NPC with a physics gun
+Replaced the old VTF/VMT map thumbnails with PNG's (maps/thumb)
+Fixed the crash if you pick a non-CBaseAnimating prop with a physics gun
+Fixed a crash when if you die Lua starts crying about virtual methods and dies (literally)
 
 Beta 2.1
 Fixed c_arms issue when dying
