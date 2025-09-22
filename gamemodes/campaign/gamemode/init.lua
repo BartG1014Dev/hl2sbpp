@@ -85,6 +85,10 @@ function GM:FixHL1()
 	end
 end
 
+function GM:PlayerDeathThink( pPlayer )
+	ToHL2MPPlayer(pPlayer).IsDead = true
+end
+
 function GM:RemoveFallTriggers()
   local pEntity = gEntList.FindEntityByName( NULL, "fall_trigger" )
   local tTriggers = {}
@@ -136,6 +140,22 @@ end
 
 local g_bFirstPlayerSpawned = false
 
+function GM:PlayerThink( pPlayer )
+  if not ToHL2MPPlayer(pPlayer).IsDead then
+	ToHL2MPPlayer(pPlayer).IsDead = false
+  else
+	if ToHL2MPPlayer(pPlayer).IsDead == true then
+		ToHL2MPPlayer(pPlayer):SetSolid(SolidType.NONE)
+		ToHL2MPPlayer(pPlayer):AddFlag(32768) -- FL_GODMODE
+		ToHL2MPPlayer(pPlayer):AddFlag(65536) -- FL_NOTARGET
+		ToHL2MPPlayer(pPlayer):AddEffects(32) -- EF_NODRAW
+		ToHL2MPPlayer(pPlayer):SetMoveType(MoveType.NOCLIP, 0)
+		ToHL2MPPlayer(pPlayer):SetRenderColor(0, 0, 0, 0) -- invisible lmao
+		return false
+	end
+  end
+end
+
 function GM:PlayerSpawn( pPlayer )
   for _, classname in ipairs( self.m_tPickups ) do
     local pEntity = CreateEntityByName( classname )
@@ -159,4 +179,5 @@ function GM:PlayerSpawn( pPlayer )
 end
 
 function GM:PlayerPickupObject( pHL2MPPlayer, pObject, bLimitMassAndSize )
+	if pHL2MPPlayer.IsDead == true then return false end
 end

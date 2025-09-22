@@ -74,7 +74,7 @@ Scheme
 
 		// Top-left corner of the menu on the main screen
 		"Main.Menu.X"		"76"
-		"Main.Menu.Y"		"240"
+		"Main.Menu.Y"		"170"
 
 		Menu.TextColor					"3 3 3 255"
 		Menu.BgColor					"248 248 248 255"

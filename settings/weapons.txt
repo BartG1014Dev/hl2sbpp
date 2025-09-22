@@ -66,6 +66,10 @@
 		{
 			"#" "give weapon_fists; use weapon_fists"
 		}
+		"Camera"
+		{
+			"#" "give weapon_camera; use weapon_camera"
+		}
 		"Flechette Gun (EP2)"
 		{
 			"#" "give weapon_flechettegun; use weapon_flechettegun"

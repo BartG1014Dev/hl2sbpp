@@ -4,27 +4,36 @@
 --
 --===========================================================================--
 
-SWEP.printname				= "CAMERA"
-SWEP.viewmodel				= "models/weapons/c_arms_animations.mdl"
-SWEP.playermodel			= ""
-SWEP.anim_prefix			= "fists"
-SWEP.bucket					= 5
-SWEP.bucket_position		= 1
+SWEP.PrintName				= "CAMERA"
+SWEP.ViewModel				= "models/weapons/c_arms_animations.mdl"
+SWEP.WorldModel				= ""
+SWEP.AnimPrefix				= "fists"
+SWEP.Slot					= 5
+SWEP.SlotPos				= 1
 
-SWEP.clip_size				= -1
-SWEP.clip2_size				= -1
-SWEP.default_clip			= -1
-SWEP.default_clip2			= -1
-SWEP.primary_ammo			= "ar2" -- bypassing the scheme!1!
-SWEP.secondary_ammo			= "None"
+SWEP.Primary = 
+{
+	ClipSize = -1,
+	DefaultClip = -1,
+	Automatic = false,
+	Ammo = "AR2",
+}
+
+SWEP.Secondary = 
+{
+	ClipSize = -1,
+	DefaultClip = -1,
+	Automatic = false,
+	Ammo = "None",
+}
 
 SWEP.DrawCrosshair = false
 SWEP.DrawAmmo = false
 
-SWEP.weight					= 7
-SWEP.item_flags				= 0
+SWEP.Weight					= 7
+SWEP.ItemFlags				= 0
 
-SWEP.damage					= 75
+SWEP.Damage					= 75
 
 SWEP.SoundData				=
 {

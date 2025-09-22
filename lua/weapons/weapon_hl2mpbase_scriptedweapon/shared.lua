@@ -4,27 +4,36 @@
 --
 --===========================================================================--
 
-SWEP.printname				= "#HL2_357Handgun"
-SWEP.viewmodel				= "models/weapons/c_357.mdl"
-SWEP.playermodel			= "models/weapons/w_357.mdl"
-SWEP.anim_prefix			= "python"
-SWEP.bucket					= 1
-SWEP.bucket_position		= 1
+SWEP.PrintName				= "#HL2_357Handgun"
+SWEP.ViewModel				= "models/weapons/c_357.mdl"
+SWEP.WorldModel				= "models/weapons/w_357.mdl"
+SWEP.AnimPrefix				= "python"
+SWEP.Slot					= 1
+SWEP.SlotPos				= 1
 
-SWEP.clip_size				= 6
-SWEP.clip2_size				= -1
-SWEP.default_clip			= 6
-SWEP.default_clip2			= -1
-SWEP.primary_ammo			= "357"
-SWEP.secondary_ammo			= "None"
+SWEP.Primary = 
+{
+	ClipSize = 6,
+	DefaultClip = 6,
+	Automatic = false,
+	Ammo = "357",
+}
 
-SWEP.DrawCrosshair = true
-SWEP.DrawAmmo = true
+SWEP.Secondary = 
+{
+	ClipSize = -1,
+	DefaultClip = -1,
+	Automatic = false,
+	Ammo = "none",
+}
 
-SWEP.weight					= 7
-SWEP.item_flags				= 0
+SWEP.DrawCrosshair 			= true
+SWEP.DrawAmmo 				= true
 
-SWEP.damage					= 75
+SWEP.Weight					= 7
+SWEP.ItemFlags				= 0
+
+SWEP.Damage					= 75
 
 SWEP.SoundData				=
 {
@@ -32,9 +41,9 @@ SWEP.SoundData				=
 	single_shot				= "Weapon_357.Single"
 }
 
-SWEP.showusagehint			= false
-SWEP.autoswitchto			= true
-SWEP.autoswitchfrom			= true
+SWEP.ShowUsageHint			= false
+SWEP.AutoSwitchTo			= true
+SWEP.AutoSwitchFrom			= true
 SWEP.BuiltRightHanded		= true
 SWEP.AllowFlipping			= true
 SWEP.MeleeWeapon			= false
@@ -45,7 +54,15 @@ SWEP.DrawAmmo = true
 
 SWEP.ViewModelFOV 			= 54
 
--- TODO; get normal icons instead of this shit
+SWEP.IronsightPosOffset = Vector(
+	-10, 		-- forward
+	-4.65, 		-- right
+	0.75 		-- up
+)
+SWEP.IronsightAngOffset = QAngle( 0, 0, 0 )
+SWEP.IronsightFOVOffset = -12
+SWEP.CanUseIronsight = false
+
 SWEP.TextureData =
 {
 	weapon =
@@ -177,9 +194,15 @@ end
 end
 
 function SWEP:SecondaryAttack()
+	self:ToggleIronsights();
 end
 
 function SWEP:Reload()
+	if ( self:IsIronsighted() ) then
+		-- quite a hacky hack but it should work
+		self:ToggleIronsights();
+	end
+
 	local fRet = self:DefaultReload( self:GetMaxClip1(), self:GetMaxClip2(), 182 );
 	if ( fRet ) then
 --		self:WeaponSound( 6 );

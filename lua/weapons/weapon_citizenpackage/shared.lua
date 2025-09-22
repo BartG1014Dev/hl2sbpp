@@ -4,24 +4,31 @@
 --
 --===========================================================================--
 
-SWEP.printname				= "#HL2_SMG1"
-SWEP.viewmodel				= "models/weapons/w_package.mdl"
-SWEP.playermodel			= "models/weapons/w_package.mdl"
-SWEP.anim_prefix			= "smg2"
-SWEP.bucket					= 2
-SWEP.bucket_position		= 0
+SWEP.PrintName 				= "#HL2_SMG1"
+SWEP.ViewModel 				= "models/weapons/w_package.mdl"
+SWEP.WorldModel 			= "models/weapons/w_package.mdl"
+SWEP.AnimPrefix 			= "smg2"
+SWEP.Slot 					= 2
+SWEP.SlotPos				= 0
 
-SWEP.clip_size				= -1
-SWEP.clip2_size				= -1
+SWEP.Primary = 
+{
+	ClipSize = -1,
+	DefaultClip = -1,
+	Automatic = false,
+	Ammo = "None",
+}
 
-SWEP.default_clip			= -1
-SWEP.default_clip2			= -1
+SWEP.Secondary = 
+{
+	ClipSize = -1,
+	DefaultClip = -1,
+	Automatic = false,
+	Ammo = "None",
+}
 
-SWEP.primary_ammo			= "None"
-SWEP.secondary_ammo			= "None"
-
-SWEP.weight					= 0
-SWEP.item_flags				= 0
+SWEP.Weight					= 0
+SWEP.ItemFlags				= 0
 
 SWEP.DrawCrosshair = true
 SWEP.DrawAmmo = false

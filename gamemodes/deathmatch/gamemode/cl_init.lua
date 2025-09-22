@@ -61,6 +61,7 @@ function GM:ShouldDrawFog()
 end
 
 function GM:ShouldDrawLocalPlayer()
+	return true
 end
 
 function GM:ShouldDrawParticles()
