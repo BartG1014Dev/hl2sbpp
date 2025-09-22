@@ -15,5 +15,7 @@ Ramdoms
 Yaymon
 BartG1014
 
+Some map thumbnails - https://github.com/norbcodes/MapThumbnailPack, https://steamcommunity.com/sharedfiles/filedetails/?id=2922426391
+
 Special thanks to everyone that have supported this project!
 And GMod, of course.

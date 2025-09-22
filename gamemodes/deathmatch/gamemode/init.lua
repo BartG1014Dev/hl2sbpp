@@ -64,6 +64,9 @@ end
 function GM:FShouldSwitchWeapon( pPlayer, pWeapon )
 end
 
+function GM:GetPlayerHandModel(player, handStr, soundType)
+end
+
 function GM:GiveDefaultItems( pPlayer )
 	pPlayer:EquipSuit();
 

@@ -4,24 +4,33 @@
 --
 --===========================================================================--
 
-SWEP.printname				= "TOOLGUN"
-SWEP.viewmodel				= "models/weapons/c_toolgun.mdl"
-SWEP.playermodel			= "models/weapons/w_toolgun.mdl"
+SWEP.PrintName				= "TOOLGUN"
+SWEP.ViewModel				= "models/weapons/c_toolgun.mdl"
+SWEP.WorldModel				= "models/weapons/w_toolgun.mdl"
 SWEP.anim_prefix			= "smg2"
-SWEP.bucket					= 2
-SWEP.bucket_position		= 2
+SWEP.Slot					= 2
+SWEP.SlotPos				= 2
 
-SWEP.clip_size				= -1
-SWEP.clip2_size				= -1
-SWEP.default_clip			= -1
-SWEP.default_clip2			= -1
-SWEP.primary_ammo			= "None"
-SWEP.secondary_ammo			= "None"
+SWEP.Primary = 
+{
+	ClipSize = -1,
+	DefaultClip = -1,
+	Automatic = false,
+	Ammo = "None",
+}
 
-SWEP.weight					= 7
-SWEP.item_flags				= 0
+SWEP.Secondary = 
+{
+	ClipSize = -1,
+	DefaultClip = -1,
+	Automatic = false,
+	Ammo = "None",
+}
 
-SWEP.damage					= 0
+SWEP.Weight					= 7
+SWEP.ItemFlags				= 0
+
+SWEP.Damage					= 0
 
 SWEP.SoundData				=
 {
@@ -86,7 +95,7 @@ function SWEP:PrimaryAttack()
 	self:SendWeaponAnim( ACT.VM_PRIMARYATTACK );
 
 	-- @ThePixelMoon: hacky
-	self:EmitSound( "Airboat.FireGunRevDown" )
+	self:WeaponSound( WeaponSound.SINGLE )
 	 
 	ToHL2MPPlayer(pPlayer):DoAnimationEvent( PlayerAnimEvent.ATTACK_PRIMARY );
 
@@ -101,8 +110,8 @@ function SWEP:PrimaryAttack()
 	UTIL.TraceLine( vecEye, vecEye + vForward * 56755, MASK_SHOT, pPlayer, 0, tr );
 
 	-- @ThePixelMoon: GOD FUCKING DAMN IT I HATE YOU SO MUCH LUA I WISH I FUCKING
-	-- NEVER DID THAT BUT THIS PIECE OF SHIT DIDNT WORK AND THE ONLY WAY FOR IT TO
-	-- WORK IS TO DO THIS FUCKING MONSTROSITY
+				   -- NEVER DID THAT BUT THIS PIECE OF SHIT DIDNT WORK AND THE ONLY WAY FOR IT TO
+				   -- WORK IS TO DO THIS FUCKING MONSTROSITY
 	if SERVER then engine.ServerCommand("ent_create env_spark; ent_fire env_spark SparkOnce; wait; wait; wait; wait; ent_fire env_spark kill\n")
 	else engine.ClientCmd_Unrestricted("ent_create env_spark; ent_fire env_spark SparkOnce; wait; wait; wait; wait; ent_fire env_spark kill\n") end
 
@@ -210,7 +219,11 @@ function SWEP:LoadTools()
 		"tools/igniter.lua",
 		"tools/explode.lua",
 		"tools/light.lua",
-		"tools/balloon.lua"
+		"tools/balloon.lua",
+		"tools/collide.lua",
+		"tools/gravity.lua",
+		"tools/weld.lua",
+		"tools/rope.lua"
 		-- TODO: add more here
 	}
 

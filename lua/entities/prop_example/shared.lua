@@ -16,6 +16,10 @@ function ENT:Initialize()
 		self.SetAllowPrecache( allowPrecache );
 		local pPhysicsObject = self:VPhysicsInitNormal( 6, 0, false );
 
+		-- add red glow effect
+		self:SetGlowEffectColor(255, 0, 0)
+		self:AddGlowEffect()
+
 		if ( not pPhysicsObject ) then
 			self:SetSolid( SolidType.NONE );
 			self:SetMoveType( MoveType.NONE );

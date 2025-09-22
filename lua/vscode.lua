@@ -2356,7 +2356,7 @@ spawnmenu = {}
 ---@param tab string
 ---@param name string
 ---@param command string
-function addButton(tab, name, command) end
+function spawnmenu.CreateButton(tab, name, command) end
 
 ---Check if the weapon has ironsights capability
 ---@return boolean
@@ -4744,6 +4744,26 @@ function gEntList:ReportEntityFlagsChanged(ent, oldFlags, newFlags) end
 --- CBaseAnimating library providing methods for manipulating animating entities.
 --- @class CBaseAnimating : CBaseEntity
 CBaseAnimating = {}
+
+--- Adds a glow effect to the animating entity.
+---@param self CBaseAnimating The entity to add the glow to
+function CBaseAnimating:AddGlowEffect() end
+
+--- Removes the glow effect from the animating entity.
+---@param self CBaseAnimating The entity to remove the glow from
+function CBaseAnimating:RemoveGlowEffect() end
+
+--- Sets the color of the glow effect.
+---@param self CBaseAnimating The entity to set the glow color on
+---@param r integer Red component (0-255)
+---@param g integer Green component (0-255)
+---@param b integer Blue component (0-255)
+function CBaseAnimating:SetGlowEffectColor(r, g, b) end
+
+--- Checks if the glow effect is currently active on the entity.
+---@param self CBaseAnimating The entity to check
+---@return boolean True if the glow is active, false otherwise
+function CBaseAnimating:IsGlowEffectActive() end
 
 --- Adds the entity to the game world.
 function CBaseAnimating:AddEntity() end

@@ -16,8 +16,7 @@ gamestate.txt
 videoconfig_android.cfg
 # NO MOVIES!!!!
 addons/*
-!addons/example_addon
-!addons/menu
+!addons/.gitkeep
 sig.py
 materialsrc/
 mapsrc/

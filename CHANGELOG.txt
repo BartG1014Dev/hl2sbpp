@@ -1,4 +1,27 @@
 CHANGELOG
+Beta 4
+Added the following Tool Gun tools:
+	- No Collide
+	- No Gravity
+	- Rope
+	- Weld
+Updated the Lua utilities to have more functions (partial gmod compatibility before)
+Replaced the main menu backgrounds with PNG's and JPEG's instead of VTF and VMT
+Updated the Lua SWEPs syntax to use SWEP.Primary and SWEP.Secondary instead of separate fields
+Removed weapon_hl2mpbase_scripted_ironsight to put it inside weapon_hl2mpbase_scripted
+Updated the player death sound to be in script sounds instead of Lua
+Added more map thumbnails (like, A LOT)
+Moved the c_arms definitions to Lua instead of hardcoding in C++; "lua/am_i_trippinrun"
+Added(fixed) the Mega Gravity Gun (physcannon_mega_enabled)
+Moved the materials,models and map thumbnails into VPK files (vpks/ folder) for faster unpacking
+Added the following Lua functions:
+	- CBaseAnimating:AddGlowEffect()
+	- CBaseAnimating:RemoveGlowEffect()
+	- CBaseAnimating:SetGlowEffectColor(r, g, b)
+	- CBaseAnimating:SetSkin(num)
+Added 'sv_allow_any_connect' convar that allows players outside of LAN to connect
+r_flashlightdepthres default value is now 2048
+
 Beta 3
 Updated the Advanced Options menu to save the chosen playermodel
 Fixed the Default c_arms setting always being Combine instead of depending on the playermodel

@@ -4,24 +4,33 @@
 --
 --===========================================================================--
 
-SWEP.printname				= "MEDKIT"
-SWEP.viewmodel				= "models/weapons/c_medkit.mdl"
-SWEP.playermodel			= "models/weapons/w_medkit.mdl"
-SWEP.anim_prefix			= "anim"
-SWEP.bucket					= 5
-SWEP.bucket_position		= 3
+SWEP.PrintName			= "MEDKIT"
+SWEP.ViewModel			= "models/weapons/c_medkit.mdl"
+SWEP.WorldModel			= "models/weapons/w_medkit.mdl"
+SWEP.AnimPrefix			= "anim"
+SWEP.Slot				= 5
+SWEP.SlotPos			= 3
 
-SWEP.clip_size				= 30
-SWEP.clip2_size				= -1
-SWEP.default_clip			= 30
-SWEP.default_clip2			= -1
-SWEP.primary_ammo			= "ar2"
-SWEP.secondary_ammo			= "None"
+SWEP.Primary = 
+{
+	ClipSize = 30,
+	DefaultClip = 30,
+	Automatic = false,
+	Ammo = "AR2",
+}
 
-SWEP.weight					= 7
-SWEP.item_flags				= 0
+SWEP.Secondary = 
+{
+	ClipSize = -1,
+	DefaultClip = -1,
+	Automatic = false,
+	Ammo = "None",
+}
 
-SWEP.damage					= 75
+SWEP.Weight					= 7
+SWEP.ItemFlags				= 0
+
+SWEP.Damage					= 75
 
 SWEP.SoundData				=
 {
