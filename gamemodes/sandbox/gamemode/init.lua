@@ -61,6 +61,10 @@ function GM:GiveDefaultItems( pPlayer )
   end
 end
 
+function GM:LevelInit( strMapName, strMapEntities, strOldLevel, strLandmarkName, loadGame, background )
+  gpGlobals.mapname = strMapName
+end
+
 function GM:ItemShouldRespawn( pItem )
   pItem:AddSpawnFlags( 2^30 )
   -- return 6

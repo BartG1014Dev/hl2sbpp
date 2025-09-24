@@ -56,8 +56,10 @@ local HL2toHL1 = {
 function GM:FixHL1()
     local mapName = string.lower(gpGlobals.mapname)
 
-    if string.sub(mapName, 1, 1) == "t" or string.sub(mapName, 1, 1) == "c" then
-		if SERVER then engine.ServerCommand("mov_2004 1\n") end
+    if string.sub(mapName, 1, 1) == "t0" or string.sub(mapName, 1, 1) == "c0"
+	  or string.sub(mapName, 1, 1) == "c1" or string.sub(mapName, 1, 1) == "c2"
+	  or string.sub(mapName, 1, 1) == "c3" or string.sub(mapName, 1, 1) == "4" then
+		engine.ServerCommand("mov_2004 1\n")
 
         local pEntity = gEntList.FirstEnt()
         while pEntity ~= NULL do
@@ -81,7 +83,7 @@ function GM:FixHL1()
             pEntity = gEntList.NextEnt(pEntity)
         end
     else
-		if SERVER then engine.ServerCommand("mov_2004 0\n") end
+		engine.ServerCommand("mov_2004 0\n")
 	end
 end
 

@@ -21,6 +21,20 @@ Added the following Lua functions:
 	- CBaseAnimating:SetSkin(num)
 Added 'sv_allow_any_connect' convar that allows players outside of LAN to connect
 r_flashlightdepthres default value is now 2048
+Fixed the map loading screen not being aligned correctly on other resolutions
+Fixed the New Game menu sizing for other resolutions
+Fixed the New Game menu scrollbar
+Fixed (WIP) ragdoll physgun beam positioning
+Updated the Source Engine build to be the git commit hash instead of 0
+info_null is now a server-only entity
+Viewmodels can now recieve projected textures/shadows
+Now physgun_light is off by default
+Fixed some gamerules-related crashes
+Added the new default gamemode: Melon Drive
+Removed the "Spawn" from start of vehicles in the Entities tab of Spawn Menu
+Added (minimal) chairs (prop_vehicle_chair)
+Fixed some particles
+Replaced the default maps (sb_field, sb_wasteland, sbp_flatfield) with new ones; gm_construct, gm_flatgrass and gm_bigcity
 
 Beta 3
 Updated the Advanced Options menu to save the chosen playermodel

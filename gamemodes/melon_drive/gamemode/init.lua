@@ -6,11 +6,19 @@
 
 includeC( "shared.lua" )
 
-local PLAYER_SOUNDS_CITIZEN = 0
-local PLAYER_SOUNDS_COMBINESOLDIER = 1
-local PLAYER_SOUNDS_METROPOLICE = 2
+local tSpawnPointClassnames = {
+  "info_player_deathmatch",
+  "info_player_combine",
+  "info_player_rebel",
+  "info_player_terrorist",
+  "info_player_counterterrorist",
+  "info_player_axis",
+  "info_player_allies",
+  "info_player_start"
+}
 
 function GM:AddLevelDesignerPlacedObject( pEntity )
+	return false
 end
 
 function GM:AllowDamage( pVictim, info )
@@ -68,34 +76,7 @@ function GM:GetPlayerHandModel(player, handStr, soundType)
 end
 
 function GM:GiveDefaultItems( pPlayer )
-	pPlayer:EquipSuit();
-
-	_R.CBasePlayer.GiveAmmo( pPlayer, 255,	"Pistol");
-	_R.CBasePlayer.GiveAmmo( pPlayer, 45,	"SMG1");
-	_R.CBasePlayer.GiveAmmo( pPlayer, 1,	"grenade" );
-	_R.CBasePlayer.GiveAmmo( pPlayer, 6,	"Buckshot");
-	_R.CBasePlayer.GiveAmmo( pPlayer, 6,	"357" );
-
-	if ( pPlayer:GetPlayerModelType() == PLAYER_SOUNDS_METROPOLICE or pPlayer:GetPlayerModelType() == PLAYER_SOUNDS_COMBINESOLDIER ) then
-		pPlayer:GiveNamedItem( "weapon_stunstick" );
-	elseif ( pPlayer:GetPlayerModelType() == PLAYER_SOUNDS_CITIZEN ) then
-		pPlayer:GiveNamedItem( "weapon_crowbar" );
-	end
-	
-	pPlayer:GiveNamedItem( "weapon_pistol" );
-	pPlayer:GiveNamedItem( "weapon_smg1" );
-	pPlayer:GiveNamedItem( "weapon_frag" );
-	pPlayer:GiveNamedItem( "weapon_physcannon" );
-
-	local szDefaultWeaponName = engine.GetClientConVarValue( engine.IndexOfEdict( pPlayer ), "cl_defaultweapon" );
-
-	local pDefaultWeapon = pPlayer:Weapon_OwnsThisType( szDefaultWeaponName );
-
-	if ( ToBaseEntity( pDefaultWeapon ) ~= NULL ) then
-		pPlayer:Weapon_Switch( pDefaultWeapon );
-	else
-		pPlayer:Weapon_Switch( pPlayer:Weapon_OwnsThisType( "weapon_physcannon" ) );
-	end
+	--pPlayer:EquipSuit();
 end
 
 function GM:Host_Say( pPlayer, p, teamonly )
@@ -105,10 +86,21 @@ function GM:InitHUD( pPlayer )
 end
 
 function GM:ItemShouldRespawn( pItem )
+	return false
 end
 
 function GM:LevelInit( strMapName, strMapEntities, strOldLevel, strLandmarkName, loadGame, background )
-  gpGlobals.mapname = strMapName
+	gpGlobals.mapname = strMapName
+
+	local pEntity = gEntList.FirstEnt()
+	while pEntity ~= NULL do
+        local class = pEntity:GetClassname()
+		if class == "func_door" or class == "prop_door_rotating" or class == "func_door_rotating" then
+			UTIL.Remove(pEntity)
+		end
+
+        pEntity = gEntList.NextEnt(pEntity)
+    end
 end
 
 function GM:NetworkIDValidated( strUserName, strNetworkID )
@@ -127,6 +119,16 @@ function GM:PlayerDeathThink( pPlayer )
 end
 
 function GM:PlayerEntSelectSpawnPoint( pHL2MPPlayer )
+  local tSpawnPoints = {}
+  local pSpot = NULL
+  for _, classname in ipairs( tSpawnPointClassnames ) do
+    pSpot = gEntList.FindEntityByClassname( NULL, classname )
+    while ( pSpot ~= NULL ) do
+      table.insert( tSpawnPoints, pSpot )
+      pSpot = gEntList.FindEntityByClassname( pSpot, classname )
+    end
+  end
+  return tSpawnPoints[ math.random( 1, #tSpawnPoints ) ]
 end
 
 function GM:PlayerGotItem( pPlayer, pItem )
@@ -140,9 +142,54 @@ function GM:PlayerPickupObject( pHL2MPPlayer, pObject, bLimitMassAndSize )
 end
 
 function GM:PlayerSpawn( pPlayer )
+	local ent = self:PlayerEntSelectSpawnPoint( ToHL2MPPlayer( pPlayer ) )
+
+	if ent then
+		pPlayer.CurrentKartPos = ent:GetAbsOrigin()
+		pPlayer:SnapEyeAngles( ent:GetAbsAngles() )
+	else
+		pPlayer.CurrentKartPos = Vector(0,0,0)
+	end
+
+	pPlayer.kart = CreateEntityByName("prop_physics_override")
+	pPlayer.kart.PrecacheModel("models/props_junk/watermelon01.mdl")
+	pPlayer.kart:SetModel("models/props_junk/watermelon01.mdl")
+	pPlayer.kart:SetLocalOrigin(pPlayer.CurrentKartPos)
+	pPlayer.kart:KeyValue("targetname", pPlayer:GetPlayerName())
+	pPlayer.kart:Spawn()
+	pPlayer.kart:Activate()
+
+	pPlayer:StripWeapons()
 end
 
 function GM:PlayerThink( pPlayer )
+	-- should be vector, fuck
+	pPlayer.CurrentKartPos = pPlayer.kart:GetLocalOrigin()
+
+	local ang = pPlayer:EyeAngles()
+
+	local pitch = math.rad(ang.x)
+	local yaw   = math.rad(ang.y)
+
+	local forward = Vector(
+		math.cos(pitch) * math.cos(yaw),
+		math.cos(pitch) * math.sin(yaw),
+		-math.sin(pitch)
+	)
+
+	local speed = 10
+	pPlayer.kart:VPhysicsGetObject():AddVelocity(
+		forward * speed, forward * speed
+	)
+
+	ToHL2MPPlayer(pPlayer):AddFlag(32768) -- FL_GODMODE
+	ToHL2MPPlayer(pPlayer):AddFlag(65536) -- FL_NOTARGET
+	ToHL2MPPlayer(pPlayer):AddEffects(32) -- EF_NODRAW
+	pPlayer:RemoveFlag(8) 				  -- FL_DUCKING
+
+	pPlayer:SetMoveType( MoveType.NOCLIP )
+	pPlayer:SetLocalOrigin( pPlayer.CurrentKartPos - Vector(0,0,60) )
+	pPlayer:SetFOV(pPlayer, 100, 0, 0)
 end
 
 function GM:RemoveLevelDesignerPlacedObject( pEntity )
@@ -167,4 +214,5 @@ function GM:WeaponShouldRespawn( pWeapon )
 end
 
 function GM:Weapon_Equip( pPlayer, pWeapon )
+	pPlayer:StripWeapons()
 end

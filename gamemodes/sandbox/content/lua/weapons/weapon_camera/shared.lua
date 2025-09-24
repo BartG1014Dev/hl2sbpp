@@ -15,7 +15,7 @@ SWEP.Primary =
 {
 	ClipSize = -1,
 	DefaultClip = -1,
-	Automatic = false,
+	Automatic = true,
 	Ammo = "AR2",
 }
 
@@ -23,7 +23,7 @@ SWEP.Secondary =
 {
 	ClipSize = -1,
 	DefaultClip = -1,
-	Automatic = false,
+	Automatic = true,
 	Ammo = "None",
 }
 
