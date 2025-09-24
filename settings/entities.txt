@@ -166,21 +166,25 @@
 		{
 			"#"	"ent_create item_ammo_crate AmmoType 9"
 		}
-		"Spawn Jeep"
+		"Jeep"
 		{
 			"#"	"ch_createjeep"
 		}
-		"Spawn Jalopy (EP2)"
+		"Jalopy (EP2)"
 		{
 			"#"	"ent_create prop_vehicle_jeep actionScale 1 model models/vehicle.mdl vehiclescript scripts/vehicles/jalopy.txt enablegun 0"
 		}
-		"Spawn Airboat"
+		"Airboat"
 		{
 			"#"	"ch_createairboat"
 		}
-		"Spawn Airboat w/Gun"
+		"Airboat w/Gun"
 		{
 			"#"	"ch_createairboat;ent_setname airboatwithgun;ent_fire airboatwithgun enablegun 1"
+		}
+		"Chair"
+		{
+			"#"	"ent_create prop_vehicle_chair"
 		}
 		"Explosion"
 		{

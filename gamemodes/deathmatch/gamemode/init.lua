@@ -108,6 +108,7 @@ function GM:ItemShouldRespawn( pItem )
 end
 
 function GM:LevelInit( strMapName, strMapEntities, strOldLevel, strLandmarkName, loadGame, background )
+  gpGlobals.mapname = strMapName
 end
 
 function GM:NetworkIDValidated( strUserName, strNetworkID )
