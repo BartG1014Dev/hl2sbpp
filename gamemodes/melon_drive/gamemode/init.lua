@@ -164,6 +164,16 @@ end
 
 function GM:PlayerThink( pPlayer )
 	-- should be vector, fuck
+	if not IsValid(pPlayer.kart) then
+		pPlayer.kart = CreateEntityByName("prop_physics_override")
+		pPlayer.kart.PrecacheModel("models/props_junk/watermelon01.mdl")
+		pPlayer.kart:SetModel("models/props_junk/watermelon01.mdl")
+		pPlayer.kart:SetLocalOrigin(pPlayer.CurrentKartPos)
+		pPlayer.kart:KeyValue("targetname", pPlayer:GetPlayerName())
+		pPlayer.kart:Spawn()
+		pPlayer.kart:Activate()
+	end
+
 	pPlayer.CurrentKartPos = pPlayer.kart:GetLocalOrigin()
 
 	local ang = pPlayer:EyeAngles()
@@ -188,7 +198,7 @@ function GM:PlayerThink( pPlayer )
 	pPlayer:RemoveFlag(8) 				  -- FL_DUCKING
 
 	pPlayer:SetMoveType( MoveType.NOCLIP )
-	pPlayer:SetLocalOrigin( pPlayer.CurrentKartPos - Vector(0,0,60) )
+	pPlayer:SetLocalOrigin( pPlayer.CurrentKartPos - Vector(0,0,70) )
 	pPlayer:SetFOV(pPlayer, 100, 0, 0)
 end
 
