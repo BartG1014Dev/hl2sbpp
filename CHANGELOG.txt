@@ -1,4 +1,15 @@
 CHANGELOG
+Beta 5
+Added more map thumbnails
+Fixed a crash when spawning HL1 Apache
+Fixed random crashes due to SWEPs
+Fixed singleplayer pausing
+Fixed SLAM not being able to throw
+Updated the Physics Gun
+Fixed detail objects
+Updated the initial loading screen to more look like GMod
+Fixed 'sourcefetch'
+
 Beta 4
 Added the following Tool Gun tools:
 	- No Collide
