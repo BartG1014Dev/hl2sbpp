@@ -69,15 +69,19 @@ function LocalPlayer()
   end
 end
 
+local FCVAR_CLIENTDLL = _E.FCVAR.CLIENTDLL
+local FCVAR_ARCHIVE = _E.FCVAR.ARCHIVE
+local FCVAR_USERINFO = _E.FCVAR.USERINFO
+
 function CreateClientConVar(strName, strDefault, bSave, bUserData)
-  local flags = FCVAR.CLIENTDLL
+  local flags = FCVAR_CLIENTDLL
 
   if bSave then
-    flags = bit.bor(flags, FCVAR.ARCHIVE)
+    flags = bit.bor(flags, FCVAR_ARCHIVE)
   end
 
   if bUserData then
-    flags = bit.bor(flags, FCVAR.USERINFO)
+    flags = bit.bor(flags, FCVAR_USERINFO)
   end
 
   local convar = ConVar(strName, strDefault, flags)
