@@ -1,23 +1,53 @@
 -- example_panel.lua
+-- All Palm controls must start with a P! Example: PButton, PLabel
+
 local concommand = require( "concommand" )
 include("palm/cl_init.lua")
 
 local FCVAR_CLIENTDLL = _E.FCVAR.CLIENTDLL
 
 local function OnOpenExamplePanel()
-	local Frame = vgui.Create( "PFrame" )
-	Frame:SetPos( 5, 5 ) 
-	Frame:SetSize( 300, 150 ) 
-	Frame:SetTitle( "Name window" ) 
-	Frame:SetVisible( true ) 
-	Frame:SetDraggable( false ) 
-	Frame:ShowCloseButton( true ) 
+	local NewFrame = vgui.Create(
+		"PFrame" -- Control name
+	)
+	NewFrame:SetPos( 5, 5 ) -- x, y
+	NewFrame:SetSize( 300, 150 ) -- width, height
+	NewFrame:SetTitle( "Name window" ) 
+	NewFrame:SetVisible( true ) 
+	NewFrame:SetDraggable( false ) -- can move or no?
+	NewFrame:ShowCloseButton( true ) -- enable close button or no?
 
-	local Label = vgui.Create( "PLabel", Frame, "Ass" )
-	Label:SetPos( 5, 30 )
-	Label:SetVisible( true )
+	local NewLabel = vgui.Create(
+		"PLabel", -- Control name
+		NewFrame, -- Parent
+		"Ass" -- Text
+	)
+	NewLabel:SetPos( 5, 30 ) --x, y
+	NewLabel:SetVisible( true )
 
-	Frame:MakePopup()
+	local NewButton = vgui.Create(
+		"PButton", -- Control name
+		NewFrame, -- parent
+		"Batman", -- Text
+		NewFrame, -- Action signal
+		"Batman" -- Command name
+	)
+	NewButton:SetPos(5, 60) -- x, y
+
+	-- We set a command hook.
+	NewFrame.OnCommand = function(self, command) -- self is required!
+		-- If command equals Batman, print I am Batman
+		if command == "Batman" then
+			print("I am Batman")
+		end
+	end
+
+	NewFrame:MakePopup() -- moves to center
 end
 
-concommand.Create( "OpenExamplePanel", OnOpenExamplePanel, "Opens an example panel.", FCVAR_CLIENTDLL )
+concommand.Create(
+	"OpenExamplePanel", -- Name
+	OnOpenExamplePanel, -- Function
+	"Opens an example panel.", -- Description
+	FCVAR_CLIENTDLL --Flags
+)
