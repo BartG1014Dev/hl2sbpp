@@ -2,11 +2,14 @@ CREDITS
 ThePixelMoon/YourLocalMoon - Lead programmer
 Waltenthethird - Helping fix thirdperson animations
 Ashforever - Provider of fixed GMod models
-Kokoleong - (TODO: add this one)
 MrDinnerMau5 - Supporter, advertising
-R_4d - (TODO: add this one)
 Graman/Carl - Suggestions
 ItzVladik - Contributor, the one who allowed me to use his mov_ convars from GunMod
+
+CONTRIBUTORS
+hahayoutookind - Russian translation
+Kokoleong - Fancy hat
+R_4d - Fancy hat..again
 
 PLAYTESTERS
 Inflesi

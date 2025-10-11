@@ -1,4 +1,4 @@
---========== Copyleft � 2010, Team Sandbox, Some rights reserved. ===========--
+--========== Copyright (C) 2025, Team HL2SB++, All rights reserved. ===========--
 --
 -- Purpose:
 --
@@ -22,7 +22,6 @@ function GM:AddLevelDesignerPlacedObject( pEntity )
 end
 
 function GM:PlayerSpawn( pPlayer )
-  pPlayer:SetArmorValue( 100 ) -- @ThePixelMoon: erm... yeah
 end
 
 function GM:GiveDefaultItems( pPlayer )
@@ -38,6 +37,22 @@ function GM:GiveDefaultItems( pPlayer )
   _R.CBasePlayer.GiveAmmo( pPlayer, 3,		"rpg_round" );
   _R.CBasePlayer.GiveAmmo( pPlayer, 3,		"slam" );
   
+  _R.CBasePlayer.GiveAmmo( pPlayer, 255, "9mmRound" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 32,  "357Round" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 10,  "MP5_Grenade" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 3,   "RPG_Rocket" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 255, "Uranium" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 255, "Hornet" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 255, "Snark" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 3,   "TripMine" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 3,   "Satchel" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 255, "12mmRound" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 255, "BuckshotHL1" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 255, "XBowBoltHL1" )
+  _R.CBasePlayer.GiveAmmo( pPlayer, 5,   "GrenadeHL1" )
+  
+  _R.CBasePlayer.GiveAmmo( pPlayer, 30,  "Medkit" )
+
   pPlayer:GiveNamedItem( "weapon_crowbar" )
   --pPlayer:GiveNamedItem( "weapon_stunstick" )
   pPlayer:GiveNamedItem( "weapon_pistol" )

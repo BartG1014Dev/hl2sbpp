@@ -1,4 +1,4 @@
---======== Copyleft � 2010-2011, Team Sandbox, Some rights reserved. ========--
+--======== Copyright (C) 2025-2025, Team HL2SB++, All rights reserved. ========--
 --
 -- Purpose:
 --
@@ -19,11 +19,9 @@ function ENT:Initialize()
 		local allowPrecache = self.IsPrecacheAllowed();
 		self.SetAllowPrecache( true );
 
-		local randInt = random.RandomInt(1, 9)
-		local randInt2 = random.RandomInt(1, 3)
-
-		self.PrecacheModel( "models/player/group0" .. tostring(randInt2) .. "/male_0"  .. tostring(randInt) .. ".mdl" );
-		self:SetModel( "models/player/group0" .. tostring(randInt2) .. "/male_0" .. tostring(randInt) .. ".mdl" );
+		-- no random for now
+		self.PrecacheModel( "models/player/group03/male_07.mdl" );
+		self:SetModel( "models/player/group03/male_07.mdl" );
 
 		self.SetAllowPrecache( allowPrecache );
 
@@ -32,9 +30,9 @@ function ENT:Initialize()
 			self:SetSolid( SolidType.NONE );
 			self:SetMoveType( MoveType.NONE );
 			Warning("ERROR!: Can't create physics object for " .. self:GetModelName() .. "\n" );
+		else
+			pPhysicsObject:Wake();
 		end
-
-		pPhysicsObject:Wake();
 	end
 
 	self:SetHealth( 100 );
@@ -49,10 +47,10 @@ function ENT:Initialize()
 
 	self.IsFiring = false
 	self.FollowPlayer = true -- DoMove must be true for this!
-	self.DebugAnim = true
+	self.DebugAnim = false
 	self.DoMove = true
 
-	self:GiveWeapon("weapon_smg1")
+	--self:GiveWeapon("weapon_smg1")
 end
 
 function ENT:TakeDamage(dmginfo)

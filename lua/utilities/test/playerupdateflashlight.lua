@@ -1,4 +1,4 @@
---======== Copyleft © 2010-2011, Team Sandbox, Some rights reserved. ========--
+--======== Copyright © 2025-2025, Team HL2SB++, All rights reserved. ========--
 --
 -- Purpose: Tests the implementation of the PlayerUpdateFlashlight hook.
 --

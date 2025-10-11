@@ -1975,3 +1975,9 @@ ACT = {
 	MP_SWIM_IDLE = 1974,
     LAST_SHARED_ACTIVITY = 1743,
 }
+
+-- GMED Compatibility lololol
+-- why? why not. if you don't like this, go ahead and try to fight me bitch
+for key, value in pairs(ACT) do
+    _G["ACT_" .. key] = value
+end

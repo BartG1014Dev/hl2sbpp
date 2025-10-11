@@ -100,6 +100,5 @@ end
 
 -- find files/folders in a directory
 function file.Find(pattern, path, sorting)
-	-- TODO: fix
-    return nil, nil
+    return filesystem.Find(pattern, path or "MOD")
 end

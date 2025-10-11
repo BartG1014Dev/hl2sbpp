@@ -24,8 +24,13 @@ end
 function sound.Play(name, pos, level, pitch, volume)
     if CLIENT then
         surface.PlaySound(name)
+	else
+		local tempEnt = ents.Create("info_target")
+		tempEnt:Spawn()
+		tempEnt:Activate()
+		tempEnt:SetAbsOrigin(Vector(0,0,0))
+		tempEnt:EmitSound(name)
 	end
-	-- TODO: add serverside sounds
 end
 
 function sound.Emit(ent, name, level, pitch, volume)

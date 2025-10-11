@@ -1,8 +1,10 @@
---========== Copyleft � 2010, Team Sandbox, Some rights reserved. ===========--
+--========== Copyright (C) 2025, Team HL2SB++, All rights reserved. ===========--
 --
 -- Purpose: Initialize the base scripted weapon.
 --
 --===========================================================================--
+
+TOOL_PATH = "lua/weapons/weapon_toolgun/"
 
 SWEP.PrintName				= "TOOLGUN"
 SWEP.ViewModel				= "models/weapons/c_toolgun.mdl"
@@ -89,6 +91,7 @@ end
 
 function SWEP:PrimaryAttack()
 	local pPlayer = self:GetOwner()
+	if not IsValid(pPlayer) then return end
 
 	self.m_flNextPrimaryAttack = gpGlobals.curtime() + 0.15;
 	
@@ -167,6 +170,7 @@ end
 
 function SWEP:SecondaryAttack()
 	local pPlayer = self:GetOwner()
+	if not IsValid(pPlayer) then return end
 
     if not next(self.Tools) then
         DevWarning("Tools not loaded yet\n")
@@ -211,21 +215,12 @@ function SWEP:Deploy()
 end
 
 function SWEP:LoadTools()
-	local toolFiles = {
-		"tools/dissolver.lua",
-		"tools/remover.lua",
-		"tools/duplicator.lua",
-		"tools/color.lua",
-		"tools/igniter.lua",
-		"tools/explode.lua",
-		"tools/light.lua",
-		"tools/balloon.lua",
-		"tools/collide.lua",
-		"tools/gravity.lua",
-		"tools/weld.lua",
-		"tools/rope.lua"
-		-- TODO: add more here
-	}
+	local toolFiles = {}
+
+	local files, dirs = file.Find(TOOL_PATH .. "tools/*.lua", "MOD")
+	for _, filename in ipairs(files) do
+		table.insert(toolFiles, "tools/" .. filename)
+	end
 
 	for _, path in ipairs(toolFiles) do
 		--if filesystem.FileExists("lua/" .. path, "MOD") then

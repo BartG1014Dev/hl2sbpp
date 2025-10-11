@@ -1,5 +1,90 @@
 ---@diagnostic disable: duplicate-set-field, missing-return
 
+---@class smlib_Private
+smlib_Private = {}
+
+---@param name string
+---@param spawnlist? string
+---@param icon? string
+---@return integer|nil, string? # tab index or nil + error
+function smlib_Private.CreateTab(name, spawnlist, icon) end
+
+---@param name string
+---@return integer|nil
+function smlib_Private.FindTabByName(name) end
+
+---@param name string
+---@return boolean
+function smlib_Private.TabExists(name) end
+
+---@return integer
+function smlib_Private.GetNumTabs() end
+
+---@param index integer
+---@return string|nil
+function smlib_Private.GetTabName(index) end
+
+---@param index integer
+---@return boolean
+function smlib_Private.ClearTab(index) end
+
+---@param tab integer
+---@param text string
+---@return boolean
+function smlib_Private.CreateHeader(tab, text) end
+
+---@param tab integer
+---@param displayName string
+---@param modelPath string
+---@param command? string
+---@return boolean
+function smlib_Private.CreateModelButton(tab, displayName, modelPath, command) end
+
+---@param tab integer
+---@param displayName string
+---@param imagePath string
+---@param command? string
+---@return boolean
+function smlib_Private.CreateImageButton(tab, displayName, imagePath, command) end
+
+---@param tab integer
+---@param text string
+---@return boolean
+function smlib_Private.HeaderExists(tab, text) end
+
+---@param tab integer
+---@param displayName string
+---@param modelPath string
+---@return boolean
+function smlib_Private.ModelButtonExists(tab, displayName, modelPath) end
+
+---@param tab integer
+---@param displayName string
+---@param imagePath string
+---@return boolean
+function smlib_Private.ImageButtonExists(tab, displayName, imagePath) end
+
+---@param tab integer
+---@param entry integer
+---@return boolean
+function smlib_Private.RemoveEntry(tab, entry) end
+
+---@param tabIndex integer
+---@param headerName string Header text to place the button under.
+---@param displayName string
+---@param modelPath string
+---@param command? string|nil
+---@return boolean success
+function smlib_Private.CreateModelButtonInHeader(tabIndex, headerName, displayName, modelPath, command) end
+
+---@param tabIndex integer
+---@param headerName string Header text to place the button under.
+---@param displayName string
+---@param imagePath string
+---@param command? string|nil
+---@return boolean success
+function smlib_Private.CreateImageButtonInHeader(tabIndex, headerName, displayName, imagePath, command) end
+
 ---Base class for Scripted Weapons (SWEPs)
 ---@class SWEP : CBaseCombatWeapon
 ---@field printname string        # Display name (can be a localization token, e.g. "#HL2_357Handgun")
@@ -1551,6 +1636,12 @@ function player:IsObserver() end
 ---@return boolean
 function player:IsPlayer() end
 
+---@class hintlib
+hintlib = {}
+
+function hintlib.AddHint(name,delay) end
+function hintlib.AddNotify(name, type, dur) end
+
 ---Return true if player is currently underwater.
 ---@return boolean
 function player:IsPlayerUnderwater() end
@@ -2348,15 +2439,6 @@ function entity:EntityToWorldSpace(inVec, outVec) end
 ---Get the entity's eye angles (if it has eyes).
 ---@return QAngle
 function entity:EyeAngles() end
-
----@class spawnmenu
-spawnmenu = {}
-
----Adds a button to the spawnmenu.
----@param tab string
----@param name string
----@param command string
-function spawnmenu.CreateButton(tab, name, command) end
 
 ---Check if the weapon has ironsights capability
 ---@return boolean
@@ -5506,6 +5588,8 @@ function filesystem.AddSearchPath(path, pathID, addToTail) end
 ---Begins access to map files.
 function filesystem.BeginMapAccess() end
 
+function filesystem.Find(str, str) end
+
 ---Ends access to map files.
 function filesystem.EndMapAccess() end
 
@@ -7450,7 +7534,7 @@ function Frame:SetSmallCaption(small) end
 
 --- Sets the title.
 --- @param title string The title text.
---- @param unknown boolean Unknown param (from code).
+--- @param unknown boolean? Unknown param (from code).
 function Frame:SetTitle(title, unknown) end
 
 --- Sets title bar visibility.
@@ -8221,48 +8305,6 @@ function surface.SurfaceSetCursorPos(x, y) end
 --- Unlocks cursor.
 function surface.UnlockCursor() end
 
---- @class FONTFLAG
-FONTFLAG = {}
-
---- No font flag.
-FONTFLAG.NONE = 0
-
---- Italic font.
-FONTFLAG.ITALIC = 1
-
---- Underline font.
-FONTFLAG.UNDERLINE = 2
-
---- Strikeout font.
-FONTFLAG.STRIKEOUT = 3
-
---- Symbol font.
-FONTFLAG.SYMBOL = 4
-
---- Antialias font.
-FONTFLAG.ANTIALIAS = 5
-
---- Gaussian blur font.
-FONTFLAG.GAUSSIANBLUR = 6
-
---- Rotary font.
-FONTFLAG.ROTARY = 7
-
---- Dropshadow font.
-FONTFLAG.DROPSHADOW = 8
-
---- Additive font.
-FONTFLAG.ADDITIVE = 9
-
---- Outline font.
-FONTFLAG.OUTLINE = 10
-
---- Custom font.
-FONTFLAG.CUSTOM = 11
-
---- Bitmap font.
-FONTFLAG.BITMAP = 12
-
 --- VGUI namespace for constructors.
 --- @class vgui
 vgui = {}
@@ -8307,10 +8349,6 @@ function vgui.PropertyDialog(parent, panelName) end
 --- @param panelName string Name.
 --- @return PropertyPage
 function vgui.PropertyPage(parent, panelName) end
-
---- Gets client Lua root panel.
---- @return Panel
-function vgui.VGui_GetClientLuaRootPanel() end
 
 --- Scheme library functions.
 --- @class scheme
@@ -8564,6 +8602,65 @@ function IMaterial:WasReloadedFromWhitelist() end
 --- Returns string representation.
 ---@return string
 function IMaterial:__tostring() end
+
+
+---@class CAmmoDef
+local CAmmoDef = {}
+
+--- Returns the internal ammo index for a given ammo name.
+---@param name string The name of the ammo type (e.g. `"9mmRound"`).
+---@return integer index The internal index, or -1 if not found.
+function CAmmoDef:Index(name) end
+
+--- Returns the damage dealt by the player using this ammo type.
+---@param ammoIndex integer Ammo type index, usually from `CAmmoDef:Index()`.
+---@return number damage The damage value for the player.
+function CAmmoDef:PlrDamage(ammoIndex) end
+
+--- Returns the damage dealt by NPCs using this ammo type.
+---@param ammoIndex integer Ammo type index.
+---@return number damage The damage value for NPCs.
+function CAmmoDef:NPCDamage(ammoIndex) end
+
+--- Returns the max amount of this ammo type the player can carry.
+---@param ammoIndex integer Ammo type index.
+---@return number maxCarry The maximum carry count.
+function CAmmoDef:MaxCarry(ammoIndex) end
+
+--- Registers a new ammo type.
+--- Example:
+--- ```lua
+--- def:AddAmmoType(
+---     "357Round",
+---     bit.bor(DMG_BULLET, DMG_NEVERGIB), -- damage type
+---     AmmoTracer.NONE,                   -- tracer type
+---     "sk_plr_dmg_357_bullet",           -- player damage (ConVar or number)
+---     nil,                               -- NPC damage (optional)
+---     "sk_max_357_bullet",               -- max carry (ConVar or number)
+---     BULLET_IMPULSE(650, 6000),         -- impulse force
+---     0                                  -- flags
+--- )
+--- ```
+---@param name string Name of the ammo type (unique identifier).
+---@param dmgType integer|string Damage type constant or expression (e.g. `DMG_BULLET` or `bit.bor(DMG_BULLET, DMG_SHOCK)`).
+---@param tracerType integer|string Tracer type constant (e.g. `AmmoTracer.NONE`).
+---@param plrDmg number|string Player damage amount or skill cvar name.
+---@param npcDmg? number|string NPC damage amount or skill cvar name (optional).
+---@param maxCarry number|string Maximum carry amount or cvar name.
+---@param impulse number|string Impulse force or cvar name.
+---@param flags? integer|string Optional flags bitmask.
+---@param minSplash? integer Minimum splash radius (default: 4).
+---@param maxSplash? integer Maximum splash radius (default: 8).
+function CAmmoDef:AddAmmoType(name, dmgType, tracerType, plrDmg, npcDmg, maxCarry, impulse, flags, minSplash, maxSplash) end
+
+--- Returns a string representation for debugging.
+---@return string
+function CAmmoDef:__tostring() end
+
+
+--- Global function that returns the singleton CAmmoDef instance.
+---@return CAmmoDef
+function AmmoDef() end
 
 --- global NULL value
 NULL = nil

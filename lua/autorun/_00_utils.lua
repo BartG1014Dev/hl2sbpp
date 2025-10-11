@@ -46,16 +46,11 @@ function DEFINE_FACTORY( name )
 	end
 end
 
-function IsValid( object )
-    if object == nil then
-        return false
-    end
+function IsValid(object)
+	if object == nil then return false end
+	if object == NULL then return false end
 
-    if object == NULL then
-        return false
-    end
-
-    return true
+	return true
 end
 
 function CurTime()

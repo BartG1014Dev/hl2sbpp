@@ -1,4 +1,4 @@
---========== Copyleft � 2010, Team Sandbox, Some rights reserved. ===========--
+--========== Copyright (C) 2025, Team HL2SB++, All rights reserved. ===========--
 --
 -- Purpose:
 --
@@ -11,6 +11,10 @@ GM.Manual     = nil
 
 function GM:Initialize()
   self.m_bTeamPlayEnabled = cvar.FindVar( "mp_teamplay" ):GetBool()
+
+if ( not _CLIENT) then
+	engine.ServerCommand("sv_spawnmenu_allowed 0\n")
+end
 end
 
 function GM:Shutdown()
@@ -28,6 +32,9 @@ function GM:CheckGameOver()
 end
 
 function GM:ClientSettingsChanged( pPlayer )
+end
+
+function GM:GetAmmoDef( def )
 end
 
 function GM:CreateStandardEntities()

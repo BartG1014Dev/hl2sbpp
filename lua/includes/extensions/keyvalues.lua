@@ -1,4 +1,4 @@
---========== Copyleft © 2013, Team Sandbox, Some rights reserved. ===========--
+--========== Copyright © 2025, Team HL2SB++, All rights reserved. ===========--
 --
 -- Purpose: Extends the keyvalues type.
 --
