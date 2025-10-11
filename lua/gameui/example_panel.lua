@@ -6,6 +6,7 @@ include("palm/cl_init.lua")
 
 local FCVAR_CLIENTDLL = _E.FCVAR.CLIENTDLL
 
+-- Local means dont use it anywhere else
 local function OnOpenExamplePanel()
 	local NewFrame = vgui.Create(
 		"PFrame" -- Control name

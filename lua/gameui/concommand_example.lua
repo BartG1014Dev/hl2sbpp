@@ -4,6 +4,7 @@ local concommand = require( "concommand" )
 
 local FCVAR_CLIENTDLL = _E.FCVAR.CLIENTDLL
 
+-- Local means dont use it anywhere else
 local function OnTestCmd()
 	print("Hello, i am in a ConCommand!")
 end
