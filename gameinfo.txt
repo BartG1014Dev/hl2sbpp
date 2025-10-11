@@ -34,12 +34,18 @@
 			game 			|all_source_engine_paths|hl2/hl2_pak.vpk
 			platform		|all_source_engine_paths|platform/platform_misc.vpk
 
+			game			|all_source_engine_paths|hl2_complete/hl2_complete_textures.vpk
+			game			|all_source_engine_paths|hl2_complete/hl2_complete_sound_vo_english.vpk
+			game			|all_source_engine_paths|hl2_complete/hl2_complete_sound_misc.vpk
+			game			|all_source_engine_paths|hl2_complete/hl2_complete_misc.vpk
+
 			mod+mod_write+default_write_path		|gameinfo_path|.
 
 			game+game_write		hl2sbpp
 			gamebin				hl2sbpp/bin
 
 			game				|all_source_engine_paths|hl2
+			game				|all_source_engine_paths|hl2_complete
 			platform			|all_source_engine_paths|platform
 
 			game+download	hl2sbpp/download
