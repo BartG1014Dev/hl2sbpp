@@ -4,6 +4,8 @@
 --
 --===========================================================================--
 
+local Timer = require( "timer" )
+
 GM.Name       = "Deathmatch"
 GM.Homepage   = "http://www.steampowered.com/"
 GM.Developer  = "Valve"
@@ -103,6 +105,8 @@ function GM:ShouldCollide( collisionGroup0, collisionGroup1 )
 end
 
 function GM:Think()
+	-- Should be fine.
+	Timer.Think()
 end
 
 function GM:VecWeaponRespawnSpot( pWeapon )

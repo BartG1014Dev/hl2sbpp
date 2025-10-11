@@ -1,8 +1,9 @@
 -- timer.lua
-local hook = require("hook")
 
 Timer = {}
 Timer.timers = {}
+
+local nameCounter = 0
 
 function Timer.Think()
   local now = CurTime()
@@ -10,7 +11,6 @@ function Timer.Think()
     if now >= t.nextTime then
       local ok, err = pcall(t.func)
       if not ok then print("Timer error:", err) end
-
       if t.repetitions == 0 then
         t.nextTime = now + t.delay
       elseif t.repetitions > 1 then
@@ -23,17 +23,16 @@ function Timer.Think()
   end
 end
 
---hook.Add("Think", "TimerAutoThink", Timer.Think)
-
 function Timer.Add(name, delay, repetitions, func)
-  if type(name) == "function" then
-    func, repetitions, delay, name = name, repetitions, delay, tostring(math.random(1,1e9))
+  if name == nil then
+    nameCounter = nameCounter + 1
+    name = "timer_" .. nameCounter
   end
   Timer.timers[name] = {
     delay = delay,
     repetitions = repetitions or 1,
     func = func,
-    nextTime = engine.Time() + delay
+    nextTime = CurTime() + delay  -- Changed from engine.Time() to CurTime()
   }
   return name
 end
@@ -45,3 +44,5 @@ end
 function Timer.Remove(name)
   Timer.timers[name] = nil
 end
+
+return Timer
