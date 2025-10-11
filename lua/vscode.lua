@@ -7011,6 +7011,10 @@ function Panel:SetEnabled(enabled) end
 --- @param color Color Color.
 function Panel:SetFgColor(color) end
 
+--- Sets content alignment.
+--- @param int Int int.
+function Panel:SetContentAlignment(int) end
+
 --- Sets keyboard input enabled.
 --- @param enabled boolean Enabled.
 function Panel:SetKeyBoardInputEnabled(enabled) end
