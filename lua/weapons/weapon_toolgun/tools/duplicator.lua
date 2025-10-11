@@ -8,7 +8,7 @@ local function IsValidEntity(ent)
 end
 
 function TOOL:PrimaryAttack(swep, player, trace)
-    if CLIENT then return end
+    --if CLIENT then return end
 
     if trace:DidHitWorld() then
 		if not self.CopiedData then
@@ -79,7 +79,9 @@ function TOOL:PrimaryAttack(swep, player, trace)
 			phys:Wake()
 		end
 
-		print("Entity pasted:", data.class, data.model or "")
+		if _CLIENT then
+			hintlib.AddNotify( "Entity pasted: " .. data.class, 0, 5 )
+		end
         return
     else
 		local ent = trace.m_pEnt
@@ -111,7 +113,9 @@ function TOOL:PrimaryAttack(swep, player, trace)
 			0
 		)
 
-		print("Entity copied:", self.CopiedData.class, self.CopiedData.model or "")
+		if _CLIENT then
+			hintlib.AddNotify( "Entity copied: " .. self.CopiedData.class, 0, 5 )
+		end
 	end
 end
 

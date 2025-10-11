@@ -1,4 +1,28 @@
 CHANGELOG
+Beta 6
+- Fixes
+Fixed SWEPs crashing the game
+Fixed in-game messagemode command
+Fixed in-game Chairs
+Refactored the glow outline effect
+Restored prisoner pods!!!!
+Fixed & restored four-wheel vehicles freezing for the Physgun
+Fixed the Snark and Tripmine weapon not giving
+
+- Additions
+Added DeploySpeed to SWEPs
+Revamped the WHOLE spawnmenu, alongside new smlib library in Lua
+Lua now allowes single-file entities and SWEPs
+Added player.GetAll() in Lua
+Allowed PNGs and JPEGs for Touch controls
+Add Russian translation (hahayoutookind)
+Added changelog in main menu
+Added in-game hints with concommand add_hint, alongside new hintlib library in Lua
+Added sv_spawnmenu_allowed ConVar
+Added sv_clientside_lua_allowed ConVar
+Allowed vehicles to be created in lua
+Added localizations for all HL:S weapons
+
 Beta 5
 Added more map thumbnails
 Fixed a crash when spawning HL1 Apache

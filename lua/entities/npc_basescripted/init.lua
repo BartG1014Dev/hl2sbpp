@@ -1,4 +1,4 @@
---======== Copyleft � 2010-2011, Team Sandbox, Some rights reserved. ========--
+--======== Copyright (C) 2025-2025, Team HL2SB++, All rights reserved. ========--
 --
 -- Purpose:
 --
@@ -6,6 +6,11 @@
 
 includeC( "shared.lua" )
 includeC( "anims.lua" )
+
+local ATTACK_RADIUS = 100
+local MAX_TARGETS = 3
+local ATTACK_INTERVAL = 0.5
+local MOVE_SPEED = 500
 
 local function AngleDifference(a, b)
     local diff = (a - b) % 360
@@ -112,6 +117,49 @@ function ENT:HandleFootsteps()
     end
 end
 
+local function GetNearestPlayers(pos, radius)
+    local players = player.GetAll()
+    local candidates = {}
+
+    for _, ply in ipairs(players) do
+        if IsValid(ply) and ply:IsAlive() then
+            local d = (ply:GetAbsOrigin() - pos):Length()
+            if d <= radius then
+                table.insert(candidates, {ply = ply, dist = d})
+            end
+        end
+    end
+
+    table.sort(candidates, function(a,b) return a.dist < b.dist end)
+    return candidates
+end
+
+function ENT:AttackNearestPlayers()
+    local now = gpGlobals.curtime()
+    if self._NextAttackTime and now < self._NextAttackTime then return end
+    self._NextAttackTime = now + ATTACK_INTERVAL
+
+    local pos = self:GetAbsOrigin()
+    local candidates = GetNearestPlayers(pos, ATTACK_RADIUS)
+    if #candidates == 0 then return end
+
+    local toAttack = math.min(MAX_TARGETS, #candidates)
+	for i = 1, toAttack do
+		local target = candidates[i].ply
+		if IsValid(target) and target:IsAlive() then
+			effect.Dissolve(
+				target,
+				"sprites/blueglow1.vmt",
+				gpGlobals.curtime(),
+				0
+			)
+
+			self.PrecacheSound("npc/fast_zombie/fz_scream1.wav")
+			self:EmitSound("npc/fast_zombie/fz_scream1.wav")
+		end
+	end
+end
+
 function ENT:MoveThink()
     local pos = self:GetAbsOrigin()
 
@@ -135,7 +183,7 @@ function ENT:MoveThink()
             end
         else
             --Warning("Unable to find nearest area. Do you have a navigation mesh?\n")
-            newTarget = pos + Vector(random.RandomInt(-200,200), random.RandomInt(-200,200), 0)
+            newTarget = pos + Vector(random.RandomInt(-2000,2000), random.RandomInt(-2000,2000), 0)
         end
 
         if newTarget then
@@ -173,37 +221,79 @@ function ENT:MoveThink()
         end
     end
 
-    if self.TargetPos and self.DoMove then
-        local dir = self.TargetPos - pos
-        local len = dir:Length()
-        if len > 0 then
-            dir = dir / len
-			dir.z = 0
-            self:SetAbsVelocity(dir * 130)
+	if self.TargetPos and self.DoMove then
+		local dir = self.TargetPos - pos
+		local len = dir:Length()
+		if len > 0 then
+			dir = dir / len
 
-            local phys = self:VPhysicsGetObject()
-			if phys and phys ~= NULL then
-				phys:SetVelocity(dir * 130, dir * 130)
+			local trGround = trace_t()
+			local groundTraceDist = 32
+			UTIL.TraceLine(
+				pos,
+				pos - Vector(0,0,groundTraceDist),
+				_E.MASK.SOLID,
+				self,
+				0,
+				trGround
+			)
+
+			local groundNormal = Vector(0,0,1)
+			local onGround = false
+			if trGround and trGround.Hit then
+				onGround = true
+				if trGround.PlaneNormal then
+					groundNormal = trGround.PlaneNormal
+				end
 			end
 
-            -- smooth rotation lol
-            local desiredYaw = math.deg(math.atan2(dir.y, dir.x))
-            local curAng = self:GetAbsAngles()
-            local smoothYaw = curAng.y + AngleDifference(desiredYaw, curAng.y) * 0.1
-            curAng.y = smoothYaw
-            self:SetAbsAngles(curAng)
+			-- forward = dir - (groundNormal * dot(dir, groundNormal))
+			local dot = dir.x * groundNormal.x + dir.y * groundNormal.y + dir.z * groundNormal.z
+			local forward = Vector(
+				dir.x - groundNormal.x * dot,
+				dir.y - groundNormal.y * dot,
+				dir.z - groundNormal.z * dot
+			)
 
-            --[[local headYawIndex = self:LookupPoseParameter("head_yaw")
-            if headYawIndex >= 0 then
-                local headYaw = math.deg(math.atan2(dir.y, dir.x)) - curAng.y
-                self:SetPoseParameter(headYawIndex, headYaw)
-            end]]--
-        end
-    end
+			if forward:Length() <= 0.001 then
+				forward = Vector(dir.x, dir.y, 200)
+				if forward:Length() > 0 then forward = forward:GetNormalized() end
+			else
+				forward = forward:GetNormalized()
+			end
 
-    if self:IsObstacleAhead() and self:IsOnGround() then
-        self:Jump()
-    end
+			local desiredVel = forward * MOVE_SPEED
+
+			local phys = self:VPhysicsGetObject()
+			if phys and phys ~= NULL then
+				local curVel = phys:GetVelocity()
+				local preservedZ = curVel.z or 0
+
+				phys:SetVelocity(Vector(desiredVel.x, desiredVel.y, preservedZ), Vector(desiredVel.x, desiredVel.y, preservedZ))
+				self:SetAbsVelocity(Vector(desiredVel.x, desiredVel.y, preservedZ))
+			else
+				local curAbs = self:GetAbsVelocity() or Vector(0,0,0)
+				local preservedZ = curAbs.z or 0
+				self:SetAbsVelocity(Vector(desiredVel.x, desiredVel.y, preservedZ))
+			end
+
+			local desiredYaw = math.deg(math.atan2(forward.y, forward.x))
+			local curAng = self:GetAbsAngles()
+			local smoothYaw = curAng.y + AngleDifference(desiredYaw, curAng.y) * 0.1
+			curAng.y = smoothYaw
+			self:SetAbsAngles(curAng)
+		end
+	end
+
+	if self:IsObstacleAhead() and self:IsOnGround() then
+		local phys = self:VPhysicsGetObject()
+		if phys and phys ~= NULL then
+			phys:ApplyForceCenter(Vector(0,0,1) * 2000)
+		else
+			local cur = self:GetAbsVelocity()
+			self:SetAbsVelocity(Vector(cur.x, cur.y, math.max(cur.z, 100)))
+		end
+	end
 end
 
 function ENT:LookAtTarget(targetPos)
@@ -285,14 +375,16 @@ end
 function ENT:GetNearestPlayer()
 	local nearest = nil
 	local nearestDist = math.huge
+	local myPos = self:GetAbsOrigin()
 
-	-- TODO: do shit 
-	local ply = UTIL.GetLocalPlayer()
-
-	local dist = (ply:GetAbsOrigin() - self:GetAbsOrigin()):Length()
-	if dist < nearestDist then
-		nearestDist = dist
-		nearest = ply
+	for _, ply in ipairs(player.GetAll()) do
+		if IsValid(ply) and ply:IsAlive() then
+			local dist = (ply:GetAbsOrigin() - myPos):Length()
+			if dist < nearestDist then
+				nearestDist = dist
+				nearest = ply
+			end
+		end
 	end
 
 	return nearest, nearestDist
@@ -300,6 +392,8 @@ end
 
 function ENT:Think()
     self:MoveThink()
+
+	self:AttackNearestPlayers()
 
     if self.isEnemy and self.Weapon ~= NULL and self.Weapon then
         local target, dist = self:GetNearestPlayer()
@@ -309,10 +403,12 @@ function ENT:Think()
 
             self:LookAtTarget(target:GetAbsOrigin())
 
-            self.Weapon:SetOwnerEntity(self)
-			self.IsFiring = true
-            self.Weapon:PrimaryAttack()
-			self.IsFiring = false
+			if self.Weapon then
+				self.Weapon:SetOwnerEntity(self)
+				self.IsFiring = true
+				self.Weapon:PrimaryAttack()
+				self.IsFiring = false
+            end
         end
     end
 

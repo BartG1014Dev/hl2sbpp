@@ -1,10 +1,8 @@
---========== Copyleft � 2010, Team Sandbox, Some rights reserved. ===========--
+--========== Copyright (C) 2025, Team HL2SB++, All rights reserved. ===========--
 --
 -- Purpose:
 --
 --===========================================================================--
-
--- ent_create prop_balloon
 
 local Warning = dbg.Warning
 local Msg = dbg.Msg

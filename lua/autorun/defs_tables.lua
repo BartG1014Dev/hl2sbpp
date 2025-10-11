@@ -127,3 +127,17 @@ GestureSlot = {
 
     COUNT = 7
 }
+
+AmmoTracer = {
+	NONE = 0,
+	LINE = 1,
+	RAIL = 2,
+	BEAM = 2,
+	LINE_AND_WHIZ = 4,
+}
+
+PassengerRole = {
+	NONE   = -1,
+	DRIVER = 0,
+	LAST_SHARED_ROLE = 1,
+}

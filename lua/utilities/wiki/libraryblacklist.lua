@@ -1,4 +1,4 @@
---========== Copyleft © 2013, Team Sandbox, Some rights reserved. ===========--
+--========== Copyright © 2025, Team HL2SB++, All rights reserved. ===========--
 --
 -- Purpose: Dumps a list of libraries from Lua to be used as a blacklist.
 --

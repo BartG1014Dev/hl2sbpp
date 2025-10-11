@@ -1,4 +1,4 @@
---========== Copyleft © 2010, Team Sandbox, Some rights reserved. ===========--
+--========== Copyright © 2025, Team HL2SB++, All rights reserved. ===========--
 --
 -- Purpose: Wraps the font type so handles are persistent through screen size
 --          changes, and fonts work properly without having to manually

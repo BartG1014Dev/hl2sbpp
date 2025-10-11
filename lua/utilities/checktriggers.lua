@@ -1,4 +1,4 @@
---======== Copyleft © 2010-2011, Team Sandbox, Some rights reserved. ========--
+--======== Copyright (C) 2025-2025, Team HL2SB++, All rights reserved. ========--
 --
 -- Purpose: Checks the existence of trigger_changelevel*.
 --

@@ -1,4 +1,4 @@
---========== Copyleft © 2010, Team Sandbox, Some rights reserved. ===========--
+--========== Copyright (C) 2025, Team HL2SB++, All rights reserved. ===========--
 --
 -- Purpose: Dumps a list of all enumeration libraries in _E
 --
