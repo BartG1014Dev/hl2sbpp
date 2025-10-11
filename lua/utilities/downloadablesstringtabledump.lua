@@ -4,8 +4,8 @@
 --
 --===========================================================================--
 
-local t = networkstringtable.FindTable( "downloadables" )
-print( t )
+local t = networkstringtable.FindTable("downloadables")
+print(t)
 for i = 1, t:GetNumStrings() do
-  print( "\t" .. i .. ": " .. tostring( t:GetString( i ) ) )
+  print("\t" .. i .. ": " .. tostring(t:GetString(i)))
 end

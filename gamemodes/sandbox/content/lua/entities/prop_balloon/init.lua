@@ -4,7 +4,6 @@
 --
 --===========================================================================--
 
-includeC( "shared.lua" )
+includeC("shared.lua")
 
-function ENT:Think()
-end
+function ENT:Think() end

@@ -9,7 +9,7 @@ local Warning = dbg.Warning
 local tostring = tostring
 local pcall = pcall
 
-module( "cvar" )
+module("cvar")
 
 local bError, strError
 local tCallbacks = {}
@@ -21,9 +21,9 @@ local tCallbacks = {}
 --          pFn - pointer to function
 -- Output :
 -------------------------------------------------------------------------------
-function AddChangeCallback( strConVarName, strCallbackName, pFn )
-  tCallbacks[ strConVarName ] = tCallbacks[ strConVarName ] or {}
-  tCallbacks[ strConVarName ][ strCallbackName ] = pFn
+function AddChangeCallback(strConVarName, strCallbackName, pFn)
+  tCallbacks[strConVarName] = tCallbacks[strConVarName] or {}
+  tCallbacks[strConVarName][strCallbackName] = pFn
 end
 
 -------------------------------------------------------------------------------
@@ -33,19 +33,27 @@ end
 --          flOldValue - Float value before var changed
 -- Output :
 -------------------------------------------------------------------------------
-function CallGlobalChangeCallbacks( var, pOldString, flOldValue )
-  local tCallbacks = tCallbacks[ var:GetName() ]
-  if ( tCallbacks ~= nil ) then
-    for k, v in pairs( tCallbacks ) do
-      if ( v == nil ) then
-        Warning( "Callback '" .. tostring( k ) .. "' (" .. tostring( var:GetName() ) .. ") tried to call a nil function!\n" )
-        tCallbacks[ k ] = nil
+function CallGlobalChangeCallbacks(var, pOldString, flOldValue)
+  local tCallbacks = tCallbacks[var:GetName()]
+  if tCallbacks ~= nil then
+    for k, v in pairs(tCallbacks) do
+      if v == nil then
+        Warning("Callback '" .. tostring(k) .. "' (" .. tostring(var:GetName()) .. ") tried to call a nil function!\n")
+        tCallbacks[k] = nil
         break
       else
-        bError, strError = pcall( v, var, pOldString, flOldValue )
-        if ( bError == false ) then
-          Warning( "Callback '" .. tostring( k ) .. "' (" .. tostring( var:GetName() ) .. ") Failed: " .. tostring( strError ) .. "\n" )
-          tCallbacks[ k ] = nil
+        bError, strError = pcall(v, var, pOldString, flOldValue)
+        if bError == false then
+          Warning(
+            "Callback '"
+              .. tostring(k)
+              .. "' ("
+              .. tostring(var:GetName())
+              .. ") Failed: "
+              .. tostring(strError)
+              .. "\n"
+          )
+          tCallbacks[k] = nil
         end
       end
     end
@@ -58,9 +66,9 @@ end
 -- Input  : strConVarName - Name of the ConVar
 -- Output : table
 -------------------------------------------------------------------------------
-function GetChangeCallbacks( strConVarName )
-  if ( strConVarName ) then
-    return tCallbacks[ strConVarName ]
+function GetChangeCallbacks(strConVarName)
+  if strConVarName then
+    return tCallbacks[strConVarName]
   end
   return tCallbacks
 end
@@ -71,8 +79,8 @@ end
 --      strCallbackName - Name of the callback
 -- Output :
 -------------------------------------------------------------------------------
-function RemoveChangeCallback( strConVarName, strCallbackName )
-  if ( tCallbacks[ strConVarName ][ strCallbackName ] ) then
-    tCallbacks[ strConVarName ][ strCallbackName ] = nil
+function RemoveChangeCallback(strConVarName, strCallbackName)
+  if tCallbacks[strConVarName][strCallbackName] then
+    tCallbacks[strConVarName][strCallbackName] = nil
   end
 end

@@ -4,10 +4,8 @@
 --
 --===========================================================================--
 
-includeC( "shared.lua" )
+includeC("shared.lua")
 
-function ENT:DrawModel( flags )
-end
+function ENT:DrawModel(flags) end
 
-function ENT:ClientThink()
-end
+function ENT:ClientThink() end

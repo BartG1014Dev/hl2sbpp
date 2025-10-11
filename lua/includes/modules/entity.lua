@@ -9,7 +9,7 @@ _BASE_ENTITY_CLASS = "prop_scripted"
 local table = table
 local Warning = dbg.Warning
 
-module( "entity" )
+module("entity")
 
 local tEntities = {}
 
@@ -18,18 +18,18 @@ local tEntities = {}
 -- Input  : strName - Name of the entity
 -- Output : table
 -------------------------------------------------------------------------------
-function get( strClassname )
-  local tEntity = tEntities[ strClassname ]
-  if ( not tEntity ) then
+function get(strClassname)
+  local tEntity = tEntities[strClassname]
+  if not tEntity then
     return nil
   end
-  tEntity = table.copy( tEntity )
-  if ( tEntity.__base ~= strClassname ) then
-    local tBaseEntity = get( tEntity.__base )
-    if ( not tBaseEntity ) then
-      Warning( "WARNING: Attempted to initialize entity \"" .. strClassname .. "\" with non-existing base class!\n" )
+  tEntity = table.copy(tEntity)
+  if tEntity.__base ~= strClassname then
+    local tBaseEntity = get(tEntity.__base)
+    if not tBaseEntity then
+      Warning('WARNING: Attempted to initialize entity "' .. strClassname .. '" with non-existing base class!\n')
     else
-      return table.inherit( tEntity, tBaseEntity )
+      return table.inherit(tEntity, tBaseEntity)
     end
   end
   return tEntity
@@ -51,9 +51,9 @@ end
 --          bReload - Whether or not we're reloading this entity data
 -- Output :
 -------------------------------------------------------------------------------
-function register( tEntity, strClassname, bReload )
-  if ( get( strClassname ) ~= nil and bReload ~= true ) then
+function register(tEntity, strClassname, bReload)
+  if get(strClassname) ~= nil and bReload ~= true then
     return
   end
-  tEntities[ strClassname ] = tEntity
+  tEntities[strClassname] = tEntity
 end

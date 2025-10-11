@@ -7,9 +7,9 @@
 local sin = math.sin
 local curtime = gpGlobals.curtime
 
-hook.add( "CalcPlayerView", "CalcPlayerView", function( pPlayer, eyeOrigin, eyeAngles, fov )
+hook.add("CalcPlayerView", "CalcPlayerView", function(pPlayer, eyeOrigin, eyeAngles, fov)
   -- Give a subtle breathing effect.
-  eyeAngles = eyeAngles + QAngle( sin( curtime() ) / 2, 0, 0 )
+  eyeAngles = eyeAngles + QAngle(sin(curtime()) / 2, 0, 0)
 
   -- FIXME: Field of view is just plain broken here. Use pPlayer:SetFOV() to
   -- get around this.
@@ -18,4 +18,4 @@ hook.add( "CalcPlayerView", "CalcPlayerView", function( pPlayer, eyeOrigin, eyeA
   -- if we return nil for the first value, nothing will change at all. This is
   -- due to our hook system's mechanics.
   return eyeOrigin, eyeAngles, fov
-end )
+end)

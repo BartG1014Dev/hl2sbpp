@@ -4,8 +4,8 @@
 --
 --===========================================================================--
 
-local pEntity = gEntList.FindEntityByClassname( pEntity, "prop_physics*" )
-while ( pEntity ~= NULL ) do
-  pEntity:SetRenderColor( 255, 0, 0, 255 )
-  pEntity = gEntList.FindEntityByClassname( pEntity, "prop_physics*" )
+local pEntity = gEntList.FindEntityByClassname(pEntity, "prop_physics*")
+while pEntity ~= NULL do
+  pEntity:SetRenderColor(255, 0, 0, 255)
+  pEntity = gEntList.FindEntityByClassname(pEntity, "prop_physics*")
 end

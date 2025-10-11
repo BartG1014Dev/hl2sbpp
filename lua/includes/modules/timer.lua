@@ -10,7 +10,9 @@ function Timer.Think()
   for name, t in pairs(Timer.timers) do
     if now >= t.nextTime then
       local ok, err = pcall(t.func)
-      if not ok then print("Timer error:", err) end
+      if not ok then
+        print("Timer error:", err)
+      end
       if t.repetitions == 0 then
         t.nextTime = now + t.delay
       elseif t.repetitions > 1 then
@@ -32,7 +34,7 @@ function Timer.Add(name, delay, repetitions, func)
     delay = delay,
     repetitions = repetitions or 1,
     func = func,
-    nextTime = CurTime() + delay  -- Changed from engine.Time() to CurTime()
+    nextTime = CurTime() + delay, -- Changed from engine.Time() to CurTime()
   }
   return name
 end

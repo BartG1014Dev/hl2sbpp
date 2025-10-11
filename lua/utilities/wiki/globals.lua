@@ -36,28 +36,28 @@ local blacklist = {
   "tostring",
   "type",
   "unpack",
-  "xpcall"
+  "xpcall",
 }
 
 local bBlacklisted = false
 local globals = {}
 
-for global, fn in pairs( _G ) do
-  for _, v in pairs( blacklist ) do
-    if ( global == v ) then
+for global, fn in pairs(_G) do
+  for _, v in pairs(blacklist) do
+    if global == v then
       bBlacklisted = true
     end
   end
-  if ( not bBlacklisted and type( fn ) ~= "number" and type( fn ) ~= "table" ) then
-    table.insert( globals, global )
+  if not bBlacklisted and type(fn) ~= "number" and type(fn) ~= "table" then
+    table.insert(globals, global)
   end
   bBlacklisted = false
 end
 
-table.sort( globals )
+table.sort(globals)
 
-local file = assert( io.open( "globals.txt", "wb" ) )
-for i, global in ipairs( globals ) do
-  file:write( "*[[_G." .. global .. "|" .. global .. "]]\r\n" )
+local file = assert(io.open("globals.txt", "wb"))
+for i, global in ipairs(globals) do
+  file:write("*[[_G." .. global .. "|" .. global .. "]]\r\n")
 end
-assert( io.close( file ) )
+assert(io.close(file))

@@ -25,28 +25,28 @@ local blacklist = {
   "os",
   "package",
   "string",
-  "table"
+  "table",
 }
 
 local bBlacklisted = false
 local libraries = {}
 
-for library, t in pairs( _G ) do
-  for _, v in pairs( blacklist ) do
-    if ( library == v ) then
+for library, t in pairs(_G) do
+  for _, v in pairs(blacklist) do
+    if library == v then
       bBlacklisted = true
     end
   end
-  if ( not bBlacklisted and type( t ) == "table" ) then
-    table.insert( libraries, library )
+  if not bBlacklisted and type(t) == "table" then
+    table.insert(libraries, library)
   end
   bBlacklisted = false
 end
 
-table.sort( libraries )
+table.sort(libraries)
 
-local file = assert( io.open( "libraries.txt", "wb") )
-for i, library in pairs( libraries ) do
-  file:write( "*[[" .. library .. "]]\r\n" )
+local file = assert(io.open("libraries.txt", "wb"))
+for i, library in pairs(libraries) do
+  file:write("*[[" .. library .. "]]\r\n")
 end
-assert( io.close( file ) )
+assert(io.close(file))
