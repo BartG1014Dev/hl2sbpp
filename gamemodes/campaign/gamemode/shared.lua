@@ -4,32 +4,32 @@
 --
 --===========================================================================--
 
-GM.Name			= "Campaign"
-GM.Homepage		= ""
-GM.Developer	= "Team HL2SB++"
-GM.Manual		= nil
+GM.Name = "Campaign"
+GM.Homepage = ""
+GM.Developer = "Team HL2SB++"
+GM.Manual = nil
 
 function GM:Initialize()
-if ( not _CLIENT ) then
-  engine.ServerCommand( "mp_falldamage 1\n" )
-  engine.ServerCommand( "mp_flashlight 1\n" )
-  engine.ServerCommand( "npc_deathnotice 0\n" )
-end
+  if not _CLIENT then
+    engine.ServerCommand("mp_falldamage 1\n")
+    engine.ServerCommand("mp_flashlight 1\n")
+    engine.ServerCommand("npc_deathnotice 0\n")
+  end
 end
 
-function GM:FlWeaponRespawnTime( pWeapon )
+function GM:FlWeaponRespawnTime(pWeapon)
   return -1
 end
 
-function GM:FlWeaponTryRespawn( pWeapon )
+function GM:FlWeaponTryRespawn(pWeapon)
   return 0
 end
 
-function GM:OnEntityCreated( pEntity )
+function GM:OnEntityCreated(pEntity)
   -- TODO: Replace vehicles with vehicle spawners
 end
 
-function GM:WeaponShouldRespawn( pItem )
-  pItem:AddSpawnFlags( 2^30 )
+function GM:WeaponShouldRespawn(pItem)
+  pItem:AddSpawnFlags(2 ^ 30)
   -- return 2
 end

@@ -9,7 +9,7 @@ _BASE_WEAPON = "weapon_hl2mpbase_scriptedweapon"
 local table = table
 local Warning = dbg.Warning
 
-module( "weapon" )
+module("weapon")
 
 local tWeapons = {}
 
@@ -18,18 +18,18 @@ local tWeapons = {}
 -- Input  : strName - Name of the weapon
 -- Output : table
 -------------------------------------------------------------------------------
-function get( strClassname )
-  local tWeapon = tWeapons[ strClassname ]
-  if ( not tWeapon ) then
+function get(strClassname)
+  local tWeapon = tWeapons[strClassname]
+  if not tWeapon then
     return nil
   end
-  tWeapon = table.copy( tWeapon )
-  if ( tWeapon.__base ~= strClassname ) then
-    local tBaseWeapon = get( tWeapon.__base )
-    if ( not tBaseWeapon ) then
-      Warning( "WARNING: Attempted to initialize weapon \"" .. strClassname .. "\" with non-existing base class!\n" )
+  tWeapon = table.copy(tWeapon)
+  if tWeapon.__base ~= strClassname then
+    local tBaseWeapon = get(tWeapon.__base)
+    if not tBaseWeapon then
+      Warning('WARNING: Attempted to initialize weapon "' .. strClassname .. '" with non-existing base class!\n')
     else
-      return table.inherit( tWeapon, tBaseWeapon )
+      return table.inherit(tWeapon, tBaseWeapon)
     end
   end
   return tWeapon
@@ -51,9 +51,9 @@ end
 --          bReload - Whether or not we're reloading this weapon data
 -- Output :
 -------------------------------------------------------------------------------
-function register( tWeapon, strClassname, bReload )
-  if ( get( strClassname ) ~= nil and bReload ~= true ) then
+function register(tWeapon, strClassname, bReload)
+  if get(strClassname) ~= nil and bReload ~= true then
     return
   end
-  tWeapons[ strClassname ] = tWeapon
+  tWeapons[strClassname] = tWeapon
 end

@@ -4,7 +4,6 @@
 --
 --===========================================================================--
 
-includeC( "shared.lua" )
+includeC("shared.lua")
 
-function SWEP:CapabilitiesGet()
-end
+function SWEP:CapabilitiesGet() end

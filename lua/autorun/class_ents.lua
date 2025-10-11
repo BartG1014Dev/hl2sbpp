@@ -2,5 +2,5 @@
 ents = {}
 
 function ents.Create(entName)
-	return CreateEntityByName(entName)
+  return CreateEntityByName(entName)
 end

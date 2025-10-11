@@ -4,8 +4,8 @@
 --
 --===========================================================================--
 
-DEFINE_BASECLASS( "vehicle_scripted" )
-DEFINE_FACTORY( "CPropVehicleDriveable" )
+DEFINE_BASECLASS("vehicle_scripted")
+DEFINE_FACTORY("CPropVehicleDriveable")
 
 ENT.ModelName = "models/vehicle.mdl"
 ENT.VehicleScript = "scripts/vehicles/jalopy.txt"

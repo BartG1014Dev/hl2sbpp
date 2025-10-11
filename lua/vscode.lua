@@ -1639,7 +1639,7 @@ function player:IsPlayer() end
 ---@class hintlib
 hintlib = {}
 
-function hintlib.AddHint(name,delay) end
+function hintlib.AddHint(name, delay) end
 function hintlib.AddNotify(name, type, dur) end
 
 ---Return true if player is currently underwater.
@@ -3156,33 +3156,26 @@ function entity:SetRenderColorA(a) end
 ---@param b number
 function entity:SetRenderColorB(b) end
 
-
-
 ---@class engine
 engine = {}
-
 
 ---Activates or deactivates an occluder.
 ---@param occluderID integer
 ---@param active boolean
 function engine.ActivateOccluder(occluderID, active) end
 
-
 ---Changes the player's team.
 ---@param team string
 function engine.ChangeTeam(team) end
-
 
 ---Checks if key trapping has finished.
 ---@param keyCode integer
 ---@return boolean
 function engine.CheckDoneKeyTrapping(keyCode) end
 
-
 ---Triggers a checkpoint with a name.
 ---@param name string
 function engine.CheckPoint(name) end
-
 
 ---Sends a client console command.
 ---@param cmd string
@@ -3196,24 +3189,20 @@ function engine.ServerCommand(cmd) end
 ---@param cmd string
 function engine.ClientCmd_Unrestricted(cmd) end
 
-
 ---Returns whether the console is visible.
 ---@return boolean
 function engine.Con_IsVisible() end
-
 
 ---Copies framebuffer to a material.
 ---@param materialName string
 ---@return boolean
 function engine.CopyFrameBufferToMaterial(materialName) end
 
-
 ---Culls a box defined by mins and maxs.
 ---@param mins Vector
 ---@param maxs Vector
 ---@return boolean
 function engine.CullBox(mins, maxs) end
-
 
 ---Checks if a box touches an area frustum.
 ---@param mins Vector
@@ -3222,35 +3211,28 @@ function engine.CullBox(mins, maxs) end
 ---@return boolean
 function engine.DoesBoxTouchAreaFrustum(mins, maxs, area) end
 
-
 ---Draws engine portals.
 function engine.DrawPortals() end
-
 
 ---Begins engine stats frame.
 function engine.EngineStats_BeginFrame() end
 
-
 ---Ends engine stats frame.
 function engine.EngineStats_EndFrame() end
-
 
 ---Gets the size of a game lump.
 ---@param lumpID integer
 ---@return integer
 function engine.GameLumpSize(lumpID) end
 
-
 ---Gets the version of a game lump.
 ---@param lumpID integer
 ---@return integer
 function engine.GameLumpVersion(lumpID) end
 
-
 ---Gets the application ID (Steam AppID).
 ---@return integer
 function engine.GetAppID() end
-
 
 ---Gets the server time.
 ---@return integer
@@ -3258,25 +3240,20 @@ function engine.Time() end
 
 ---@class ConVar
 
-
 --- Returns whether the ConVar is registered.
 ---@return boolean
 function ConVar:IsRegistered() end
 
-
 --- Reverts the ConVar to its default value.
 function ConVar:Revert() end
-
 
 --- Sets the ConVar to a new value.
 ---@param value string|number
 function ConVar:SetValue(value) end
 
-
 --- Returns string representation of the ConVar.
 ---@return string
 function ConVar:__tostring() end
-
 
 --- Creates a new ConVar.
 ---@param name string
@@ -3290,25 +3267,20 @@ function ConVar:__tostring() end
 ---@return ConVar
 function ConVar.new(name, default, flags, helpText, hasMin, min, hasMax, max) end
 
-
 ---@class ConCommand
 local ConCommand = {}
-
 
 --- Returns whether this ConCommand can autocomplete.
 ---@return boolean
 function ConCommand:CanAutoComplete() end
 
-
 --- Returns whether this is a valid command.
 ---@return boolean
 function ConCommand:IsCommand() end
 
-
 --- Returns string representation of the ConCommand.
 ---@return string
 function ConCommand:__tostring() end
-
 
 --- Creates a new ConCommand.
 ---@param name string
@@ -3317,43 +3289,35 @@ function ConCommand:__tostring() end
 ---@return ConCommand
 function ConCommand.new(name, helpText, flags) end
 
-
 ---@class cvarlib
 cvar = {}
-
 
 --- Allocates a DLL identifier.
 ---@return integer
 function cvar.AllocateDLLIdentifier() end
-
 
 --- Prints colored text to console.
 ---@param color table -- Color(r,g,b,a)
 ---@param text string
 function cvar.ConsoleColorPrintf(color, text) end
 
-
 --- Prints debug text to console.
 ---@param text string
 function cvar.ConsoleDPrintf(text) end
 
-
 --- Prints plain text to console.
 ---@param text string
 function cvar.ConsolePrintf(text) end
-
 
 --- Finds a ConVar by name.
 ---@param name string
 ---@return ConVar
 function cvar.FindVar(name) end
 
-
 --- Gets a command line value.
 ---@param name string
 ---@return string
 function cvar.GetCommandLineValue(name) end
-
 
 --- Reverts all flagged ConVars.
 ---@param flag integer
@@ -4147,7 +4111,6 @@ debugoverlay = {}
 ---@param duration number # Duration in seconds
 function debugoverlay.AddBoxOverlay(origin, mins, maxs, angles, r, g, b, a, duration) end
 
-
 --- Draws a 3D box overlay with per-corner colors.
 ---@param origin Vector
 ---@param mins Vector
@@ -4158,11 +4121,9 @@ function debugoverlay.AddBoxOverlay(origin, mins, maxs, angles, r, g, b, a, dura
 ---@param duration number
 function debugoverlay.AddBoxOverlay2(origin, mins, maxs, angles, faceColor, edgeColor, duration) end
 
-
 --- Adds a grid overlay at the given position.
 ---@param origin Vector
 function debugoverlay.AddGridOverlay(origin) end
-
 
 --- Draws a 3D line overlay.
 ---@param startPos Vector
@@ -4173,7 +4134,6 @@ function debugoverlay.AddGridOverlay(origin) end
 ---@param noDepthTest boolean # If true, ignores depth buffer
 ---@param duration number
 function debugoverlay.AddLineOverlay(startPos, endPos, r, g, b, noDepthTest, duration) end
-
 
 --- Draws a 3D line overlay with alpha support.
 ---@param startPos Vector
@@ -4186,7 +4146,6 @@ function debugoverlay.AddLineOverlay(startPos, endPos, r, g, b, noDepthTest, dur
 ---@param duration number
 function debugoverlay.AddLineOverlayAlpha(startPos, endPos, r, g, b, a, noDepthTest, duration) end
 
-
 --- Adds a screen-space text overlay.
 ---@param x number # X position (0–1 normalized or pixels depending on engine)
 ---@param y number # Y position
@@ -4197,7 +4156,6 @@ function debugoverlay.AddLineOverlayAlpha(startPos, endPos, r, g, b, a, noDepthT
 ---@param centered boolean
 ---@param text string
 function debugoverlay.AddScreenTextOverlay(x, y, line, r, g, b, centered, text) end
-
 
 --- Adds a swept box overlay (moving box).
 ---@param start Vector # Start position
@@ -4212,7 +4170,6 @@ function debugoverlay.AddScreenTextOverlay(x, y, line, r, g, b, centered, text) 
 ---@param duration number
 function debugoverlay.AddSweptBoxOverlay(start, endPos, mins, maxs, angles, r, g, b, a, duration) end
 
-
 --- Draws a triangle overlay.
 ---@param p1 Vector
 ---@param p2 Vector
@@ -4225,14 +4182,11 @@ function debugoverlay.AddSweptBoxOverlay(start, endPos, mins, maxs, angles, r, g
 ---@param duration number
 function debugoverlay.AddTriangleOverlay(p1, p2, p3, r, g, b, a, noDepthTest, duration) end
 
-
 --- Removes all active overlays.
 function debugoverlay.ClearAllOverlays() end
 
-
 --- Removes overlays that have expired.
 function debugoverlay.ClearDeadOverlays() end
-
 
 --- Converts a 3D world position to 2D screen coordinates.
 ---@param worldPos Vector # Input world position
@@ -4253,7 +4207,9 @@ function dbg.SpewActivate(group, level) end
 --- @param group string The name of the spew group to check.
 --- @param level integer The verbosity level to check.
 --- @return boolean active Whether spew is active for the given group and level.
-function dbg.IsSpewActive(group, level) return true end
+function dbg.IsSpewActive(group, level)
+  return true
+end
 
 --- Outputs a message to the console.
 --- @param message string The message to output.
@@ -5466,7 +5422,18 @@ function effect.Dissolve(entity, effectName, life, flags) end
 ---@param ignoreLOS? boolean Optional. If true, ignores line-of-sight checks. Default: false
 ---@param customEffect? boolean Optional. If true, uses a custom visual Effects. Default: false
 ---@param soundType? integer Optional. Type of explosion sound. Default: -1
-function effect.ExplosionCreate(position, angle, owner, magnitude, radius, doDamage, ignoreLOS, customEffect, soundType) end
+function effect.ExplosionCreate(
+  position,
+  angle,
+  owner,
+  magnitude,
+  radius,
+  doDamage,
+  ignoreLOS,
+  customEffect,
+  soundType
+)
+end
 
 ---@class IN
 ---Input actions, corresponding to engine key/button flags.
@@ -5882,8 +5849,8 @@ MAX_COORD_INTEGER = 16384
 MIN_COORD_INTEGER = -MAX_COORD_INTEGER
 
 -- Fractional bounds (15/16)
-MAX_COORD_FRACTION = 1.0 - (1.0/16.0)
-MIN_COORD_FRACTION = -1.0 + (1.0/16.0)
+MAX_COORD_FRACTION = 1.0 - (1.0 / 16.0)
+MIN_COORD_FRACTION = -1.0 + (1.0 / 16.0)
 
 -- Float bounds
 MAX_COORD_FLOAT = 16384.0
@@ -6073,157 +6040,154 @@ input = {}
 --- Returns whether candidate list indexing starts at 1
 --- @return boolean
 function input.CandidateListStartsAtOne()
-    return false
+  return false
 end
 
 --- Returns the panel that has app-modal input
 --- @return userdata|nil
 function input.GetAppModalSurface()
-    return nil
+  return nil
 end
 
 --- Returns the number of candidate items
 --- @return integer
 function input.GetCandidateListCount()
-    return 0
+  return 0
 end
 
 --- Returns the number of items per page in candidate list
 --- @return integer
 function input.GetCandidateListPageSize()
-    return 0
+  return 0
 end
 
 --- Returns the first item index of the current page
 --- @return integer
 function input.GetCandidateListPageStart()
-    return 0
+  return 0
 end
 
 --- Returns the currently selected item in candidate list
 --- @return integer
 function input.GetCandidateListSelectedItem()
-    return 0
+  return 0
 end
 
 --- Returns the current IME handle
 --- @return integer
 function input.GetCurrentIMEHandle()
-    return 0
+  return 0
 end
 
 --- Returns cursor position (x, y)
 --- @return integer x
 --- @return integer y
 function input.GetCursorPosition()
-    return 0, 0
+  return 0, 0
 end
 
 --- Returns English IME handle
 --- @return integer
 function input.GetEnglishIMEHandle()
-    return 0
+  return 0
 end
 
 --- Returns the panel that currently has focus
 --- @return userdata|nil
 function input.GetFocus()
-    return nil
+  return nil
 end
 
 --- Returns the modal sub-tree panel
 --- @return userdata|nil
 function input.GetModalSubTree()
-    return nil
+  return nil
 end
 
 --- Returns the panel that currently has mouse capture
 --- @return userdata|nil
 function input.GetMouseCapture()
-    return nil
+  return nil
 end
 
 --- Returns the panel that the mouse is currently over
 --- @return userdata|nil
 function input.GetMouseOver()
-    return nil
+  return nil
 end
 
 --- Returns whether composition string should be inverted
 --- @return boolean
 function input.GetShouldInvertCompositionString()
-    return false
+  return false
 end
 
 --- Returns whether a key is currently down
 --- @param key integer
 --- @return boolean
 function input.IsKeyDown(key)
-    return false
+  return false
 end
 
 --- Returns whether a mouse button is currently down
 --- @param button integer
 --- @return boolean
 function input.IsMouseDown(button)
-    return false
+  return false
 end
 
 --- Stub for OnChangeIME event
 --- @param enable boolean
-function input.OnChangeIME(enable)
-end
+function input.OnChangeIME(enable) end
 
 --- Stub for OnKeyCodeUnhandled event
 --- @param key integer
-function input.OnKeyCodeUnhandled(key)
-end
+function input.OnKeyCodeUnhandled(key) end
 
 --- Sets cursor position
 --- @param x integer
 --- @param y integer
-function input.SetCursorPos(x, y)
-end
+function input.SetCursorPos(x, y) end
 
 --- Checks whether the modal sub-tree should receive messages
 --- @return boolean
 function input.ShouldModalSubTreeReceiveMessages()
-    return false
+  return false
 end
 
 --- Returns whether a key was pressed
 --- @param key integer
 --- @return boolean
 function input.WasKeyPressed(key)
-    return false
+  return false
 end
 
 --- Returns whether a key was released
 --- @param key integer
 --- @return boolean
 function input.WasKeyReleased(key)
-    return false
+  return false
 end
 
 --- Returns whether a key was typed
 --- @param key integer
 --- @return boolean
 function input.WasKeyTyped(key)
-    return false
+  return false
 end
 
 --- Returns whether a mouse button was pressed
 --- @param button integer
 --- @return boolean
 function input.WasMousePressed(button)
-    return false
+  return false
 end
 
 --- Returns whether a mouse button was released
 --- @param button integer
 --- @return boolean
 function input.WasMouseReleased(button)
-    return false
+  return false
 end
 
 --- Mouse code enum (use as number in Lua).
@@ -8607,7 +8571,6 @@ function IMaterial:WasReloadedFromWhitelist() end
 ---@return string
 function IMaterial:__tostring() end
 
-
 ---@class CAmmoDef
 local CAmmoDef = {}
 
@@ -8655,12 +8618,23 @@ function CAmmoDef:MaxCarry(ammoIndex) end
 ---@param flags? integer|string Optional flags bitmask.
 ---@param minSplash? integer Minimum splash radius (default: 4).
 ---@param maxSplash? integer Maximum splash radius (default: 8).
-function CAmmoDef:AddAmmoType(name, dmgType, tracerType, plrDmg, npcDmg, maxCarry, impulse, flags, minSplash, maxSplash) end
+function CAmmoDef:AddAmmoType(
+  name,
+  dmgType,
+  tracerType,
+  plrDmg,
+  npcDmg,
+  maxCarry,
+  impulse,
+  flags,
+  minSplash,
+  maxSplash
+)
+end
 
 --- Returns a string representation for debugging.
 ---@return string
 function CAmmoDef:__tostring() end
-
 
 --- Global function that returns the singleton CAmmoDef instance.
 ---@return CAmmoDef

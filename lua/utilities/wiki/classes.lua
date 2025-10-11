@@ -8,19 +8,19 @@
 
 local tMetatables = {}
 
-for k, v in pairs( _R ) do
+for k, v in pairs(_R) do
   -- Only print tables, everything else in _R should be a ref count
-  if ( type( k ) ~= "number" and type( v ) == "table" ) then
-    if ( v.__index ~= nil ) then
-      table.insert( tMetatables, k )
+  if type(k) ~= "number" and type(v) == "table" then
+    if v.__index ~= nil then
+      table.insert(tMetatables, k)
     end
   end
 end
 
-table.sort( tMetatables )
+table.sort(tMetatables)
 
-local file = assert( io.open( "classes.txt", "wb" ) )
-for i, metatable in pairs( tMetatables ) do
-  file:write( "*[[" .. metatable .. "]]\r\n" )
+local file = assert(io.open("classes.txt", "wb"))
+for i, metatable in pairs(tMetatables) do
+  file:write("*[[" .. metatable .. "]]\r\n")
 end
-assert( io.close( file ) )
+assert(io.close(file))

@@ -5,8 +5,8 @@
 --===========================================================================--
 
 local n = 0
-for k, v in pairs( _G ) do
+for k, v in pairs(_G) do
   n = n + 1
 end
 
-print( n )
+print(n)

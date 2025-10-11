@@ -9,7 +9,7 @@ local Warning = dbg.Warning
 local tostring = tostring
 local pcall = pcall
 
-module( "concommand" )
+module("concommand")
 
 local bError, strError
 local tFnCommandCallbacks = {}
@@ -22,9 +22,9 @@ local tFnCommandCallbacks = {}
 --          flags - Flags of the ConCommand
 -- Output :
 -------------------------------------------------------------------------------
-function Create( pName, callback, pHelpString, flags )
-  tFnCommandCallbacks[ pName ] = callback
-  ConCommand( pName, pHelpString, flags )
+function Create(pName, callback, pHelpString, flags)
+  tFnCommandCallbacks[pName] = callback
+  ConCommand(pName, pHelpString, flags)
 end
 
 -------------------------------------------------------------------------------
@@ -34,14 +34,14 @@ end
 --          ArgS - All args that occur after the 0th arg, in string form
 -- Output : boolean
 -------------------------------------------------------------------------------
-function Dispatch( pPlayer, pCmd, ArgS )
-  local fnCommandCallback = tFnCommandCallbacks[ pCmd ]
-  if ( not fnCommandCallback ) then
+function Dispatch(pPlayer, pCmd, ArgS)
+  local fnCommandCallback = tFnCommandCallbacks[pCmd]
+  if not fnCommandCallback then
     return false
   else
-    bError, strError = pcall( fnCommandCallback, pPlayer, pCmd, ArgS )
-    if ( bError == false ) then
-      Warning( "ConCommand '" .. tostring( pCmd ) .. "' Failed: " .. tostring( strError ) .. "\n" )
+    bError, strError = pcall(fnCommandCallback, pPlayer, pCmd, ArgS)
+    if bError == false then
+      Warning("ConCommand '" .. tostring(pCmd) .. "' Failed: " .. tostring(strError) .. "\n")
     end
     return true
   end
@@ -52,8 +52,8 @@ end
 -- Input  : pName - Name of the ConCommand
 -- Output :
 -------------------------------------------------------------------------------
-function Remove( pName )
-  if ( tFnCommandCallbacks[ pName ] ) then
-    tFnCommandCallbacks[ pName ] = nil
+function Remove(pName)
+  if tFnCommandCallbacks[pName] then
+    tFnCommandCallbacks[pName] = nil
   end
 end

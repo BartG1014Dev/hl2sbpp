@@ -6,18 +6,18 @@
 
 local libraries = {}
 
-for library, v in pairs( _G ) do
-  if ( type( v ) == "table" and library ~= "args" ) then
-    table.insert( libraries, library )
+for library, v in pairs(_G) do
+  if type(v) == "table" and library ~= "args" then
+    table.insert(libraries, library)
   end
 end
 
-table.sort( libraries )
+table.sort(libraries)
 
-local file = assert( io.open( "libraries.txt", "wb" ) )
-file:write( "local blacklist = {\r\n" )
-for i, library in ipairs( libraries ) do
-  file:write( "  \"" .. library .. "\"" .. ( ( i ~= #libraries ) and "," or "" )  .. "\r\n" )
+local file = assert(io.open("libraries.txt", "wb"))
+file:write("local blacklist = {\r\n")
+for i, library in ipairs(libraries) do
+  file:write('  "' .. library .. '"' .. ((i ~= #libraries) and "," or "") .. "\r\n")
 end
-file:write( "}\r\n" )
-assert( io.close( file ) )
+file:write("}\r\n")
+assert(io.close(file))

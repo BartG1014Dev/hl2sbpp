@@ -2,5 +2,5 @@
 player = player or {}
 
 function player.GetAll()
-	return UTIL.GetAllPlayers()
+  return UTIL.GetAllPlayers()
 end
