@@ -1,4 +1,4 @@
--- ppanel.lua
+-- ppropertydialog.lua
 ---@param dlg self:PPanel
 local function PositionDialog(dlg)
   if not IsValid(dlg) then
@@ -23,10 +23,10 @@ local function PositionDialog(dlg)
   dlg:SetPos((w - pw) / 2, (h - ph) / 2)
 end
 
----@class PPanel:Frame
----@field Init fun(self:PPanel, parent:Panel?, panelName:string)
-local PPanel = {
-  base = "Frame",
+---@class PPropertyDialog:PropertyDialog
+---@field Init fun(self:PPropertyDialog, parent:Panel?, panelName:string)
+local PPropertyDialog = {
+  base = "PropertyDialog",
 
   Init = function(self, parent)
     self:SetParent(parent)
@@ -36,6 +36,10 @@ local PPanel = {
     self.Center = function(self)
       PositionDialog(self)
       self:Activate() -- hacky hacky!!
+    end
+
+    self.SetDraggable = function(self, bool)
+      self:SetMoveable(bool)
     end
 
     self.MakePopup = function(self)
@@ -48,4 +52,4 @@ local PPanel = {
   Activate = function(self) end,
 }
 
-CONTROLS.Add("PPanel", PPanel)
+CONTROLS.Add("PPropertyDialog", PPropertyDialog)
