@@ -1,0 +1,22 @@
+---@class PlayerLocalData
+---@field m_iHideHUD integer
+---@field m_flFOVRate number
+---@field m_bDucked boolean
+---@field m_bDucking boolean
+---@field m_bInDuckJump boolean
+---@field m_flDucktime number
+---@field m_flDuckJumpTime number
+---@field m_flJumpTime number
+---@field m_nStepside integer
+---@field m_flFallVelocity number
+---@field m_nOldButtons integer
+---@field m_vecPunchAngle QAngle
+---@field m_vecPunchAngleVel QAngle
+---@field m_bDrawViewmodel boolean
+---@field m_bWearingSuit boolean
+---@field m_bPoisoned boolean
+---@field m_flStepSize number
+---@field m_bAllowAutoMovement boolean
+---@field m_bSlowMovement boolean
+PlayerLocalData = {}
+return PlayerLocalData

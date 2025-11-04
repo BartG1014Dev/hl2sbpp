@@ -16,6 +16,7 @@ function GM:Initialize()
 
   if not _CLIENT then
     engine.ServerCommand("sv_spawnmenu_allowed 0\n")
+	engine.ServerCommand("sv_allow_noclip 0\n")
   end
 end
 

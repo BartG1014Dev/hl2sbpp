@@ -26,6 +26,7 @@
             game+mod            |gameinfo_path|vpks/thumbnails.vpk
             game+mod            |gameinfo_path|vpks/materials.vpk
             game+mod            |gameinfo_path|vpks/models.vpk
+            game+mod            |gameinfo_path|vpks/scenes.vpk
 
 			game			|all_source_engine_paths|hl2/hl2_textures.vpk
 			game			|all_source_engine_paths|hl2/hl2_sound_vo_english.vpk

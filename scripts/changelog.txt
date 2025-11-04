@@ -1,6 +1,6 @@
 "Changelog"
 {
-    "Title"       "Beta 6"
-    "Description" "Crash fixes, npc_basescripted updates and many more improvements"
+    "Title"       "1.0"
+    "Description" "Improvements, and a LOT of new stuff"
     "Image"       "materials/vgui/changelog.jpg"
 }

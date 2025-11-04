@@ -1,4 +1,28 @@
 CHANGELOG
+1.0 (Release)
+- Additions
+Added support for .VPK addons
+Added support for .ZIP addons
+Restored the Lua Cache File(s)
+Added the Antlion Guardian to the spawnmenu
+Replaced the HL2 Alyx with Episodic Alyx
+Added more Episodic crap(TM)
+Added icons for Misc spawnmenu tab
+Added the icon for npc_advisor in spawnmenu
+Restored the MP3 Player (mp3 concommand)
+
+- Lua API
+Moved the vscode.lua to a brand new lua/api directory
+
+- Fixes
+Fixed the page_icon in spawnmenu files
+Increase the maximum secondary ammo limit of default weapons from 3/5 to 9999
+..same with primary ammo
+Increased health of NPCs with 8 health to 60
+Fixed the Jalopy crashing the game when going into water
+Fixed scene files
+Fix the issue where you could use noclip and/or spawnmenu in other gamemodes by default
+
 Beta 6
 - Fixes
 Fixed SWEPs crashing the game

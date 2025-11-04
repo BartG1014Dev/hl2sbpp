@@ -1,6 +1,6 @@
 "Misc"
 {
-	"page_icon"	"images/folder_database.png"
+	"page_icon"	"materials/icon16/page_white_gear.png"
 
 	"header"
 	{
@@ -9,29 +9,36 @@
 
     "image_button"
     {
+        "name" "0.5x Speed"
+        "image" "materials/entities/misc/x1.png"
+        "command" "host_timescale 0.5"
+    }
+
+    "image_button"
+    {
         "name" "1x Speed"
-        "image" "materials/entities/.png"
+        "image" "materials/entities/misc/x1.png"
         "command" "host_timescale 1"
     }
 
     "image_button"
     {
         "name" "2x Speed"
-        "image" "materials/entities/.png"
+        "image" "materials/entities/misc/x2.png"
         "command" "host_timescale 2"
     }
 
     "image_button"
     {
         "name" "Thirdperson"
-        "image" "materials/entities/.png"
+        "image" "materials/entities/misc/third.png"
         "command" "thirdperson"
     }
 
     "image_button"
     {
         "name" "Firstperson"
-        "image" "materials/entities/.png"
+        "image" "materials/entities/misc/first.png"
         "command" "firstperson"
     }
 
@@ -104,14 +111,14 @@
     "image_button"
     {
         "name" "2004 Movement"
-        "image" "materials/entities/.png"
+        "image" "materials/entities/misc/x2.png"
         "command" "toggle mov_2004"
     }
 
     "image_button"
     {
         "name" "Accelerated Fast Hopping"
-        "image" "materials/entities/.png"
+        "image" "materials/entities/misc/move.png"
         "command" "toggle mov_afh"
     }
 
@@ -123,14 +130,14 @@
     "image_button"
     {
         "name" "Light"
-        "image" "materials/entities/.png"
+        "image" "materials/entities/misc/light.png"
         "command" "ent_create prop_light"
     }
 
     "image_button"
     {
         "name" "Balloon"
-        "image" "materials/entities/.png"
+        "image" "materials/entities/misc/balloon.png"
         "command" "ent_create prop_balloon"
     }
 
@@ -146,12 +153,6 @@
         "command" "toggle developer"
     }
 
-    "image_button"
-    {
-        "name" "Cheats"
-        "image" "materials/entities/.png"
-        "command" "toggle sv_cheats"
-    }
 
     "image_button"
     {
@@ -165,6 +166,60 @@
         "name" "Allow Clientside Lua"
         "image" "materials/entities/.png"
         "command" "toggle sv_clientside_lua_allowed"
+    }
+
+	"header"
+	{
+		"text" "Cheats"
+	}
+
+    "image_button"
+    {
+        "name" "Cheats (toggle)"
+        "image" "materials/entities/.png"
+        "command" "toggle sv_cheats"
+    }
+
+    "image_button"
+    {
+        "name" "Godmode"
+        "image" "materials/entities/.png"
+        "command" "god"
+    }
+
+    "image_button"
+    {
+        "name" "Buddha"
+        "image" "materials/entities/.png"
+        "command" "buddha"
+    }
+
+    "image_button"
+    {
+        "name" "No Target"
+        "image" "materials/entities/.png"
+        "command" "notarget"
+    }
+
+    "image_button"
+    {
+        "name" "Give all weapons"
+        "image" "materials/entities/.png"
+        "command" "impulse 101"
+    }
+
+    "image_button"
+    {
+        "name" "Disable/Enable AI"
+        "image" "materials/entities/.png"
+        "command" "ai_disable"
+    }
+
+    "image_button"
+    {
+        "name" "Fullbright (toggle)"
+        "image" "materials/entities/.png"
+        "command" "toggle mat_fullbright"
     }
 
 }

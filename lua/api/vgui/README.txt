@@ -1,0 +1,1 @@
+If you want the Palm library implementation, go to the "lua/palm" folder/directory.

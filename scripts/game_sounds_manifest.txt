@@ -64,6 +64,8 @@ game_sounds_manifest
 	"precache_file"		"scripts/sounds/npc_sounds_vortigaunt.txt"
 	"precache_file"		"scripts/sounds/npc_sounds_zombie.txt"
 
+	"precache_file"		"scripts/sounds/game_sounds_world_cstrike.txt"
+
 	// Episode 1
 	"precache_file"		"scripts/sounds/game_sounds_weapons_episodic.txt"
 	"precache_file"		"scripts/sounds/npc_sounds_alyx_episodic.txt"
