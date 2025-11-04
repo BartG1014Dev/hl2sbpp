@@ -1,6 +1,6 @@
 "Changelog"
 {
-    "Title"       "1.0"
-    "Description" "Improvements, and a LOT of new stuff"
+    "Title"       "V1.0"
+    "Description" "Lua API additions, model fixes, and much more stuff with a fancy hat on"
     "Image"       "materials/vgui/changelog.jpg"
 }
