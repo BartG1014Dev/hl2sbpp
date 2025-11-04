@@ -67,8 +67,8 @@ local function OnOpenExamplePDialog()
   NewDialog:SetCloseButtonVisible(true) -- enable close button or no?
 
   local NewPage = vgui.Create(
-	"PPropertyPage", -- name
-	NewDialog -- parent
+    "PPropertyPage", -- name
+    NewDialog -- parent
   )
   NewPage:SetPos(0, 0) -- x,y
   NewPage:SetSize(300, 150) -- width, height
@@ -76,8 +76,8 @@ local function OnOpenExamplePDialog()
 
   -- now, add the page
   NewDialog:AddPage(
-	NewPage, -- page class
-	"Title!!!" -- page title
+    NewPage, -- page class
+    "Title!!!" -- page title
   )
 
   local NewLabel = vgui.Create(

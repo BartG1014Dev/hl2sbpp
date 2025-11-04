@@ -28,3 +28,6 @@ plus_playername.cfg
 console.log
 plus_settings.cfg
 stylua
+cache/
+resource/mp3player_db.txt
+*.sound.cache

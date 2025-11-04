@@ -10,14 +10,14 @@ SWEP.SlotPos = 1
 SWEP.Primary = {
   ClipSize = -1,
   DefaultClip = -1,
-  Automatic = true,
+  Automatic = false,
   Ammo = "None",
 }
 
 SWEP.Secondary = {
   ClipSize = -1,
   DefaultClip = -1,
-  Automatic = true,
+  Automatic = false,
   Ammo = "None",
 }
 

@@ -19,6 +19,7 @@ function GM:Initialize()
     engine.ServerCommand("sv_stopspeed 10\n")
     engine.ServerCommand("sv_infinite_aux_power 1\n") -- @ThePixelMoon: why aren't these on by default?
     engine.ServerCommand("sv_spawnmenu_allowed 1\n")
+	engine.ServerCommand("sv_allow_noclip 1\n")
   else
     -- Andrew; not the right place to put this, but oh well.
     self:CreateDefaultPanels()

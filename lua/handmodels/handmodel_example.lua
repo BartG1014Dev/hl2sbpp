@@ -1,6 +1,7 @@
 -- handmodel_example.lua
 
--- For your addons, remove this line.
+-- For your addons, remove these 3 lines,
+-- or change the 'true' to 'false'.
 if true then
   return
 end
