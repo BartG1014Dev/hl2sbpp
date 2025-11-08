@@ -240,7 +240,7 @@ function CBaseEntity:GetAbsVelocity() end
 function CBaseEntity:GetAnimTime() end
 
 ---Get the base animating interface for advanced animation control.
----@return any
+---@return CBaseAnimating
 function CBaseEntity:GetBaseAnimating() end
 
 ---Return this CBaseEntity's underlying CBaseEntity (self).
