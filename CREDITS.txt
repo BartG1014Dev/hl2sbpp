@@ -1,6 +1,6 @@
 CREDITS
 ThePixelMoon/YourLocalMoon - Lead programmer
-Waltenthethird - Helping fix thirdperson animations
+Waltenthethird - Helping fix spawnmenu and playermodel textures
 Ashforever - Provider of fixed GMod models
 MrDinnerMau5 - Supporter, advertising
 Graman/Carl - Suggestions
