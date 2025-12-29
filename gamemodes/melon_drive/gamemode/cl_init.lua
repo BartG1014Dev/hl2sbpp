@@ -28,7 +28,9 @@ function GM:KeyInput(down, keynum, pszCurrentBinding) end
 
 function GM:LevelInitPreEntity() end
 
-function GM:LevelInitPostEntity() end
+function GM:LevelInitPostEntity()
+  engine.ClientCmd_Unrestricted("thirdperson\n")
+end
 
 function GM:OnScreenSizeChanged(iOldWide, iOldTall) end
 

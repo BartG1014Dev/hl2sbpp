@@ -13,9 +13,9 @@
 		"test_hardware"		1
 	}
 	developer "Team HL2SB++"
-	gamelogo "1"
+	//gamelogo "1"
 
-    FileSystem
+    	FileSystem
 	{
 		SteamAppId				220
 

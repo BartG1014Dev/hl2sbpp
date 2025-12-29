@@ -378,6 +378,18 @@ Scheme
 				"dropshadow" "1"
 			}
 		}
+		"MainMenuFontBold"
+		{
+			"1"
+			{
+				"name"		"Roboto"
+				"tall"		"20"
+				"weight"	"1200"
+				"antialias" "1"
+				"outline" 	"0"
+				"dropshadow" "1"
+			}
+		}
 		"AchievementTitleFont"
 		{
 			"1"

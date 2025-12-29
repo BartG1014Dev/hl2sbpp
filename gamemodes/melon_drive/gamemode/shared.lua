@@ -22,11 +22,11 @@ function GM:Shutdown()
 end
 
 function GM:CalcPlayerView(pPlayer, eyeOrigin, eyeAngles, fov)
-  if CLIENT then
-    -- knowing that most people have sv_cheats on,
-    -- we can have this
-    engine.ClientCmd_Unrestricted("thirdperson\n")
-  end
+  return {
+    origin = eyeOrigin,
+    angles = eyeAngles,
+    fov = fov
+  }
 end
 
 function GM:CheckGameOver() end
