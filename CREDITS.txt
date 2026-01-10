@@ -1,6 +1,8 @@
+-- EN --
+
 CREDITS
 ThePixelMoon/YourLocalMoon - Lead programmer
-Waltenthethird - Helping fix spawnmenu and playermodel textures
+Waltenthethird - Helping fix thirdperson animations
 Ashforever - Provider of fixed GMod models
 MrDinnerMau5 - Supporter, advertising
 Graman/Carl - Suggestions
@@ -22,3 +24,31 @@ Some map thumbnails - https://github.com/norbcodes/MapThumbnailPack, https://ste
 
 Special thanks to everyone that have supported this project!
 And GMod, of course.
+
+
+-- RU --
+
+СОЗДАТЕЛИ
+ThePixelMoon/YourLocalMoon - Ведущий программист
+Waltenthethird - Помог починить анимации от третьего лица
+Ashforever - Поставщик пофикшенных GMod моделей
+MrDinnerMau5 - Сторонник, рекламирование
+Graman/Carl - Предложения
+ItzVladik - Участник, он разрешил изпользовать mov_ квары из GunMod
+
+УЧАСТНИКИ
+hahayoutookind - Русский перевод
+Kokoleong - Модная шляпа
+R_4d - Модная шляпа.. снова
+
+ТЕСТЕРЫ
+Inflesi
+Gustavo/Nekto
+Ramdoms
+Yaymon
+BartG1014
+
+Некоторые обложки для карт - https://github.com/norbcodes/MapThumbnailPack, https://steamcommunity.com/sharedfiles/filedetails/?id=2922426391
+
+Спасибо всем, кто поддерживает этот проект!
+И GMod, конечно же.
