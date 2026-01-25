@@ -44,16 +44,21 @@
 	}
 	"8"
 	{
+		"label" "#HL2SB_Workshop"
+		"command" "engine modio_workshop"
+	}
+	"9"
+	{
 		"label" ""
 		"command" ""
 	}
-	"9"
+	"10"
 	{
 		"label" "#GameUI_GameMenu_Disconnect"
 		"command" "Disconnect"
 		"OnlyInGame" "1"
 	}
-	"10"
+	"11"
 	{
 		"label" "#GameUI_GameMenu_Quit"
 		"command" "Quit"

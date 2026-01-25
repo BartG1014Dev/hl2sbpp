@@ -34,3 +34,4 @@ resource/mp3player_db.txt
 ep1_gamestats.dat
 *.lib
 *.pdb
+downloads/
