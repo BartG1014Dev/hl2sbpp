@@ -1,11 +1,11 @@
 "GameMenu"
 {
-	"0"
-	{
-		"label" ""
-		"command" ""
-	}
 	"1"
+	{
+		"label" "#GameUI_Console"
+		"command" "OpenConsole"
+	}
+	"2"
 	{
 		"label" "#GameUI_GameMenu_ResumeGame"
 		"command" "ResumeGame"
