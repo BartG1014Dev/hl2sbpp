@@ -35,3 +35,4 @@ ep1_gamestats.dat
 *.lib
 *.pdb
 downloads/
+bin/*
