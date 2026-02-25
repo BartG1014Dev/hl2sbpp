@@ -66,6 +66,8 @@ SWEP.m_acttable = {
 
 SWEP.Tools = {}
 
+toolgunmode = CreateClientConVar("toolgun_mode", "Remover", false, false)
+
 function SWEP:RegisterTool(name, tbl)
   self.Tools[name] = tbl
 end
@@ -161,19 +163,8 @@ function SWEP:CycleTool()
 
   self.CurrentTool = keys[idx]
 
-  local movehelper = MoveHelper()
-  if movehelper then
-    local tool = self:GetActiveTool()
-    local toolName = self.CurrentTool or "none"
-    local desc = tool and tool.Description or ""
-
-    movehelper:Con_NPrintf(1, string.format("Mode: %s", toolName))
-    if desc ~= "" then
-      movehelper:Con_NPrintf(2, desc)
-    end
-  end
-
-  --print("Current tool: " .. (self.CurrentTool or "none"))
+  local cvar = GetConVar("toolgun_mode")
+  if cvar then cvar:SetValue(self.CurrentTool) end
 end
 
 function SWEP:SecondaryAttack()
@@ -269,13 +260,7 @@ end
 
 function SWEP:Holster(pSwitchingTo) end
 
-function SWEP:ItemPostFrame()
-  local movehelper = MoveHelper()
-  if not movehelper then
-    return
-  end
-  movehelper:Con_NPrintf(4, "Right click to switch mode")
-end
+function SWEP:ItemPostFrame() end
 
 function SWEP:ItemBusyFrame() end
 

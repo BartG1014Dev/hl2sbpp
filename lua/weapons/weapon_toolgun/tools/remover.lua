@@ -14,7 +14,8 @@ function TOOL:PrimaryAttack(swep, player, trace)
       return false
     end
 
-    UTIL.Remove(ent)
+    --UTIL.Remove(ent)
+    effect.Dissolve(ent, "sprites/blueglow1.vmt", gpGlobals.curtime(), 1)
   end
 end
 

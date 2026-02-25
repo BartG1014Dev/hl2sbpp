@@ -1,6 +1,6 @@
 -- weapons/weapon_toolgun/tools/collide.lua
 TOOL.Name = "No Collision"
-TOOL.Description = "Disables collision of entities."
+TOOL.Description = "Disables/enables collision of entities."
 
 function TOOL:PrimaryAttack(swep, player, trace)
   local ent = trace.m_pEnt
@@ -19,7 +19,7 @@ function TOOL:PrimaryAttack(swep, player, trace)
       return false
     end
 
-    vphys:EnableCollisions(false)
+    vphys:EnableCollisions( not vphys:IsCollisionEnabled() )
   end
 end
 

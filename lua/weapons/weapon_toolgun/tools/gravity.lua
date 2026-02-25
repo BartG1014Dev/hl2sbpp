@@ -19,7 +19,7 @@ function TOOL:PrimaryAttack(swep, player, trace)
       return false
     end
 
-    vphys:EnableGravity(false)
+    vphys:EnableGravity( not vphys:IsGravityEnabled() )
   end
 end
 
