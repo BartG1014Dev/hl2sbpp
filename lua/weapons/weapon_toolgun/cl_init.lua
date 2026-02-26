@@ -53,7 +53,7 @@ function SWEP:DrawHUD()
     end
 
     spaint.TextS({
-        text = "Right click to switch tools!",
+        text = "Reload to switch tools!",
         pos = { 55, 145 },
         font = "DefaultLargeButSmaller",
         color = Color(255, 255, 255)

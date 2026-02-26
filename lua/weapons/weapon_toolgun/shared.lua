@@ -4,6 +4,8 @@
 --
 --===========================================================================--
 
+Timer = require("timer")
+
 TOOL_PATH = "lua/weapons/weapon_toolgun/"
 
 SWEP.PrintName = "TOOLGUN"
@@ -78,6 +80,8 @@ function SWEP:Initialize()
   self.m_bReloadsSingly = false
   self.m_bFiresUnderwater = true
   self.CurrentTool = nil
+  self.m_flNextToolSwitch = gpGlobals.curtime()
+  self.Tools = {}
 
   self:LoadTools()
 end
@@ -109,17 +113,23 @@ function SWEP:PrimaryAttack()
   MASK_SHOT = _E.MASK.SHOT
   UTIL.TraceLine(vecEye, vecEye + vForward * 56755, MASK_SHOT, pPlayer, 0, tr)
 
-  -- @ThePixelMoon: GOD FUCKING DAMN IT I HATE YOU SO MUCH LUA I WISH I FUCKING
-  -- NEVER DID THAT BUT THIS PIECE OF SHIT DIDNT WORK AND THE ONLY WAY FOR IT TO
-  -- WORK IS TO DO THIS FUCKING MONSTROSITY
   if SERVER then
-    engine.ServerCommand(
-      "ent_create env_spark; ent_fire env_spark SparkOnce; wait; wait; wait; wait; ent_fire env_spark kill\n"
-    )
-  else
-    engine.ClientCmd_Unrestricted(
-      "ent_create env_spark; ent_fire env_spark SparkOnce; wait; wait; wait; wait; ent_fire env_spark kill\n"
-    )
+    local spark = CreateEntityByName("env_spark")
+    if IsValid(spark) then
+      spark:SetAbsOrigin(tr.endpos)
+      spark:KeyValue("angles", "0 0 0")
+      spark:KeyValue("magnitude", "2")
+      spark:KeyValue("trail_length", "1")
+      spark:KeyValue("spawnflags", "64")
+      spark:Spawn()
+      spark:Activate()
+      spark:Think()
+      spark:SetNextThink(gpGlobals.curtime() + 0.1)
+
+      Timer.Simple(0.1, function()
+        spark:Remove()
+      end)
+    end
   end
 
   local tool = self.Tools[self.CurrentTool]
@@ -162,7 +172,10 @@ function SWEP:CycleTool()
   self.CurrentTool = keys[idx]
 
   -- Knowing well we only do this on server, we can do this
-  engine.ClientCommand(self:GetOwner(), "toolgun_mode " .. self.CurrentTool)
+  local owner = self:GetOwner()
+  if IsValid(owner) then
+    engine.ClientCommand(owner, "toolgun_mode " .. self.CurrentTool)
+  end
 end
 
 function SWEP:SecondaryAttack()
@@ -171,10 +184,14 @@ function SWEP:SecondaryAttack()
     return
   end
 
-  if not next(self.Tools) then
-    DevWarning("Tools not loaded yet\n")
-    return
-  end
+  self.m_flNextSecondaryAttack = gpGlobals.curtime() + 0.15
+
+  self:SendWeaponAnim(ACT.VM_PRIMARYATTACK)
+
+  -- @ThePixelMoon: hacky
+  self:WeaponSound(WeaponSound.SINGLE)
+
+  ToHL2MPPlayer(pPlayer):DoAnimationEvent(PlayerAnimEvent.ATTACK_PRIMARY)
 
   local vForward = Vector()
   local vRight = Vector()
@@ -186,6 +203,25 @@ function SWEP:SecondaryAttack()
   MASK_SHOT = _E.MASK.SHOT
   UTIL.TraceLine(vecEye, vecEye + vForward * 56755, MASK_SHOT, pPlayer, 0, tr)
 
+  if SERVER then
+    local spark = CreateEntityByName("env_spark")
+    if IsValid(spark) then
+      spark:SetAbsOrigin(tr.endpos)
+      spark:KeyValue("angles", "0 0 0")
+      spark:KeyValue("magnitude", "2")
+      spark:KeyValue("trail_length", "1")
+      spark:KeyValue("spawnflags", "64")
+      spark:Spawn()
+      spark:Activate()
+      spark:Think()
+      spark:SetNextThink(gpGlobals.curtime() + 0.1)
+
+      Timer.Simple(0.1, function()
+        spark:Remove()
+      end)
+    end
+  end
+
   local tool = self.Tools[self.CurrentTool]
   if not tool then
     return
@@ -194,12 +230,6 @@ function SWEP:SecondaryAttack()
   if tool.SecondaryAttack then
     tool:SecondaryAttack(self, pPlayer, tr)
   end
-
-  self:CycleTool()
-
-  self.m_flNextSecondaryAttack = gpGlobals.curtime() + 0.5
-
-  return true
 end
 
 function SWEP:Reload()
@@ -258,7 +288,17 @@ end
 
 function SWEP:Holster(pSwitchingTo) end
 
-function SWEP:ItemPostFrame() end
+function SWEP:ItemPostFrame()
+  local pPlayer = self:GetOwner()
+  if not IsValid(pPlayer) then return end
+
+  if HasFlag(pPlayer.m_afButtonPressed, IN.RELOAD) then
+    if (self.m_flNextToolSwitch or 0) <= gpGlobals.curtime() then
+      self.m_flNextToolSwitch = gpGlobals.curtime() + 0.5
+      self:CycleTool()
+    end
+  end
+end
 
 function SWEP:ItemBusyFrame() end
 
