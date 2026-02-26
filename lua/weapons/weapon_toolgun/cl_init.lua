@@ -7,13 +7,15 @@
 includeC("shared.lua")
 require("spaint")
 
+ToolGunMode = CreateClientConVar("toolgun_mode", "Remover", false, false)
+
 function SWEP:DrawLargeWeaponBox(bSelected, xpos, ypos, boxWide, boxTall, selectedColor, alpha, number) end
 
 function SWEP:DrawModel(flags) end
 
 function SWEP:DrawHUD()
     -- Too unoptimized.
-    local toolName = GetConVar("toolgun_mode"):GetString()
+    local toolName = ToolGunMode:GetString()
     local tool = self.Tools[toolName]
     local desc = tool and tool.Description or ""
 

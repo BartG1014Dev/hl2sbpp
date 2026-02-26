@@ -66,8 +66,6 @@ SWEP.m_acttable = {
 
 SWEP.Tools = {}
 
-toolgunmode = CreateClientConVar("toolgun_mode", "Remover", false, false)
-
 function SWEP:RegisterTool(name, tbl)
   self.Tools[name] = tbl
 end
@@ -163,8 +161,8 @@ function SWEP:CycleTool()
 
   self.CurrentTool = keys[idx]
 
-  local cvar = GetConVar("toolgun_mode")
-  if cvar then cvar:SetValue(self.CurrentTool) end
+  -- Knowing well we only do this on server, we can do this
+  engine.ClientCommand(self:GetOwner(), "toolgun_mode " .. self.CurrentTool)
 end
 
 function SWEP:SecondaryAttack()
