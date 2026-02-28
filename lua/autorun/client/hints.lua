@@ -239,11 +239,7 @@ function AddNotify(text, ntype, length)
   local p = NoticePanel_New(LocalizeText(text), ntype, length)
   m_Notices[#m_Notices + 1] = p
 
-  if random.RandomInt(1, 2) == 1 then
-    surface.PlaySound("ambient/water/drip1.wav")
-  else
-    surface.PlaySound("ambient/water/drip2.wav")
-  end
+	surface.PlaySound( "ambient/water/drip" .. random.RandomInt( 1, 4 ) .. ".wav" )
 end
 
 function SetMaxHints(n)
