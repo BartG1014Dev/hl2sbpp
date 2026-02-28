@@ -6,10 +6,7 @@
 
 _BASE_GAMEMODE = "deathmatch"
 
--- @ThePixelMoon: what the fuck???
---require( "hook" )
-
-local hook = hook
+local hook = require( "hook" )
 local table = table
 local print = print
 local _BASE_GAMEMODE = _BASE_GAMEMODE

@@ -1,5 +1,7 @@
 -- timer.lua
 
+local hook = require("hook")
+
 Timer = {}
 Timer.timers = {}
 
@@ -46,5 +48,10 @@ end
 function Timer.Remove(name)
   Timer.timers[name] = nil
 end
+
+hook.add("Think", "TimerThink", function()
+  -- Should be fine.
+  Timer.Think()
+end)
 
 return Timer

@@ -1,4 +1,4 @@
---========== Copyright © 2025, Team HL2SB++, All rights reserved. ===========--
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
 --
 -- Purpose: Extends the weapon type.
 --

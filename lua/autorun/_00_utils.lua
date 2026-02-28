@@ -61,6 +61,10 @@ function CurTime()
   return gpGlobals.curtime()
 end
 
+function FrameTime()
+  return gpGlobals.frametime()
+end
+
 function LocalPlayer()
   if SERVER then
     return UTIL.GetLocalPlayer()
@@ -69,23 +73,13 @@ function LocalPlayer()
   end
 end
 
-local FCVAR_CLIENTDLL = _E.FCVAR.CLIENTDLL
-local FCVAR_ARCHIVE = _E.FCVAR.ARCHIVE
-local FCVAR_USERINFO = _E.FCVAR.USERINFO
-
 function CreateClientConVar(strName, strDefault, bSave, bUserData)
-  local flags = FCVAR_CLIENTDLL
+  local flags = FCVAR.CLIENTDLL
 
-  if bSave then
-    flags = bit.bor(flags, FCVAR_ARCHIVE)
-  end
+  if bSave     then flags = flags + FCVAR.ARCHIVE  end
+  if bUserData then flags = flags + FCVAR.USERINFO  end
 
-  if bUserData then
-    flags = bit.bor(flags, FCVAR_USERINFO)
-  end
-
-  local convar = ConVar(strName, strDefault, flags)
-  return convar
+  return ConVar(strName, strDefault, flags)
 end
 
 function GetConVar(name)

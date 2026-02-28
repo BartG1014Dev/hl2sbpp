@@ -2,8 +2,7 @@
 -- Being in autorun means it will only execute in-map.
 
 local cvar = require("cvar")
-
-local FCVAR_CLIENTDLL = _E.FCVAR.CLIENTDLL
+includeC("enum_fcvar.lua")
 
 -- Local means dont use it anywhere else
 local function OnTestCmdChange(var, oldValueStr, oldValueNum)
@@ -16,7 +15,7 @@ end
 local test_convar = ConVar(
   "test_convar", -- ConVar name
   "0", -- Default value
-  FCVAR_CLIENTDLL -- Flags
+  FCVAR.CLIENTDLL -- Flags
 )
 
 cvar.AddChangeCallback(

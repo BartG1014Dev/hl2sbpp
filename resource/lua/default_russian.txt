@@ -1,0 +1,8 @@
+"lang"
+{ 
+    "Language" "Russian"
+    "Tokens"
+    {
+        "Hint_OpeningMenu"	"Зажмите Q что-бы открыть Spawn Menu"
+    }
+}

@@ -4,8 +4,6 @@
 local concommand = require("concommand")
 include("palm/cl_init.lua")
 
-local FCVAR_CLIENTDLL = _E.FCVAR.CLIENTDLL
-
 -- Local means dont use it anywhere else
 local function OnOpenExamplePanel()
   local NewFrame = vgui.Create(
@@ -50,7 +48,7 @@ concommand.Create(
   "OpenExamplePanel", -- Name
   OnOpenExamplePanel, -- Function
   "Opens an example panel.", -- Description
-  FCVAR_CLIENTDLL --Flags
+  FCVAR.CLIENTDLL --Flags
 )
 
 -- Local means dont use it anywhere else
@@ -112,5 +110,5 @@ concommand.Create(
   "OpenExamplePropertyDialog", -- Name
   OnOpenExamplePDialog, -- Function
   "Opens an example property dialog.", -- Description
-  FCVAR_CLIENTDLL --Flags
+  FCVAR.CLIENTDLL --Flags
 )

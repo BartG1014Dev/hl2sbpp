@@ -1,0 +1,8 @@
+"lang"
+{ 
+    "Language" "English"
+    "Tokens"
+    {
+        "Hint_OpeningMenu"	"Hold Q to open the Spawn Menu"
+    }
+}
