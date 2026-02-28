@@ -1,4 +1,9 @@
--- class_util.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 util = {}
 
 function util.PrecacheModel(model)

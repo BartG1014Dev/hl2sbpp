@@ -1,4 +1,9 @@
--- class_sound.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 sound = sound or {}
 sound._registered = sound._registered or {}
 

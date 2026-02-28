@@ -1,4 +1,9 @@
--- concommand_example.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 -- Being in autorun means it will only execute in-map.
 
 local cvar = require("cvar")

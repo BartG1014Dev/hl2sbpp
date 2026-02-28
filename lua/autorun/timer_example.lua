@@ -1,4 +1,8 @@
--- timer_example.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 local concommand = require("concommand")
 local Timer = require("timer")

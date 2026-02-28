@@ -1,4 +1,8 @@
--- def_bullet.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 local function lbs2kg(lbs)
   return lbs * 0.453592

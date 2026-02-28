@@ -1,4 +1,8 @@
--- defs.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 CONTENTS_EMPTY = 0
 CONTENTS_SOLID = 0x1

@@ -1,4 +1,8 @@
--- _00_utils.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 if CLIENT == nil then
   if _CLIENT then

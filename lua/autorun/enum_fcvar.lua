@@ -1,4 +1,9 @@
--- enum_fcvar.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 FCVAR = {}
 
 FCVAR.NONE = 0

@@ -1,4 +1,8 @@
--- defs_tables.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 MoveType = {
   NONE = 0,

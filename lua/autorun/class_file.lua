@@ -1,4 +1,9 @@
--- file.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 file = {}
 
 FILESYSTEM_INVALID_HANDLE = nil
