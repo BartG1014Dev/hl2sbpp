@@ -17,6 +17,7 @@ function TOOL:PrimaryAttack(swep, player, trace)
 
   local ent = trace.m_pEnt
   local phys = ent:VPhysicsGetObject()
+  if phys == NULL then return end
 
   if not IsValidEntity(ent) then
     Warning("Nah.\n")

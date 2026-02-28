@@ -8,15 +8,13 @@ TOOL.Name = "Explode"
 TOOL.Description = "Cause an explosion."
 
 function TOOL:PrimaryAttack(swep, player, trace)
-  local grenade = CreateEntityByName("grenade_ar2")
-  if grenade ~= NULL then
-    --grenade.PrecacheModel( "grenade_ar2" )
-    --grenade:SetModel( "grenade_ar2" )
-    grenade:SetAbsOrigin(trace.endpos)
-    grenade:SetAbsAngles(QAngle())
-    grenade:Spawn()
-    grenade:Activate()
-  end
+  effect.ExplosionCreate(
+    trace.endpos,
+    QAngle(0,0,0),
+    player,
+    15,
+    15, true
+  )
 end
 
 function TOOL:SecondaryAttack(swep, player, trace)

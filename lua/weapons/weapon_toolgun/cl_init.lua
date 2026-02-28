@@ -7,7 +7,7 @@
 includeC("shared.lua")
 require("spaint")
 
-ToolGunMode = CreateClientConVar("toolgun_mode", "Remover", false, false)
+ToolGunMode = CreateClientConVar("toolgun_mode", "", false, false)
 
 function SWEP:DrawLargeWeaponBox(bSelected, xpos, ypos, boxWide, boxTall, selectedColor, alpha, number) end
 

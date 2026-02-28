@@ -20,7 +20,7 @@ function TOOL:PrimaryAttack(swep, player, trace)
     end
 
     --UTIL.Remove(ent)
-    effect.Dissolve(ent, "sprites/blueglow1.vmt", gpGlobals.curtime(), 1)
+    effect.Dissolve(ent, "sprites/blueglow1.vmt", gpGlobals.curtime(), 2)
   end
 end
 

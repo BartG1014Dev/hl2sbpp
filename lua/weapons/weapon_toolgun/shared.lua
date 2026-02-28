@@ -88,13 +88,11 @@ end
 
 function SWEP:Precache() end
 
-function SWEP:PrimaryAttack()
+function SWEP:Anim()
   local pPlayer = self:GetOwner()
   if not IsValid(pPlayer) then
     return
   end
-
-  self.m_flNextPrimaryAttack = gpGlobals.curtime() + 0.15
 
   self:SendWeaponAnim(ACT.VM_PRIMARYATTACK)
 
@@ -124,13 +122,104 @@ function SWEP:PrimaryAttack()
       spark:Spawn()
       spark:Activate()
       spark:Think()
-      spark:SetNextThink(gpGlobals.curtime() + 0.1)
+      spark:SetNextThink(gpGlobals.curtime() + 0.05)
 
-      Timer.Simple(0.1, function()
+      Timer.Simple(0.05, function()
         spark:Remove()
       end)
     end
+
+    local startPos = pPlayer:EyePosition() + vForward * 8 + vRight * 4 + vUp * -1.5
+
+    local startTarget = CreateEntityByName("info_target")
+    local endTarget = CreateEntityByName("info_target")
+
+    if not IsValid(startTarget) or not IsValid(endTarget) then
+      if IsValid(startTarget) then
+        startTarget:Remove()
+      end
+      if IsValid(endTarget) then
+        endTarget:Remove()
+      end
+      return
+    end
+
+    startTarget:SetLocalOrigin(startPos)
+    endTarget:SetLocalOrigin(tr.endpos)
+
+    startTarget:Spawn()
+    startTarget:Activate()
+    startTarget:Think()
+    startTarget:SetNextThink(gpGlobals.curtime() + 0.05)
+
+    endTarget:Spawn()
+    endTarget:Activate()
+    endTarget:Think()
+    endTarget:SetNextThink(gpGlobals.curtime() + 0.05)
+
+    local beam = CreateEntityByName("env_beam")
+    if not IsValid(beam) then
+      startTarget:Remove()
+      endTarget:Remove()
+      return
+    end
+
+    beam:KeyValue("BoltWidth", "1")
+    beam:KeyValue("texture", "sprites/laser")
+    beam:KeyValue("rendercolor", "0 150 255")
+    beam:KeyValue("life", "0.12")
+    beam:KeyValue("Noise", "2")
+    beam:KeyValue("StrikeTime", "0.12")
+
+    local sname = "toolgun_beam_start_" .. tostring(pPlayer:entindex()) .. "_" .. tostring(gpGlobals.curtime())
+    local ename = "toolgun_beam_end_" .. tostring(pPlayer:entindex()) .. "_" .. tostring(gpGlobals.curtime())
+    startTarget:KeyValue("targetname", sname)
+    endTarget:KeyValue("targetname", ename)
+
+    beam:KeyValue("LightningStart", sname)
+    beam:KeyValue("LightningEnd", ename)
+
+    beam:SetParent(pPlayer, 0)
+
+    beam:Spawn()
+    beam:Activate()
+    beam:Activate()
+    beam:Think()
+    beam:SetNextThink(gpGlobals.curtime() + 0.05)
+
+    Timer.Simple(0.05, function()
+      if IsValid(beam) then
+        beam:Remove()
+      end
+      if IsValid(startTarget) then
+        startTarget:Remove()
+      end
+      if IsValid(endTarget) then
+        endTarget:Remove()
+      end
+    end)
   end
+end
+
+function SWEP:PrimaryAttack()
+  local pPlayer = self:GetOwner()
+  if not IsValid(pPlayer) then
+    return
+  end
+
+  local vForward = Vector()
+  local vRight = Vector()
+  local vUp = Vector()
+  local vecEye = pPlayer:EyePosition()
+  pPlayer:EyeVectors(vForward, vRight, vUp)
+
+  local tr = trace_t()
+  MASK_SHOT = _E.MASK.SHOT
+  UTIL.TraceLine(vecEye, vecEye + vForward * 56755, MASK_SHOT, pPlayer, 0, tr)
+
+  self.m_flNextPrimaryAttack = gpGlobals.curtime() + 0.15
+
+  self:Anim()
 
   local tool = self.Tools[self.CurrentTool]
   if not tool then
@@ -184,15 +273,6 @@ function SWEP:SecondaryAttack()
     return
   end
 
-  self.m_flNextSecondaryAttack = gpGlobals.curtime() + 0.15
-
-  self:SendWeaponAnim(ACT.VM_PRIMARYATTACK)
-
-  -- @ThePixelMoon: hacky
-  self:WeaponSound(WeaponSound.SINGLE)
-
-  ToHL2MPPlayer(pPlayer):DoAnimationEvent(PlayerAnimEvent.ATTACK_PRIMARY)
-
   local vForward = Vector()
   local vRight = Vector()
   local vUp = Vector()
@@ -203,24 +283,9 @@ function SWEP:SecondaryAttack()
   MASK_SHOT = _E.MASK.SHOT
   UTIL.TraceLine(vecEye, vecEye + vForward * 56755, MASK_SHOT, pPlayer, 0, tr)
 
-  if SERVER then
-    local spark = CreateEntityByName("env_spark")
-    if IsValid(spark) then
-      spark:SetAbsOrigin(tr.endpos)
-      spark:KeyValue("angles", "0 0 0")
-      spark:KeyValue("magnitude", "2")
-      spark:KeyValue("trail_length", "1")
-      spark:KeyValue("spawnflags", "64")
-      spark:Spawn()
-      spark:Activate()
-      spark:Think()
-      spark:SetNextThink(gpGlobals.curtime() + 0.1)
+  self.m_flNextSecondaryAttack = gpGlobals.curtime() + 0.15
 
-      Timer.Simple(0.1, function()
-        spark:Remove()
-      end)
-    end
-  end
+  self:Anim()
 
   local tool = self.Tools[self.CurrentTool]
   if not tool then
@@ -240,7 +305,15 @@ function SWEP:Think() end
 
 function SWEP:CanHolster() end
 
-function SWEP:Deploy() end
+function SWEP:Deploy()
+  if SERVER then
+    -- Knowing well we only do this on server, we can do this
+    local owner = self:GetOwner()
+    if IsValid(owner) then
+      engine.ClientCommand(owner, "toolgun_mode " .. self.CurrentTool)
+    end
+  end
+end
 
 function SWEP:LoadTools()
   local toolFiles = {}
@@ -290,7 +363,9 @@ function SWEP:Holster(pSwitchingTo) end
 
 function SWEP:ItemPostFrame()
   local pPlayer = self:GetOwner()
-  if not IsValid(pPlayer) then return end
+  if not IsValid(pPlayer) then
+    return
+  end
 
   if HasFlag(pPlayer.m_afButtonPressed, IN.RELOAD) then
     if (self.m_flNextToolSwitch or 0) <= gpGlobals.curtime() then
