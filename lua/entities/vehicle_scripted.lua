@@ -13,12 +13,12 @@ ENT.VehicleScript = "scripts/vehicles/jeep_test.txt"
 
 function ENT:Initialize() end
 
-function ENT:SetupMove(pDriver, pMoveHelper) end
+function ENT:SetupMove(pDriver, pMoveHelper, pMoveData) end
 
-function ENT:Think(pOther) end
+function ENT:Think() end
 
-function ENT:ProcessMovement(pPlayer) end
+function ENT:ProcessMovement(pPlayer, pMoveData) end
 
-function ENT:FinishMove(pPlayer) end
+function ENT:FinishMove(pPlayer, pMoveData) end
 
 function ENT:ExitVehicle(nRole) end

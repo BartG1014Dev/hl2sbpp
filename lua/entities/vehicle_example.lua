@@ -11,7 +11,7 @@ DEFINE_FACTORY("CPropVehicleDriveable")
 ENT.ModelName = "models/buggy.mdl"
 ENT.VehicleScript = "scripts/vehicles/jeep_test.txt"
 
-function ENT:SetupMove(pDriver, pMoveHelper)
+function ENT:SetupMove(pDriver, pMoveHelper, pMoveData)
   local obj = self:VPhysicsGetObject()
   if IsValid(obj) then
     local vel = Vector(0, 0, 100)
