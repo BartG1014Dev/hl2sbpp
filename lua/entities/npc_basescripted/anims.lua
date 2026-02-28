@@ -1,4 +1,8 @@
--- anims.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 weaponRunActivities = {
   ["weapon_smg1"] = ACT.HL2MP_RUN_SMG1,

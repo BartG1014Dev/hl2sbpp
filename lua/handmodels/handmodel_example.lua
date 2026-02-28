@@ -1,4 +1,8 @@
--- handmodel_example.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 -- For your addons, remove these 3 lines,
 -- or change the 'true' to 'false'.

@@ -1,4 +1,9 @@
--- HandModels.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 local hook = require("hook")
 
 --[[

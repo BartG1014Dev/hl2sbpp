@@ -1,5 +1,8 @@
--- example_panel.lua
--- All Palm controls must start with a P! Example: PButton, PLabel
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose: All Palm controls must start with a P! Example: PButton, PLabel
+--
+--===========================================================================--
 
 local concommand = require("concommand")
 include("palm/cl_init.lua")
