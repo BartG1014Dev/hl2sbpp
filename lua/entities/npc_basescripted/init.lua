@@ -149,96 +149,97 @@ function ENT:AttackNearestPlayers()
   end
 end
 
-function ENT:MoveThink()
-  local pos = self:GetAbsOrigin()
+local function GetNextAreaToward(fromArea, targetPos)
+  local bestArea = nil
+  local bestDist = math.huge
 
-  if not self.TargetPos or (pos - self.TargetPos):Length() < 40 and self.DoMove then
-    local currentPos = self:GetAbsOrigin()
-    local nearestArea = navmesh.GetNearestNavArea(currentPos)
-
-    local newTarget = nil
-    if nearestArea then
-      local adjacentCount = nearestArea:GetAdjacentCount(0)
-      if adjacentCount > 0 then
-        local randomIndex = random.RandomInt(0, adjacentCount - 1)
-        local nextArea = nearestArea:GetAdjacentArea(0, randomIndex)
-        if nextArea then
-          newTarget = nextArea:GetRandomPoint()
+  for dir = 0, 3 do
+    local count = fromArea:GetAdjacentCount(dir)
+    for i = 0, count - 1 do
+      local adj = fromArea:GetAdjacentArea(dir, i)
+      if adj then
+        local d = (adj:GetCenter() - targetPos):Length()
+        if d < bestDist then
+          bestDist = d
+          bestArea = adj
         end
       end
-
-      if not newTarget then
-        newTarget = nearestArea:GetRandomPoint()
-      end
-    else
-      --Warning("Unable to find nearest area. Do you have a navigation mesh?\n")
-      newTarget = pos + Vector(random.RandomInt(-2000, 2000), random.RandomInt(-2000, 2000), 0)
-    end
-
-    if newTarget then
-      self.TargetPos = newTarget
     end
   end
 
-  -- quite a hacky hack
-  if self.FollowPlayer and self.DoMove then
-    local nearestPlayer, dist = self:GetNearestPlayer()
-    if nearestPlayer then
-      self.TargetPos = nearestPlayer:GetAbsOrigin()
+  return bestArea
+end
 
-      local headPos = self:GetBonePosition(self:LookupBone("ValveBiped.Bip01_Head1"), Vector(0, 0, 0), QAngle(0, 0, 0))
-        or self:GetAbsOrigin()
-      local delta = nearestPlayer:GetAbsOrigin() + Vector(0, 0, 40) - headPos -- look at player head
-      local targetYaw = math.deg(math.atan2(delta.y, delta.x))
-      local targetPitch = math.deg(math.atan2(-delta.z, math.sqrt(delta.x ^ 2 + delta.y ^ 2)))
+function ENT:MoveThink()
+  local pos = self:GetAbsOrigin()
+  local target = self:GetNearestPlayer()
 
-      local yawIndex = self:LookupPoseParameter("eyes_leftright")
-      local pitchIndex = self:LookupPoseParameter("eyes_updown")
-
-      if yawIndex >= 0 then
-        local currentYaw = self:GetPoseParameter(yawIndex)
-        local desiredYaw = math.clamp(targetYaw / 90, -1, 1)
-        local smoothYaw = currentYaw + (desiredYaw - currentYaw) * 0.1
-        self:SetPoseParameter(yawIndex, smoothYaw)
+  if target and self.DoMove then
+    local currentArea = navmesh.GetNearestNavArea(pos)
+    if currentArea then
+      local nextArea = GetNextAreaToward(currentArea, target:GetAbsOrigin())
+      if nextArea then
+        self.TargetPos = nextArea:GetRandomPoint()
+      else
+        self.TargetPos = target:GetAbsOrigin()
       end
+    else
+      Warning("ENT:MoveThink - no nav area at NPC position\n")
+      self.TargetPos = target:GetAbsOrigin()
+    end
+  end
 
-      if pitchIndex >= 0 then
-        local currentPitch = self:GetPoseParameter(pitchIndex)
-        local desiredPitch = math.clamp(targetPitch / 90, -1, 1)
-        local smoothPitch = currentPitch + (desiredPitch - currentPitch) * 0.1
-        self:SetPoseParameter(pitchIndex, smoothPitch)
-      end
+  if self:IsObstacleAhead() and self:IsOnGround() then
+    self.TargetPos = nil
+    local phys = self:VPhysicsGetObject()
+    if phys and phys ~= NULL then
+      phys:ApplyForceCenter(Vector(0, 0, 1) * 2000)
+    else
+      local cur = self:GetAbsVelocity()
+      self:SetAbsVelocity(Vector(cur.x, cur.y, math.max(cur.z, 100)))
+    end
+    return
+  end
+
+  if self.FollowPlayer and target then
+    local headPos = self:GetBonePosition(self:LookupBone("ValveBiped.Bip01_Head1"), Vector(0, 0, 0), QAngle(0, 0, 0))
+      or pos
+
+    local delta = target:GetAbsOrigin() + Vector(0, 0, 40) - headPos
+    local targetYaw = math.deg(math.atan2(delta.y, delta.x))
+    local targetPitch = math.deg(math.atan2(-delta.z, math.sqrt(delta.x ^ 2 + delta.y ^ 2)))
+
+    local yawIdx = self:LookupPoseParameter("eyes_leftright")
+    local pitchIdx = self:LookupPoseParameter("eyes_updown")
+
+    if yawIdx >= 0 then
+      local cur = self:GetPoseParameter(yawIdx)
+      local desired = math.clamp(targetYaw / 90, -1, 1)
+      self:SetPoseParameter(yawIdx, cur + (desired - cur) * 0.1)
+    end
+    if pitchIdx >= 0 then
+      local cur = self:GetPoseParameter(pitchIdx)
+      local desired = math.clamp(targetPitch / 90, -1, 1)
+      self:SetPoseParameter(pitchIdx, cur + (desired - cur) * 0.1)
     end
   end
 
   if self.TargetPos and self.DoMove then
     local dir = self.TargetPos - pos
     local len = dir:Length()
+
     if len > 0 then
       dir = dir / len
 
       local trGround = trace_t()
-      local groundTraceDist = 32
-      UTIL.TraceLine(pos, pos - Vector(0, 0, groundTraceDist), _E.MASK.SOLID, self, 0, trGround)
+      UTIL.TraceLine(pos, pos - Vector(0, 0, 32), _E.MASK.SOLID, self, 0, trGround)
 
-      local groundNormal = Vector(0, 0, 1)
-      local onGround = false
-      if trGround and trGround.Hit then
-        onGround = true
-        if trGround.PlaneNormal then
-          groundNormal = trGround.PlaneNormal
-        end
-      end
-
-      -- forward = dir - (groundNormal * dot(dir, groundNormal))
+      local groundNormal = (trGround.Hit and trGround.PlaneNormal) or Vector(0, 0, 1)
       local dot = dir.x * groundNormal.x + dir.y * groundNormal.y + dir.z * groundNormal.z
       local forward = Vector(dir.x - groundNormal.x * dot, dir.y - groundNormal.y * dot, dir.z - groundNormal.z * dot)
 
       if forward:Length() <= 0.001 then
-        forward = Vector(dir.x, dir.y, 200)
-        if forward:Length() > 0 then
-          forward = forward:GetNormalized()
-        end
+        forward = Vector(dir.x, dir.y, 0):GetNormalized()
       else
         forward = forward:GetNormalized()
       end
@@ -247,32 +248,18 @@ function ENT:MoveThink()
 
       local phys = self:VPhysicsGetObject()
       if phys and phys ~= NULL then
-        local curVel = phys:GetVelocity()
-        local preservedZ = curVel.z or 0
-
-        phys:SetVelocity(Vector(desiredVel.x, desiredVel.y, preservedZ), Vector(desiredVel.x, desiredVel.y, preservedZ))
-        self:SetAbsVelocity(Vector(desiredVel.x, desiredVel.y, preservedZ))
+        local curZ = phys:GetVelocity().z or 0
+        phys:SetVelocity(Vector(desiredVel.x, desiredVel.y, curZ), Vector(desiredVel.x, desiredVel.y, curZ))
+        self:SetAbsVelocity(Vector(desiredVel.x, desiredVel.y, curZ))
       else
-        local curAbs = self:GetAbsVelocity() or Vector(0, 0, 0)
-        local preservedZ = curAbs.z or 0
-        self:SetAbsVelocity(Vector(desiredVel.x, desiredVel.y, preservedZ))
+        local curZ = (self:GetAbsVelocity() or Vector(0, 0, 0)).z or 0
+        self:SetAbsVelocity(Vector(desiredVel.x, desiredVel.y, curZ))
       end
 
       local desiredYaw = math.deg(math.atan2(forward.y, forward.x))
       local curAng = self:GetAbsAngles()
-      local smoothYaw = curAng.y + AngleDifference(desiredYaw, curAng.y) * 0.1
-      curAng.y = smoothYaw
+      curAng.y = curAng.y + AngleDifference(desiredYaw, curAng.y) * 0.1
       self:SetAbsAngles(curAng)
-    end
-  end
-
-  if self:IsObstacleAhead() and self:IsOnGround() then
-    local phys = self:VPhysicsGetObject()
-    if phys and phys ~= NULL then
-      phys:ApplyForceCenter(Vector(0, 0, 1) * 2000)
-    else
-      local cur = self:GetAbsVelocity()
-      self:SetAbsVelocity(Vector(cur.x, cur.y, math.max(cur.z, 100)))
     end
   end
 end
