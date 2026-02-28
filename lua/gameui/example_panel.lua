@@ -113,5 +113,5 @@ concommand.Create(
   "OpenExamplePropertyDialog", -- Name
   OnOpenExamplePDialog, -- Function
   "Opens an example property dialog.", -- Description
-  FCVAR.CLIENTDLL --Flags
+  8 -- FCVAR.CLIENTDLL --Flags
 )

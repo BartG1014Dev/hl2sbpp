@@ -15,5 +15,5 @@ concommand.Create(
   "TestCmd", -- Name
   OnTestCmd, -- Function
   "Says a thing.", -- Description
-  FCVAR.CLIENTDLL --Flags
+  8 -- FCVAR.CLIENTDLL --Flags
 )
