@@ -34,5 +34,5 @@ IN = {
 }
 
 function HasFlag(flags, flag)
-  return math.floor(flags / flag) % 2 ~= 0
+  return bitty.band(flags, flag) ~= 0
 end
