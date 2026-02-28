@@ -80,8 +80,13 @@ end
 function CreateClientConVar(strName, strDefault, bSave, bUserData)
   local flags = FCVAR.CLIENTDLL
 
-  if bSave     then flags = flags + FCVAR.ARCHIVE  end
-  if bUserData then flags = flags + FCVAR.USERINFO  end
+  if bSave then
+    flags = bitty.bor(flags, FCVAR.ARCHIVE)
+  end
+
+  if bUserData then
+    flags = bitty.bor(flags, FCVAR.USERINFO)
+  end
 
   return ConVar(strName, strDefault, flags)
 end

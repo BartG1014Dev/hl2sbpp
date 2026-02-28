@@ -4,11 +4,7 @@
 --
 --===========================================================================--
 
-if not bit then
-  require("bit")
-end
-
-local bor = bit.bor
+local bor = bitty.bor
 local vgui = require("vgui")
 local Frame = vgui.Frame
 local Panel = vgui.Panel

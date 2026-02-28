@@ -4,8 +4,6 @@
 --
 --===========================================================================--
 
-local bit = require("bit")
-
 GM.Name = "Sandbox"
 GM.Homepage = ""
 GM.Developer = "Team HL2SB++"
@@ -33,7 +31,7 @@ end
 function GM:GetAmmoDef(def)
   def:AddAmmoType(
     "9mmRound",
-    bit.bor(DMG_BULLET, DMG_NEVERGIB),
+    bitty.bor(DMG_BULLET, DMG_NEVERGIB),
     AmmoTracer.LINE,
     "sk_plr_dmg_9mm_bullet",
     "sk_npc_dmg_9mm_bullet",
@@ -44,7 +42,7 @@ function GM:GetAmmoDef(def)
 
   def:AddAmmoType(
     "357Round",
-    bit.bor(DMG_BULLET, DMG_NEVERGIB),
+    bitty.bor(DMG_BULLET, DMG_NEVERGIB),
     AmmoTracer.NONE,
     "sk_plr_dmg_357_bullet",
     nil,
@@ -55,7 +53,7 @@ function GM:GetAmmoDef(def)
 
   def:AddAmmoType(
     "MP5_Grenade",
-    bit.bor(DMG_BURN, DMG_BLAST),
+    bitty.bor(DMG_BURN, DMG_BLAST),
     AmmoTracer.NONE,
     "sk_plr_dmg_mp5_grenade",
     nil,
@@ -92,7 +90,7 @@ function GM:GetAmmoDef(def)
 
   def:AddAmmoType(
     "TripMine",
-    bit.bor(DMG_BURN, DMG_BLAST),
+    bitty.bor(DMG_BURN, DMG_BLAST),
     AmmoTracer.NONE,
     "sk_plr_dmg_tripmine",
     nil,
@@ -103,7 +101,7 @@ function GM:GetAmmoDef(def)
 
   def:AddAmmoType(
     "Satchel",
-    bit.bor(DMG_BURN, DMG_BLAST),
+    bitty.bor(DMG_BURN, DMG_BLAST),
     AmmoTracer.NONE,
     "sk_plr_dmg_satchel",
     nil,
@@ -114,7 +112,7 @@ function GM:GetAmmoDef(def)
 
   def:AddAmmoType(
     "12mmRound",
-    bit.bor(DMG_BULLET, DMG_NEVERGIB),
+    bitty.bor(DMG_BULLET, DMG_NEVERGIB),
     AmmoTracer.LINE,
     nil,
     "sk_npc_dmg_12mm_bullet",
@@ -125,7 +123,7 @@ function GM:GetAmmoDef(def)
 
   def:AddAmmoType(
     "BuckshotHL1",
-    bit.bor(DMG_BULLET, DMG_BUCKSHOT),
+    bitty.bor(DMG_BULLET, DMG_BUCKSHOT),
     AmmoTracer.LINE,
     "sk_plr_dmg_buckshot",
     nil,
@@ -136,7 +134,7 @@ function GM:GetAmmoDef(def)
 
   def:AddAmmoType(
     "XBowBoltHL1",
-    bit.bor(DMG_BULLET, DMG_NEVERGIB),
+    bitty.bor(DMG_BULLET, DMG_NEVERGIB),
     AmmoTracer.LINE,
     "sk_plr_dmg_xbow_bolt_plr",
     nil,
@@ -147,7 +145,7 @@ function GM:GetAmmoDef(def)
 
   def:AddAmmoType(
     "GrenadeHL1",
-    bit.bor(DMG_BURN, DMG_BLAST),
+    bitty.bor(DMG_BURN, DMG_BLAST),
     AmmoTracer.NONE,
     "sk_plr_dmg_grenade",
     nil,

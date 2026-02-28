@@ -1,4 +1,8 @@
--- smlib.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 -- cant have this running on server!
 if SERVER then
