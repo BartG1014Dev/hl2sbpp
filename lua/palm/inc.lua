@@ -1,4 +1,9 @@
--- inc.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 includeC("controls/ppanel.lua")
 includeC("controls/pframe.lua")
 includeC("controls/pbutton.lua")

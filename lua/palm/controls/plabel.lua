@@ -1,4 +1,8 @@
--- plabel.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 ---@class PLabel:Button
 ---@field Init fun(self:PLabel, parent:Panel?, panelName:string, text:string, actionSignalTarget:Panel, cmd:string)

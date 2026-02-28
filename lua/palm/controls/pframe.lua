@@ -1,4 +1,9 @@
--- pframe.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 ---@param dlg self:PPanel
 local function PositionDialog(dlg)
   if not IsValid(dlg) then

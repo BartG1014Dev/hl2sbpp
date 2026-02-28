@@ -1,4 +1,9 @@
--- cl_init.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 include("includes/extensions/panel.lua")
 
 PANELS = PANELS or {}

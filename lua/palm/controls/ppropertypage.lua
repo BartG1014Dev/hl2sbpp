@@ -1,4 +1,8 @@
--- ppropertypage.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 ---@class PPropertyPage:PropertyPage
 ---@field Init fun(self:PPropertyPage, parent:Panel?, panelName:string)

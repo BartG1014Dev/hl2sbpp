@@ -1,4 +1,8 @@
--- pbutton.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 ---@class PButton:Frame
 ---@field Init fun(self:PButton, parent:Panel?, text:string, actionSignalTarget:Panel, cmd:string)
