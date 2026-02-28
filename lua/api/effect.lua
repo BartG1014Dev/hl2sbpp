@@ -11,8 +11,8 @@ effect = {}
 function effect.Dissolve(entity, effectName, life, flags) end
 
 ---Creates an explosion at a given position.
----@param position table Vector `{x, y, z}` for the explosion location.
----@param angle table Angle `{pitch, yaw, roll}` for explosion orientation.
+---@param position Vector
+---@param angle QAngle
 ---@param owner any Entity that caused the explosion.
 ---@param magnitude integer Explosion magnitude.
 ---@param radius integer Explosion radius.
