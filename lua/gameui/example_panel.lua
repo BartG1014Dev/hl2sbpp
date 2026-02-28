@@ -51,7 +51,7 @@ concommand.Create(
   "OpenExamplePanel", -- Name
   OnOpenExamplePanel, -- Function
   "Opens an example panel.", -- Description
-  FCVAR.CLIENTDLL --Flags
+  8 -- FCVAR.CLIENTDLL --Flags
 )
 
 -- Local means dont use it anywhere else
