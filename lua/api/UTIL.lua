@@ -364,4 +364,8 @@ function UTIL.MuzzleFlash(origin, angle, entIndex, attachment) end
 ---@return boolean
 function UTIL.IsValid(ent) end
 
+---Get a list of all entities
+---@return CBaseEntity[] entities
+function UTIL.GetAllPlayers() end
+
 return UTIL

@@ -163,5 +163,19 @@ vec3_origin = nil -- global Vector constant (0,0,0)
 ---@type Vector
 vec3_invalid = nil -- global invalid vector sentinel
 
---- Utility functions for vector calculations, random number generation, tracing, and visual effects.
+MAX_COORD_INTEGER = 16384
+MIN_COORD_INTEGER = -MAX_COORD_INTEGER
+
+MAX_COORD_FRACTION = 1.0 - (1.0 / 16.0)
+MIN_COORD_FRACTION = -1.0 + (1.0 / 16.0)
+
+MAX_COORD_FLOAT = 16384.0
+MIN_COORD_FLOAT = -16384.0
+
+COORD_EXTENT = 2 * MAX_COORD_INTEGER
+
+MAX_TRACE_LENGTH = 1.732050807569 * COORD_EXTENT
+
+MAX_COORD_RANGE = MAX_COORD_INTEGER
+
 return Vector

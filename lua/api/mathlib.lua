@@ -1,7 +1,7 @@
 ---@class mathlib
 mathlib = {}
 
----TODO: add desc
+---Clamps a value
 ---@param x number
 ---@param y number
 ---@param z number
