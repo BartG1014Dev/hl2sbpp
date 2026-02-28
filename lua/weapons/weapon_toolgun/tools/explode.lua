@@ -1,4 +1,9 @@
--- weapons/weapon_toolgun/tools/explode.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 TOOL.Name = "Explode"
 TOOL.Description = "Cause an explosion."
 

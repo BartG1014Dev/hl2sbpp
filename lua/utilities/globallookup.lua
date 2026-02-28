@@ -1,4 +1,4 @@
---======== Copyright (C) 2025-2025, Team HL2SB++, All rights reserved. ========--
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
 --
 -- Purpose: Dump the size of _G.
 --

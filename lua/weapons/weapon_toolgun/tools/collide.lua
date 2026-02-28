@@ -1,4 +1,9 @@
--- weapons/weapon_toolgun/tools/collide.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 TOOL.Name = "No Collision"
 TOOL.Description = "Disables/enables collision of entities."
 

@@ -1,4 +1,8 @@
--- @CopyrightAss
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 SWEP.PrintName = "FISTS"
 SWEP.ViewModel = "models/weapons/c_arms.mdl"

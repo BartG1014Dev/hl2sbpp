@@ -1,4 +1,9 @@
--- weapons/weapon_toolgun/tools/weld.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 TOOL.Name = "Weld"
 TOOL.Description = "Weld 2 entities together."
 TOOL.firstEnt = nil

@@ -1,4 +1,9 @@
--- weapons/weapon_toolgun/tools/duplicator.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 TOOL.Name = "Duplicator"
 TOOL.Description = "Copy an entity (primary) and paste it (secondary)."
 TOOL.CopiedData = nil

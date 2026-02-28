@@ -1,4 +1,9 @@
--- weapons/weapon_toolgun/tools/color.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 TOOL.Name = "Color"
 TOOL.Description = "Changes the color of entities."
 TOOL.Colors = {

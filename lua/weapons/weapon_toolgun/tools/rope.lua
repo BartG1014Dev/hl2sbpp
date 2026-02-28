@@ -1,4 +1,9 @@
--- weapons/weapon_toolgun/tools/rope.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 TOOL.Name = "Rope"
 TOOL.Description = "Connect 2 entities with a rope."
 TOOL.firstEnt = nil

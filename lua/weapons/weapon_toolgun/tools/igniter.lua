@@ -1,4 +1,9 @@
--- weapons/weapon_toolgun/tools/igniter.lua
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
+
 TOOL.Name = "Igniter"
 TOOL.Description = "Ignites entities."
 
