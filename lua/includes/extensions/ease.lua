@@ -4,7 +4,7 @@
 --
 --===========================================================================--
 
-local ease = {}
+ease = ease or {}
 
 local sin, cos, pi, sqrt, abs, pow = 
     math.sin, math.cos, math.pi, math.sqrt, math.abs, math.pow
