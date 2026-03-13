@@ -15,7 +15,7 @@
 	developer "Team HL2SB++"
 	//gamelogo "1"
 
-    	FileSystem
+    FileSystem
 	{
 		SteamAppId				220
 
