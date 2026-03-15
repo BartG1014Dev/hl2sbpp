@@ -11,3 +11,5 @@ function SWEP:DrawLargeWeaponBox(bSelected, xpos, ypos, boxWide, boxTall, select
 function SWEP:DrawModel(flags) end
 
 function SWEP:MuzzleFlash(pos1, angles, type, firstPerson) end
+
+function SWEP:DrawHUD() end
