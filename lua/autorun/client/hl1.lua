@@ -9,6 +9,7 @@ if not GetConVar("hl1_mounted") or GetConVar("hl1_mounted"):GetInt() == 0 then
 end
 
 smlib.CreateHeader("NPCs", "Half-Life: Source")
+smlib.CreateHeader("Weapons", "Half-Life: Source")
 
 local hl1npcs = {
   {
@@ -137,6 +138,78 @@ local hl1npcs = {
     command = "npc_create monster_zombie",
   },
 }
+
+local hl1weapons = {
+  {
+    name = "Crowbar (HL1)",
+    image = "materials/entities/weapon_crowbar_hl1.png",
+    command = "give weapon_crowbar_hl1",
+  },
+  {
+    name = "9mm Handgun (HL1)",
+    image = "materials/entities/weapon_glock_hl1.png",
+    command = "give weapon_glock_hl1",
+  },
+  {
+    name = ".357 (HL1)",
+    image = "materials/entities/weapon_357_hl1.png",
+    command = "give weapon_357_hl1",
+  },
+  {
+    name = "Shotgun (HL1)",
+    image = "materials/entities/weapon_shotgun_hl1.png",
+    command = "give weapon_shotgun_hl1",
+  },
+  {
+    name = "Crossbow (HL1)",
+    image = "materials/entities/weapon_crossbow_hl1.png",
+    command = "give weapon_crossbow_hl1",
+  },
+  {
+    name = "RPG (HL1)",
+    image = "materials/entities/weapon_rpg_hl1.png",
+    command = "give weapon_rpg_hl1",
+  },
+  {
+    name = "Tau Cannon (HL1)",
+    image = "materials/entities/weapon_gauss.png",
+    command = "give weapon_gauss_hl1",
+  },
+  {
+    name = "Gluon Gun (Egon) (HL1)",
+    image = "materials/entities/weapon_egon.png",
+    command = "give weapon_egon_hl1",
+  },
+  {
+    name = "Hivehand (Hornet Gun) (HL1)",
+    image = "materials/entities/weapon_hornetgun.png",
+    command = "give weapon_hornetgun_hl1",
+  },
+  {
+    name = "Hand Grenade (HL1)",
+    image = "materials/entities/weapon_handgrenade.png",
+    command = "give weapon_handgrenade_hl1",
+  },
+  {
+    name = "Satchel (HL1)",
+    image = "materials/entities/weapon_satchel.png",
+    command = "give weapon_satchel_hl1",
+  },
+  {
+    name = "Tripmine (HL1)",
+    image = "materials/entities/weapon_tripmine.png",
+    command = "give weapon_tripmine_hl1",
+  },
+  {
+    name = "Snark (HL1)",
+    image = "materials/entities/weapon_snark.png",
+    command = "give weapon_snark_hl1",
+  },
+}
+
+for _, btn in ipairs(hl1weapons) do
+  smlib.CreateButtonInHeader(true, "Weapons", btn.name, btn.image, "", btn.command, "Half-Life: Source")
+end
 
 for _, btn in ipairs(hl1npcs) do
   smlib.CreateButtonInHeader(true, "NPCs", btn.name, btn.image, "", btn.command, "Half-Life: Source")
