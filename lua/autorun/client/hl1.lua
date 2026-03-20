@@ -9,7 +9,7 @@ if not GetConVar("hl1_mounted") or GetConVar("hl1_mounted"):GetInt() == 0 then
 end
 
 smlib.CreateHeader("NPCs", "Half-Life: Source")
-smlib.CreateHeader("Weapons", "Half-Life: Source")
+smlib.CreateHeader("Entities", "Half-Life: Source")
 
 local hl1npcs = {
   {
