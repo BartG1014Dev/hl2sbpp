@@ -208,7 +208,7 @@ local hl1weapons = {
 }
 
 for _, btn in ipairs(hl1weapons) do
-  smlib.CreateButtonInHeader(true, "Weapons", btn.name, btn.image, "", btn.command, "Half-Life: Source")
+  smlib.CreateButtonInHeader(true, "Entities", btn.name, btn.image, "", btn.command, "Half-Life: Source")
 end
 
 for _, btn in ipairs(hl1npcs) do
