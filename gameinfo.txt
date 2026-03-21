@@ -4,6 +4,7 @@
 	icon	"icon_hl2"
 	title	""
 	title2	""
+	icon "resource/icon"
 	nomodels 1
 	nohimodel 1
 	nocrosshair 1
