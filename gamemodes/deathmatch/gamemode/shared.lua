@@ -92,6 +92,10 @@ function GM:Precache()
   _R.CBaseEntity.PrecacheScriptSound("AlyxEmp.Charge")
 end
 
+function GM:CanPlayerHearPlayer(pListener, pTalker, bProximity)
+  return true
+end
+
 function GM:ShouldCollide(collisionGroup0, collisionGroup1) end
 
 function GM:Think() end
