@@ -13,7 +13,9 @@ local PButton = {
     self:SetParent(parent)
   end,
 
-  Activate = function(self) end,
+  Activate = function(self)
+    surface.PlaySound("ui/buttonclickrelease.wav")
+  end,
 }
 
 CONTROLS.Add("PButton", PButton)
