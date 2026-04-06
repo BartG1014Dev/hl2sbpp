@@ -26,6 +26,10 @@ function CBaseAnimating:IsGlowEffectActive() end
 --- Adds the entity to the game world.
 function CBaseAnimating:AddEntity() end
 
+--- Gets the BaseFlex of the entity
+---@return CBaseFlex
+function CBaseAnimating:GetBaseFlex() end 
+
 --- Adds the entity to the client-side animation list.
 function CBaseAnimating:AddToClientSideAnimationList() end
 
