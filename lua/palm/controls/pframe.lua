@@ -78,7 +78,7 @@ local PFrame = {
     self.minifyButton:AddActionSignalTarget(self)
     self.minifyButton:SetEnabled(false)
 
-    self.maximizeButton = vgui.Create("PButton", self, "■", self, "Maximize")
+    self.maximizeButton = vgui.Create("PButton", self, "O", self, "Maximize")
     self.maximizeButton:SetVisible(true)
     self.maximizeButton:SetPos(0, 0)
     self.maximizeButton:SetSize(20, 20)
