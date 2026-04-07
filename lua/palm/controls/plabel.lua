@@ -9,16 +9,11 @@
 local PLabel = {
   base = "Label",
 
-  Init = function(self, parent, panelName, text)
-    if not panelName then
-      panelName = "Label"
-    end
-    if not text then
-      text = ""
-    end
-
+  Init = function(self, parent, text)
     self:SetParent(parent)
-    self:SetText(text)
+    self:SetText(text or "")
+    self:SizeToContents()
+    self:SetVisible(true)
   end,
 }
 
