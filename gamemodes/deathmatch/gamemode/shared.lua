@@ -13,11 +13,6 @@ GM.Manual = nil
 
 function GM:Initialize()
   self.m_bTeamPlayEnabled = cvar.FindVar("mp_teamplay"):GetBool()
-
-  if not _CLIENT then
-    engine.ServerCommand("sv_spawnmenu_allowed 0\n")
-	  engine.ServerCommand("sv_allow_noclip 0\n")
-  end
 end
 
 function GM:Shutdown()
@@ -34,6 +29,14 @@ function GM:CalcPlayerView(pPlayer, eyeOrigin, eyeAngles, fov)
     angles = eyeAngles,
     fov = fov
   }
+end
+
+function GM:IsSpawnMenuAllowed()
+  return false -- No spawnmenu in Deathmatch
+end
+
+function GM:IsNoclipAllowed()
+  return false -- No noclip in Deathmatch
 end
 
 function GM:CheckGameOver() end

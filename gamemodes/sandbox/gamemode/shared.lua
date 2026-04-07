@@ -9,21 +9,31 @@ GM.Homepage = ""
 GM.Developer = "Team HL2SB++"
 GM.Manual = nil
 
+local FCVAR_REPLICATED = _E.FCVAR.REPLICATED
+local sbox_allow_noclip = ConVar("sbox_allow_noclip", "1", FCVAR_REPLICATED)
+local sbox_allow_spawnmenu = ConVar("sbox_allow_spawnmenu", "1", FCVAR_REPLICATED)
+
 function GM:Initialize()
   if not _CLIENT then
     engine.ServerCommand("mp_falldamage 0\n")
     engine.ServerCommand("mp_flashlight 1\n")
     engine.ServerCommand("sv_friction 8\n")
     engine.ServerCommand("sv_stopspeed 10\n")
-    engine.ServerCommand("sv_infinite_aux_power 1\n") -- @ThePixelMoon: why aren't these on by default?
-    engine.ServerCommand("sv_spawnmenu_allowed 1\n")
-	  engine.ServerCommand("sv_allow_noclip 1\n")
+    engine.ServerCommand("sv_infinite_aux_power 1\n") -- @ThePixelMoon: why isn't this on by default?
   else
     -- Andrew; not the right place to put this, but oh well.
     self:CreateDefaultPanels()
 
     AddHint("#Hint_OpeningMenu", 3)
   end
+end
+
+function GM:IsSpawnMenuAllowed()
+  return sbox_allow_spawnmenu:GetBool()
+end
+
+function GM:IsNoclipAllowed()
+  return sbox_allow_noclip:GetBool()
 end
 
 -- Let HL1 weapons be a Sandbox-specific thing!
