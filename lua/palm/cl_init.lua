@@ -11,12 +11,23 @@ vgui = vgui or {}
 CONTROLS = CONTROLS or {}
 
 local BaseConstructors = {
+  -- 1.0
   ["Panel"] = vgui.Panel,
   ["Button"] = vgui.Button,
   ["CheckButton"] = vgui.CheckButton,
   ["Frame"] = vgui.Frame,
   ["PropertyDialog"] = vgui.PropertyDialog,
   ["PropertyPage"] = vgui.PropertyPage,
+  ["Label"] = vgui.Label,
+
+  -- 1.1
+  ["Menu"] = vgui.Menu,
+  ["MenuButton"] = vgui.MenuButton,
+  ["RadioButton"] = vgui.RadioButton,
+  ["TextEntry"] = vgui.TextEntry,
+  ["ComboBox"] = vgui.ComboBox,
+  ["ImagePanel"] = vgui.ImagePanel,
+  ["Slider"] = vgui.Slider,
 }
 
 function CONTROLS.Add(name, control)
@@ -32,6 +43,7 @@ function CONTROLS.Create(name, parent, ...)
   end
 
   local panelName = tostring(name) .. "_" .. tostring(math.random(1000000))
+  dbg.DevMsg("Creating panel " .. panelName .. "\n")
 
   local base
   if BaseConstructors[def.base] then

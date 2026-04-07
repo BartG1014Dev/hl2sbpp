@@ -4,14 +4,14 @@
 --
 --===========================================================================--
 
----@class PLabel:PPanel
----@field Init fun(self:PLabel, parent:Panel?, panelName:string, text:string)
-local PLabel = {
-  base = "Label",
+---@class PRadioButton:PPanel
+---@field Init fun(self:PRadioButton, parent:Panel?, panelName:string, text:string)
+local PRadioButton = {
+  base = "RadioButton",
 
   Init = function(self, parent, panelName, text)
     if not panelName then
-      panelName = "Label"
+      panelName = "RadioButton"
     end
     if not text then
       text = ""
@@ -22,4 +22,4 @@ local PLabel = {
   end,
 }
 
-CONTROLS.Add("PLabel", PLabel)
+CONTROLS.Add("PRadioButton", PRadioButton)
