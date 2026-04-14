@@ -1,5 +1,5 @@
 
----@class CBasePlayer : CBaseEntity
+---@class CBasePlayer : CBaseFlex
 ---@field m_afButtonLast integer
 ---@field m_afButtonPressed integer
 ---@field m_afButtonReleased integer
