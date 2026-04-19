@@ -1,5 +1,6 @@
----@class CNextBot : CBaseFlex
+---@class CNextBot
 ---@field loco NextBotLocomotion
+---@field Entity CBaseFlex
 CNextBot = {}
 
 ---Returns distance to entity or vector
