@@ -4,10 +4,6 @@
 --
 --===========================================================================--
 
-if not SERVER then
-  return
-end -- prevent this from running on client
-
 DEFINE_BASECLASS("trigger_scripted")
 DEFINE_FACTORY("CBaseTrigger")
 
