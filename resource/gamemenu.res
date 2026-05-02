@@ -49,11 +49,26 @@
 	}
 	"9"
 	{
+		"label" "#SBPP_BugReport"
+		"command" "engine sbpp_bugreport"
+	}
+	"10"
+	{
+		"label" "#SBPP_Workshop"
+		"command" "engine sbpp_workshop"
+	}
+	"11"
+	{
+		"label" ""
+		"command" ""
+	}
+	"12"
+	{
 		"label" "#GameUI_GameMenu_Disconnect"
 		"command" "Disconnect"
 		"OnlyInGame" "1"
 	}
-	"10"
+	"13"
 	{
 		"label" "#GameUI_GameMenu_Quit"
 		"command" "Quit"
