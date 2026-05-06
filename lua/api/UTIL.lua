@@ -368,4 +368,17 @@ function UTIL.IsValid(ent) end
 ---@return CBaseEntity[] entities
 function UTIL.GetAllPlayers() end
 
+
+---@param name string
+---@return integer id
+function UTIL.AddNetworkString(name) end
+
+---@param name string
+---@return integer id  -1 if unknown.
+function UTIL.NetworkStringToID(name) end
+
+---@param id integer
+---@return string? name
+function UTIL.NetworkIDToString(id) end
+
 return UTIL

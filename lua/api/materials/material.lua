@@ -184,7 +184,14 @@ function IMaterial:UsesEnvCubemap() end
 ---@return boolean
 function IMaterial:WasReloadedFromWhitelist() end
 
+---@param name      string
+---@param complain? boolean Default true. Logs a warning if the var doesn't exist.
+---@return IMaterialVar var
+---@return boolean      found
+function IMaterial:FindVar(name, complain) end
+
 --- Returns string representation.
 ---@return string
 function IMaterial:__tostring() end
+
 return IMaterial

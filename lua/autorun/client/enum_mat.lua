@@ -138,6 +138,19 @@ TEXTUREFLAGS = {
     BORDER                            = 0x20000000,
 }
 
+---@class MaterialVarType
+MaterialVarType = { 
+	TYPE_FLOAT = 0,
+	TYPE_STRING = 1,
+	TYPE_VECTOR = 2,
+	TYPE_TEXTURE = 3,
+	TYPE_INT = 4,
+	TYPE_FOURCC = 5,
+	TYPE_UNDEFINED = 6,
+	TYPE_MATRIX = 7,
+	TYPE_MATERIAL = 8,
+};
+
 ---@type integer
 MATERIAL_POINTS               = 0
 ---@type integer
