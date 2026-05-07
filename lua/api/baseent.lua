@@ -1078,6 +1078,10 @@ function CBaseEntity:SetRenderColorA(a) end
 ---@param b number
 function CBaseEntity:SetRenderColorB(b) end
 
+---(forcefully) Sets the material of the entity
+---@param mat string
+function CBaseEntity:SetMaterialOverride(mat) end
+
 ---Create an CBaseEntity instance by class name (factory).
 ---@param name string
 ---@return CBaseEntity

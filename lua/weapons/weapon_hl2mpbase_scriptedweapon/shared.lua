@@ -211,6 +211,7 @@ end
 
 function SWEP:Think() end
 
+---Can switch weapon?
 function SWEP:CanHolster() end
 
 function SWEP:Deploy() end
@@ -219,9 +220,14 @@ function SWEP:GetDrawActivity()
   return ACT.VM_DRAW
 end
 
+---Called on weapon switch
+---@param pSwitchingTo CBaseCombatWeapon
 function SWEP:Holster(pSwitchingTo) end
 
-function SWEP:ItemPostFrame() end
+---Wrapper around :Think(), override :Think() instead
+function SWEP:ItemPostFrame()
+  self:Think()
+end
 
 function SWEP:ItemBusyFrame() end
 

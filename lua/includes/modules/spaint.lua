@@ -69,22 +69,22 @@ function pFont:setupFlags(data)
   local flags = 0
 
   if data.antialias then
-    flags = bit.bor(flags, tFontFlags.ANTIALIAS)
+    flags = bitty.bor(flags, tFontFlags.ANTIALIAS)
   end
   if data.underline then
-    flags = bit.bor(flags, tFontFlags.UNDERLINE)
+    flags = bitty.bor(flags, tFontFlags.UNDERLINE)
   end
   if data.italic then
-    flags = bit.bor(flags, tFontFlags.ITALIC)
+    flags = bitty.bor(flags, tFontFlags.ITALIC)
   end
   if data.strikeout then
-    flags = bit.bor(flags, tFontFlags.STRIKEOUT)
+    flags = bitty.bor(flags, tFontFlags.STRIKEOUT)
   end
   if data.shadow then
-    flags = bit.bor(flags, tFontFlags.SHADOW)
+    flags = bitty.bor(flags, tFontFlags.SHADOW)
   end
   if data.outline then
-    flags = bit.bor(flags, tFontFlags.OUTLINE)
+    flags = bitty.bor(flags, tFontFlags.OUTLINE)
   end
 
   self.flags = flags

@@ -28,10 +28,14 @@ function ENT:Initialize()
   end
 end
 
+---@param pEntity CBaseEntity
 function ENT:StartTouch(pEntity) end
 
+---@param pEntity CBaseEntity
 function ENT:Touch(pEntity) end
 
+---@param pEntity CBaseEntity
 function ENT:EndTouch(pEntity) end
 
+---@param pPhysics IPhysicsObject
 function ENT:VPhysicsUpdate(pPhysics) end
