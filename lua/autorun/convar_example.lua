@@ -7,7 +7,6 @@
 -- Being in autorun means it will only execute in-map.
 
 local cvar = require("cvar")
-includeC("enum_fcvar.lua")
 
 -- Local means dont use it anywhere else
 local function OnTestCmdChange(var, oldValueStr, oldValueNum)
