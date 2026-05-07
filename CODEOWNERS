@@ -1,0 +1,4 @@
+# CODEOWNERS
+*               @ThePixelMoon
+
+/lua/includes/modules/spaint.lua @YourLocalSunny

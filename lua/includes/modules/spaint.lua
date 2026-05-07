@@ -1,4 +1,8 @@
---- Copyright © 2026, YourLocalCappy, all rights deserved ---
+--========== Copyright © 2026, Team HL2SB++, All rights reserved. ===========--
+--
+-- Purpose:
+--
+--===========================================================================--
 
 if not CLIENT then
   return
