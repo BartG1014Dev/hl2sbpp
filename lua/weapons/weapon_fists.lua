@@ -28,7 +28,7 @@ SWEP.Secondary = {
 SWEP.Weight = 10
 SWEP.ItemFlags = 0
 
-SWEP.Damage = 42
+SWEP.Damage = 58
 
 SWEP.SoundData = {
   reload = "Default.Reload",
@@ -81,7 +81,7 @@ function SWEP:Attack(isRight)
   local vecEye = pPlayer:EyePosition()
   pPlayer:EyeVectors(vForward, vRight, vUp)
 
-  local fRange = 48
+  local fRange = 50
 
   local startPos = pPlayer:Weapon_ShootPosition()
   local endPos = startPos + pPlayer:GetAutoaimVector(AUTOAIM_5DEGREES) * fRange
@@ -146,17 +146,101 @@ function SWEP:Attack(isRight)
     self:WeaponSound(WeaponSound.SINGLE)
   end
 
-  pPlayer:ViewPunch(QAngle(-2, math.random(-1, 1), 0))
+  pPlayer:ViewPunch(QAngle(-1, math.random(-1, 1), 0))
 
   self.NextIdle = self.m_flNextPrimaryAttack - gpGlobals.curtime()
 end
 
 function SWEP:PrimaryAttack()
-  self:Attack(false)
+  local pPlayer = self:GetOwner()
+  if ToBaseEntity(pPlayer) == NULL then
+    return
+  end
+
+  self.TwoAnim = not self.TwoAnim;
+
+    if self.TwoAnim then
+        self:Attack(false)
+    else
+        self:Attack(true) -- ezzzzz :P
+    end
 end
 
 function SWEP:SecondaryAttack()
-  self:Attack(true)
+  local pPlayer = self:GetOwner()
+  if ToBaseEntity(pPlayer) == NULL then
+    return
+  end
+
+  local vForward = Vector()
+  local vRight = Vector()
+  local vUp = Vector()
+  local angle = QAngle()
+  local vecEye = pPlayer:EyePosition()
+  pPlayer:EyeVectors(vForward, vRight, vUp)
+
+  local fRange = 50
+
+  local startPos = pPlayer:Weapon_ShootPosition()
+  local endPos = startPos + pPlayer:GetAutoaimVector(AUTOAIM_5DEGREES) * fRange
+
+  ToHL2MPPlayer(pPlayer):DoAnimationEvent(PlayerAnimEvent.ATTACK_PRIMARY)
+
+  tr = trace_t()
+  MASK_SHOT = _E.MASK.SHOT
+  UTIL.TraceLine(startPos, endPos, MASK_SHOT, pPlayer, 0, tr)
+
+  local bDidHit = tr:DidHit()
+  local hitEnt = tr.m_pEnt
+
+  local anim = "fists_uppercut"
+  local vm = pPlayer:GetViewModel(0)
+  vm:SetSequence(vm:LookupSequence(anim))
+  vm:ResetSequenceInfo()
+  vm:SetCycle(0)
+  vm:StudioFrameAdvance()
+
+  self.m_flNextSecondaryAttack = gpGlobals.curtime() + 0.8
+  self.m_flNextPrimaryAttack = self.m_flNextSecondaryAttack
+
+  if bDidHit then
+    if hitEnt then
+      self:WeaponSound(WeaponSound.SPECIAL1)
+    end
+
+    local vecSrc = pPlayer:Weapon_ShootPosition()
+    local vecAiming = pPlayer:GetAutoaimVector(AUTOAIM_5DEGREES)
+
+    local info = {
+      m_iShots = 1,
+      m_vecSrc = vecSrc,
+      m_vecDirShooting = vecAiming,
+      m_vecSpread = vec3_origin,
+      m_flDistance = MAX_TRACE_LENGTH,
+      m_iAmmoType = 1,
+    }
+    info.m_pAttacker = pPlayer
+
+    -- Fire the bullets, and force the first shot to be perfectly accuracy
+    ToHL2MPPlayer(pPlayer):FireBullets(info)
+
+    --Disorient the player
+    local angles = pPlayer:GetLocalAngles()
+
+    angles.x = angles.x + random.RandomInt(0)
+    angles.y = angles.y + random.RandomInt(0)
+    angles.z = 0
+
+    if not _CLIENT then
+      pPlayer:SnapEyeAngles(angles)
+    end
+  else
+    self:WeaponSound(WeaponSound.SINGLE)
+  end
+
+  pPlayer:ViewPunch(QAngle(-1, math.random(-1, 1), 0))
+
+  self.NextIdle = self.m_flNextSecondaryAttack - gpGlobals.curtime()
 end
 
 function SWEP:Deploy()
